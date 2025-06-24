@@ -1,0 +1,35 @@
+/*	
+
+	SET
+
+*/
+
+.set {
+
+	&__inner {
+		padding-top: var(--grid-gap);	
+		padding-bottom: var(--grid-gap);		
+	}
+	&__header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: var(--card-padding);
+/*		padding-top: 0;	*/
+		padding-bottom: 0;
+/*		border-bottom: 1px solid var(--col);*/
+	}
+
+
+	& .--N-set {
+		color: color(light);
+	}
+	/* & 
+	.--D-set,
+	.--M-set,
+	.--S-set,
+	.--G-set,
+	.--C-set {
+		color: var(--col);
+	} */
+}

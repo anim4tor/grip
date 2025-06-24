@@ -1,0 +1,356 @@
+$colors : (
+	/*hues*/
+	acc 		: #8E8BFF,
+	prim		: #004899,
+	sec			: #A37EDF,
+
+	/*greys*/
+	light		: #e0ded9,
+	border		: #b4aeb9,
+	medium		: #4a4a49,
+	dark 		: #232323,
+
+	color-1      : #FEF1FF,
+	color-2      : #F4F1FF,
+	color-3      : #F4F0FF,
+
+
+	back: 				#987add,
+	biceps: 			#6c76df,
+	chest: 				#5adba4,
+/*	chest: 				#cba5c9,*/
+	/* delts:				#72D1D7, */
+	delts:				#5abdb6,
+	triceps:			#529eb7,
+
+	calves: 			#bfb3bf,
+	hams:			    #897e89,
+/*	quad: 				#ed4040,*/
+	quad:         #9397a5 ,
+	rest: 				#ed4141,
+
+	
+
+
+	breakfast		: #cdb7a8,
+	workout			: #93b5aa,
+	dinner:      #b4adc5,
+	
+	/*status*/
+	green		: #0ccf8e,
+	red			: #ed4141,
+	bordo 		: #4B041E,
+	yellow		: #fff5e2,
+	orange      : #ee9d0d,
+	brown		: #59402b,
+	blue 		: #e0f2fa,
+	light-yellow: #fff5e2,
+	purple: #987add,
+	pink		: #ffdede,
+	darkgreen	: #29443e,
+	violet		: #C2BBF3,
+	sand		: #CAC6BE,
+	beige		: #e3e0d9,
+	
+	/*type*/
+	text 		: #000000,
+
+	/*defaults*/
+	black 		: #000000,
+	invert		: #ffffff
+
+);
+
+$opacity : (
+	/*opacity*/
+	1 		: 0.1,
+	2			: 0.2,
+	3			: 0.3,
+	4 		: 0.4,
+	5			: 0.5,
+	6			: 0.6,
+	7 		: 0.7,
+	8			: 0.8,
+	9			: 0.9,
+
+);
+
+@function toRGB($color) {
+    @return red($color), green($color), blue($color);
+}
+
+@function color($color, $alpha: 1) {
+  @return rgba(map-get($colors, $color), $alpha)
+}
+
+@function grad($color1, $color2, $angle: 0deg) {
+  @return linear-gradient($angle, $color1, $color2)
+}
+
+
+:root {
+
+	/*
+
+		COLORS
+			
+	*/
+	
+	@each $label, $hex in $colors {
+		$rgb : toRGB($hex);
+	    --color-#{$label}: #{$rgb};
+	}
+
+	@each $label, $hex in $colors {
+	   $rgb : toRGB($hex);
+
+	  .bg-#{$label} {
+		background-color: #{$hex};
+	    --background: rgba(#{$rgb});
+
+	  }
+
+	  .c-#{$label} {
+	    color: #{$hex};
+	    --col: rgba(#{$rgb});
+	  }
+
+	  --c-#{$label}: rgba(#{$rgb});
+
+	  @each $aLabel, $alpha in $opacity {
+	   	  .bg-#{$label}-#{$aLabel} {
+	   			background-color: rgba($hex,$alpha);
+	   	    --background: rgba(#{$rgb},#{$alpha});
+
+	   	  }
+
+	   	  .c-#{$label}-#{$aLabel} {
+	   	    color: #{rgba($hex,$alpha)};
+	   	    --col: rgba(#{$rgb},#{$alpha});
+	   	  }
+
+	   	  
+	   }
+
+
+	}
+
+	--grad-light: linear-gradient(120deg, #D1DAFA -100%, #EFF3FF 50%, #FFE4E6 200%);
+	--grad-light-right: linear-gradient(120deg, transparent 50%, #EFF3FF 100%, #FFE4E6 200%);
+	--grad-accent: linear-gradient(120deg, #A37EDF 0%, #8E8BFF 100%);
+	--grad-1: linear-gradient(to top, #{color(acc,0.5)} -50%, #{color(blue,0.3)} 120%);
+
+	.bg-grad-1 {
+		background: grad(#CAC0FD,#E7E2F9,10deg);
+	}
+	.bg-grad-accent {
+		background: var(--grad-accent);
+	}
+	.bg-bodypart {
+		background-color: var(--c-bodypart) !important;
+		--background: rgba(#{var(--c-bodypart)},1.0);
+	}
+	/*
+
+		DEVICE
+			
+	*/
+	--device-width: 393px;
+	--device-width: 100vw;
+	--device-height: 798px;
+	--device-height: 100dvh;
+	--device-radius: calc(var(--pad)*2);
+	--screen-radius: calc(var(--pad)*1.4);
+
+
+	/*
+
+		BORDER
+			
+	*/
+	--border-radius: Max(1.5rem,1.5em);
+	--border-color: var(--color-border);
+
+	/*
+
+		SPACING
+			
+	*/
+	--pad-base: 1.5rem;
+
+	--pad: calc(var(--pad-base) * 1.5);
+	--pad-3: calc(var(--pad) * 3);
+	--pad-4: calc(var(--pad) * 4);
+	--pad-half: calc(var(--pad) * 0.5);
+	--pad-two-third: calc(var(--pad) * 0.66666);
+	--pad-third: calc(var(--pad) * 0.33333);
+	--pad-quarter: calc(var(--pad) * 0.25);
+
+	--pad-2: calc(var(--pad-base) * 2);
+	--pad-3: calc(var(--pad-base) * 3);
+	--pad-large: calc(var(--pad-base) * 8);
+	--pad-xl: calc(var(--pad-base) * 15);
+
+	--pad-xs: calc(var(--pad-base) * 1);
+
+	/*
+
+		BODY
+			
+	*/
+	
+	--body-bg-color: #{color(light)};
+	--body-bg-gradient: var(--grad-light);
+	--body-text-color: #{color(text)};
+	--main-bg: #{color(light)};
+	--loader-bg: #{color(black)};
+	--header-bg: #{color(black,1)};
+
+	/*
+
+		APP
+			
+	*/
+	--app-v-padding: var(--pad-2);
+	--app-h-padding: var(--pad-half);
+	--app-gap: var(--pad-third);
+
+	/*
+
+		GRIDS
+			
+	*/
+
+	--grid-gap: var(--pad-third);
+
+	/*
+
+		HEADER
+			
+	*/
+	--header-width: 7rem;
+	--header-border: linear-gradient(to top, #{color(border)} 80%, transparent 100%);
+
+	/*
+
+		TYPE
+			
+	*/
+
+	--f-display: "titling-gothic-fb-wide", "Montserrat", sans-serif;
+	--f-body: "Poppins", sans-serif;
+	--f-size-1: max(1.9em,22px);
+	--f-size-2: max(2.3em,28px);
+	--f-size-3: max(2.0em,24px);
+	--f-size-4: max(1.2em,18px);
+	
+
+	/*
+
+		ASIDE
+			
+	*/
+	--aside-width: 50%;
+	--aside-bg: #{color(color-2)};
+	--aside-border: linear-gradient(to top, #{color(border)} 80%, transparent 100%);
+
+	/*
+
+		CARDS
+			
+	*/
+	--card-spacing: calc(var(--pad)*.1);
+	--card-radius: var(--pad-half);
+	--card-inner-radius: calc(var(--card-radius)*.75);
+	--card-padding: calc(var(--pad)*0.5);
+	--card-bg: #{color(border)};
+	--card-bg-hover: #{lighten(color(border),3)};
+	--card-thumb-bg: #{color(medium,.3)};
+
+	@include sm-screen {
+		--card-pad: calc(var(--pad)*0.8);
+	}
+
+	/*
+
+		MODALS
+			
+	*/
+	--modal-bg: #{color(light)};
+	--modal-size: Min(40rem, 100%);
+	--modal-size-large: Min(60rem, 100%);
+
+	/*
+
+		PAGE
+			
+	*/
+	--page-bg: #{color(invert)};
+	--page-size: Min(105rem, 100%);
+	--page-radius: calc(var(--border-radius)*1.4);
+	--fake-bg: var(--card-bg);
+
+	--page-pad: calc(var(--pad-base) * 2.2);
+	--page-pad-wide: calc(var(--pad-half)*1);
+
+	.page {
+		--card-bg: #{darken(color(light),0)};
+		--card-bg-hover: #{darken(color(light),3)};
+	}
+
+
+	/*
+
+		BLOCKS
+			
+	*/
+	--block-size: calc( ( var(--device-width) - (var(--pad-half)*2 ) ) / 7);
+	--block-radius: 0.4rem;
+/*	--block-radius: 100%;*/
+
+	/*
+
+		BUTTONS
+			
+	*/
+	--btn-radius: calc(var(--pad)*1);
+	--btn-size: calc(var(--pad)*1);
+	--check-radius: 0.7rem;
+
+	/*
+
+		ICONS
+			
+	*/
+	--icon-size: 1.4rem;
+	--icon-stroke-width: 1.5;
+
+	/*
+
+		FILTERS
+			
+	*/
+	--icon-filter: invert(1);
+	--img-filter: invert(0);
+
+}
+
+:root.--dark-theme {
+	--body-bg-color: #{color(dark)};
+	--body-text-color: #{color(invert)};
+	--header-bg: #{color(dark,.5)};
+	--page-bg: #{lighten(color(dark),3)};
+	--modal-bg: var(--body-bg-color);
+	--card-bg: #{lighten(color(dark),7)};
+	--fake-bg: var(--card-bg);
+	--card-bg-hover: #{lighten(color(dark),12)};
+	--icon-filter: invert(0);
+	--img-filter: invert(1);
+
+	.page {
+		--card-bg: #{lighten(color(dark),7)};
+		--card-bg-hover: #{lighten(color(dark),12)};
+	}
+
+
+}

@@ -1,0 +1,43 @@
+/*
+
+	PAGE
+
+*/
+
+.page {
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	&__title {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		h1 {
+			vertical-align: top;
+			display: flex;
+			align-items: flex-start;
+			column-gap: 0.5rem;
+		}
+		small {
+			font-family: var(--f-body);
+			/* margin-top: 0.5rem; */
+			font-size: 0.4em;
+		}
+	}
+
+	&__action {
+		margin-left: -8px;
+		display: flex;
+	}
+
+}
+
+.bleed {
+	margin-left: calc(-1*var(--app-h-padding));
+	width: calc(100% + var(--app-h-padding)*2);
+}

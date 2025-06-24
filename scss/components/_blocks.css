@@ -1,0 +1,97 @@
+/*	
+
+	BLOCKS
+
+*/
+
+.blocks {
+	display: grid;
+	flex-shrink: 0;
+	--background: #{rgba(color(text),.05)};
+	align-self: flex-end;
+	row-gap: 0;
+	column-gap: 0;
+
+	.block {
+		width: var(--block-size);
+		height: var(--block-size);
+		border-radius: var(--block-radius);
+		flex-shrink: 0;
+		background-color: var(--background);
+
+		&.--grayscale {
+			filter: grayscale(100%);
+			opacity: 0.4;	
+		}
+
+	}
+
+	&.--inline {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		justify-content: flex-end;
+		align-self: center;
+		flex-flow: wrap-reverse;
+		width: calc(6*1.5em);
+		row-gap: 0;
+		column-gap: 0;
+	}
+	&.--small {
+		.block {
+			width: 1.5em;
+			height: 1.5em;
+			border-radius: 0.2em;
+		}
+	}
+}
+
+.blocks__grid {
+
+	display: flex;
+
+
+}
+
+	.blocks__column {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+.card__blocks.blocks {
+		
+		@extend .blocks;
+		
+		margin-bottom: calc(var(--card-padding)*-1);
+		margin-right: calc(var(--card-padding)*-1);
+
+		display: flex !important;
+		flex-flow: wrap-reverse; /* this will do the magic */
+		row-gap: 0;
+		column-gap: 0;
+		width: 200px;
+		justify-content: flex-end;
+		align-self: flex-end;
+
+		background-color: transparent !important;
+		.block:not(.completed) {
+			background-color: var(--col);
+			opacity: 0.33;
+		}
+		.block.completed {
+			background-color: var(--col);
+		}
+
+		&.--grid-3 {
+			width: 160px;
+		}
+		&.--grid-4 {
+			width: 200px;
+		}
+
+		&.--dimm {
+			/* filter: grayscale(100%); */
+			opacity: 0.3;
+		}
+	}
+

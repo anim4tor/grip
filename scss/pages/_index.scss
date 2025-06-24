@@ -1,0 +1,194 @@
+/*
+
+	INTRO
+
+*/
+
+.intro {
+
+	position: relative;
+	min-height: 120vh;
+	display: flex;
+	justify-content: stretch;
+	align-items: stretch;
+
+	&__figure {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}	
+
+	&__inner {
+		position: relative;
+		background: trasparent;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+
+		width: 100%;
+		height: 100vh;
+	}
+
+		&__title {
+			position: relative;
+			color: transparent;
+
+			&:after {
+				content: 'Z nitra ženy';
+				position: absolute;
+				top: 0;
+				left: 0;
+				
+				color: color(invert);
+				opacity: 0.4;
+
+			}
+
+			&:before {
+				content: 'Z nitra ženy';
+				position: absolute;
+				top: 0;
+				left: 0;
+				
+				color: color(invert);
+				mix-blend-mode: overlay;
+
+			}
+		}
+}
+
+
+.c__list {
+
+	width: auto;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+
+	.c__item {
+		display: grid;
+		grid-auto-rows:	auto auto;
+		grid-row-gap: var(--pad);
+		justify-items: center;
+
+		padding: 0 calc(var(--pad)*5);
+
+		&:not(.--active) {
+			.s__figure {
+				transform: scale(0.8);
+			}
+
+			.c__title {
+				opacity: 0;
+			}
+		}
+	}
+
+	.c__handle {
+		z-index: 10;
+		position: absolute;
+		top: 40%;
+		left: 75%;
+
+		width: var(--btn-size);
+		height: var(--btn-size);
+		border-radius: 50%;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+
+		text-transform: uppercase;
+		font-weight: 500;
+		background: color(invert);
+		color: color(dark);
+	}
+}
+
+
+.t__list {
+
+	width: auto;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+
+	.t__item {
+		position: relative;
+		display: grid;
+		grid-auto-rows:	auto auto;
+		grid-row-gap: var(--pad-2);
+		justify-items: center;
+
+		padding: calc(var(--pad)*4);
+
+		&:before, &:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+
+			border-radius: 3em;
+			border: 1px solid color(light);
+			opacity: 0.5;
+		}
+		&:before {
+			transform: scale(.99,1.01);
+		}
+		&:after {
+			transform: scale(1.01,.99);
+
+		}
+	}
+
+		.t__message {
+			color: color(sand);
+			text-align: center;
+		}
+		.t__thumb {
+			width: calc(var(--btn-size)*.3);
+			height: calc(var(--btn-size)*.3);
+			border-radius: 50%;
+			overflow: hidden;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				width: 110%;
+			}
+		}
+		.t__client {
+
+		}
+
+	.t__handle {
+		z-index: 10;
+		position: absolute;
+		top: 30%;
+		left: 80%;
+
+		width: var(--btn-size);
+		height: var(--btn-size);
+		border-radius: 50%;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+
+		text-transform: uppercase;
+		font-weight: 500;
+		background: color(invert);
+		color: color(dark);
+	}
+}

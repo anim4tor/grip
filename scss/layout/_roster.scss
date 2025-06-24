@@ -1,0 +1,76 @@
+/*
+
+	ROSTERS
+
+*/
+
+.roster {
+	position: relative;
+
+	&__list {
+		position: relative;
+		margin-bottom: var(--pad-large);
+		padding-right: var(--pad-2);
+		padding-left: var(--page-pad-wide);
+
+	}
+
+		&__item {
+			&.--active {
+
+				.roster__active .radio {
+					border-color: color(green);
+					opacity: 1;	
+
+					&:before {
+						transform: scale(1);
+					}
+				}
+			}
+		}
+
+		&__thumb {
+			opacity: 0.6;	
+			filter: brightness(1.1);
+		}
+
+		&__active {
+			position: relative;
+		/*	position: absolute;
+			top: calc(var(--card-pad)*0.5);
+			right: calc(var(--card-pad)*0.5);*/
+
+			.radio {
+				opacity: 0.5;	
+				position: relative;
+
+				/*opacity: 0.2;*/
+				display: block;
+				flex-shrink: 0;
+
+				margin-right: 0.6rem;
+				margin-bottom: 1px;
+				width: 0.8rem;
+				height: 0.8rem;
+
+				border: 1px solid color(medium, 1);
+				border-radius: 50%;
+
+				&:before {
+					content: '';
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					border-radius: 50%;
+					transform: scale(0);
+					background: color(green);
+					@include animation;
+				}
+			}
+
+			
+		}
+
+}

@@ -1,0 +1,37 @@
+/* 
+
+  FLEXBOX GRID SETUP
+
+*/
+
+@import "../utils/flex";
+
+/* Set the number of columns you want to use on your layout. */
+$flexboxgrid-grid-columns: 12 !default;
+/* Set the gutter between columns. */
+$flexboxgrid-gutter-width: 0rem !default;
+/* Set a margin for the container sides. */
+$flexboxgrid-outer-margin: 5% !default;
+
+/* 
+  Create or remove breakpoints for your project
+  Syntax:
+  name SIZErem, 
+*/
+$flexboxgrid-breakpoints:
+  sm $screen-sm 70%,
+  /*md 62em 61rem,*/
+  md $screen-md 60%,
+  /*lg 75em 71rem !default;*/
+  lg $screen-lg 60% !default;
+
+$flexboxgrid-max-width: 100% !default;
+
+$gutter-compensation: $flexboxgrid-gutter-width * .5 * -1;
+$half-gutter-width: $flexboxgrid-gutter-width * .5;
+
+/* 
+  SETUP END
+*/
+
+@import "../layout/flexboxgrid";

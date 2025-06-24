@@ -1,0 +1,12 @@
+/*
+
+  PROXY STYLES
+
+*/
+[data-proxi-control] {
+  box-sizing: border-box;
+}
+
+[data-proxi-item] {
+	@include animation;
+}

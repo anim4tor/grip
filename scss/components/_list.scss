@@ -1,0 +1,20 @@
+/*
+
+	LIST
+
+*/
+
+.list {
+	position: relative;
+
+	&__label {
+		position: absolute;
+		right: 100%;
+		padding: 0 var(--pad-2);
+		white-space: nowrap;
+	}
+
+	&__content {
+		position: relative;
+	}
+}

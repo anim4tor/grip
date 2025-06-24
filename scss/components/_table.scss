@@ -1,0 +1,228 @@
+/*	
+
+	TABLES
+
+*/
+
+
+.table {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding-right: var(--app-h-padding);
+
+	/*overflow-y: scroll;*/
+	/*min-height: 60vh;*/
+	/*border-bottom: 1px solid rgba(color(dark),.2);*/
+
+	&:after {
+		z-index: 1;
+		content: '';
+		position: sticky;
+		bottom: 0%;
+		left: 0;
+		right: 0;
+		height: 20%;
+		flex-shrink: 0;
+		background: linear-gradient(to top, var(--background) 0%, transparent 100%);
+		pointer-events: none;
+	}
+
+	/*row-gap: 0.2em;*/
+
+	&__row {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--pad-half);
+		border-bottom: 1px solid rgba(color(dark),.2);
+		padding: var(--app-h-padding);
+
+		&:before {
+			content: '';
+			position: absolute;
+			mix-blend-mode: multiply;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			width: calc(var(--size) * 100%);
+			border-radius: var(--block-radius);
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			background: var(--bg);
+		}
+
+		--bg: #{rgba(color(dark),.1)};
+		--col: #{color(text)};
+
+		&:first-child {
+			--bg: #{color(dark)};
+			--col: var(--background);
+		}
+		&:nth-child(2) {
+			--bg: #{rgba(color(dark),.4)};
+			--col: #{color(text)};
+		}
+
+		&.--inline {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-end;
+			width: 100%;
+			&:before {
+				content: none;
+				/*flex-direction: row;
+				max-width: initial;*/
+			}
+		}
+
+		&.--hidden {
+			/*display: none;*/
+		}
+	}
+
+	&.--columns {
+		padding: 0;
+
+		.table__inner {
+			width: 100%;
+			display: flex;
+			flex-direction: row-reverse;
+			align-items: flex-end;
+			padding-right: var(--app-h-padding);
+			padding-left: var(--pad-2);
+/*			column-gap: 0.2em;*/
+			flex-shrink: 0;
+
+			overflow-x: scroll;
+			overflow-y: visible;
+		}
+
+		
+
+		&:after {
+			z-index: 1;
+			content: '';
+			position: absolute;
+			/*top: 0;*/
+			/*bottom: 0;*/
+			left: 0;
+			/*right: 0;*/
+			height: 100%;
+			width: 20%;
+			flex-shrink: 0;
+			background: linear-gradient(to right, var(--background) 0%, transparent 100%);
+			pointer-events: none;
+		}
+
+		/*min-height: 60vh;*/
+	}
+
+	&__column__outer {
+		height: 100%;
+		border-left: 1px solid rgba(color(dark),.2);
+		display: flex;
+		align-items: flex-end;
+		padding-top: var(--pad-2);
+
+		--bg: #{rgba(color(dark),.1)};
+		--col: #{color(text)};
+
+		&:first-child {
+			--bg: #{color(dark)};
+			--col: var(--background);
+		}
+		&:nth-child(2) {
+			--bg: #{rgba(color(dark),.4)};
+			--col: #{color(text)};
+		}
+
+	}
+
+	&__column {
+		z-index: 1;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		row-gap: var(--pad-half);
+		
+		/*height: 50dvh;*/
+		height: calc(var(--size) * 50dvh);
+		padding: var(--app-h-padding);
+		width: 35vw;
+		flex-shrink: 0;
+
+		
+		&:before {
+			content: '';
+			position: absolute;
+			mix-blend-mode: multiply;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			height: 100%;
+			border-radius: var(--block-radius);
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+			background: var(--bg);
+		}
+	}
+
+		&__label {
+			z-index: 1;
+			/*position: absolute;*/
+			max-width: 66%;
+			display: flex;
+			flex-direction: column;
+			row-gap: 0.5em;
+			color: var(--col);
+
+			.tag__list {
+				opacity: 0.5;
+			}
+		}
+		&__value {
+			z-index: 1;
+			color: var(--col);
+			opacity: 0.4;
+			
+			/*position: absolute;*/
+		}
+}
+
+.summary {
+	z-index: 1;
+	position: sticky;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: var(--app-h-padding) ;
+	padding-bottom: var(--pad-two-third);
+	border-top: 1px solid rgba(color(dark),1);
+	margin-top: calc(-1*var(--app-gap));
+	min-height: 230px;
+	
+	/*height: 30dvh;*/
+	display: flex;
+	flex-direction: column;
+	/*justify-content: space-between;*/
+	row-gap: var(--pad-half);
+	flex-shrink: 0;
+
+	&__header, &__end {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__header {
+		margin-top: var(--app-gap);
+	}
+
+	&__end {
+		justify-content: space-between;
+		/*align-self: flex-end;*/
+	}
+
+}

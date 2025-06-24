@@ -1,0 +1,18 @@
+{
+   "dist":[
+      {
+         "server":"endora-db-06.stable.cz:3306",
+         "login":"anim4tor",
+         "password":"maiden",
+         "database":"workout"
+      }
+   ],
+   "local":[
+      {
+         "server":"localhost",
+         "login":"anim4tor",
+         "password":"maiden",
+         "database":"skscsvitavy"
+      }
+   ]
+}

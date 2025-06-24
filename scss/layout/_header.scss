@@ -1,0 +1,31 @@
+/*
+
+	HEADER
+	
+*/
+
+header {
+	z-index: 100;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: var(--pad-half);
+
+	display: flex;
+	/*flex-direction: row-reverse;*/
+	justify-content: space-between;
+	align-items: flex-end;
+
+	&:after {
+		z-index: -1;
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 150%;
+		background: linear-gradient(to top, var(--background) 33%, transparent 100%);
+		pointer-events: none;
+	}
+}

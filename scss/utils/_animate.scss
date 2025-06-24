@@ -1,0 +1,19 @@
+/*defaults*/
+$defaultEasing: cubic-bezier(0.16, 1, 0.3, 1);
+$easeOutExpo: cubic-bezier(0.16, 1, 0.3, 1);
+$easeInExpo: cubic-bezier(0.7, 0, 0.84, 0);
+$easeInOutExpo: cubic-bezier(0.87, 0, 0.13, 1);
+/*$defaultEasing: cubic-bezier(0.860, 0.000, 0.070, 1.000);*/
+$defaultDuration: 1s;
+/*transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);*/
+
+
+@mixin animated {
+  animation-duration: $defaultDuration*3;
+  animation-fill-mode: both;
+  animation-timing-function: $easeOutExpo;
+}
+
+@mixin animation($property: all, $duration: $defaultDuration, $easing: $defaultEasing) {
+  transition: $property $duration $easing;
+}

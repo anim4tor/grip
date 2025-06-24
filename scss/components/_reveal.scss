@@ -1,0 +1,154 @@
+/*
+
+  REVEALS
+  
+*/
+/*
+
+  REVEALS
+  
+*/
+
+
+[data-anim-chars],
+[data-anim-words] {
+	display: block;
+
+
+	
+	/*overflow: hidden;*/
+    /*perspective: 1000px;*/
+	/*transform-style: preserve-3d;*/
+}
+
+
+[data-anim-chars], [data-anim-scroll] {
+	--char-delay: 100ms;
+	--char-inc: calc(#{$defaultDuration}/20);
+
+	.char {
+		display: inline-block;
+		@include animation;
+		/*transform-style: preserve-3d;*/
+		transform-origin: top left;
+		transition-delay: var(--char-delay);
+		transition-delay: calc((var(--char-inc) * var(--char-index)) + (var(--char-delay)));
+	}
+
+	.char {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+
+	.word {
+		display: inline-block;
+		white-space: nowrap;
+		overflow: hidden; 
+		padding: 0.3em 0;
+		margin: -0.3em 0;
+		margin-bottom: -0.35em;
+
+	}
+
+	br {
+		display: none;
+		@include sm-screen {
+			display: block;
+		}
+	}
+}
+
+[data-anim-words] {
+	--word-delay: 100ms;
+	--word-inc: calc(#{$defaultDuration}*0.5/var(--word-total));
+
+	.word {
+		display: inline-block;
+		@include animation;
+		transform-style: preserve-3d;
+		transform-origin: top left;
+		transition-delay: var(--delay);
+		transition-delay: calc((var(--word-inc) * var(--word-index)) + var(--word-delay));
+	}
+
+	.word {
+		opacity: 0;
+		transform: translateY(100%) rotateX(-80deg);
+	}
+
+}
+
+[data-anim-lines] {
+	--line-delay: 100ms;
+	--line-inc: calc(#{$defaultDuration}/10);
+
+	.word {
+		display: inline-block;
+		@include animation;
+		transform-style: preserve-3d;
+		transform-origin: top left;
+		transition-delay: var(--delay);
+		transition-delay: calc((var(--line-inc) * var(--line-index)) + var(--line-delay));
+	}
+
+	.word {
+		opacity: 0;
+		transform: translateY(200%) rotateX(-80deg);
+	}
+}
+
+[data-anim-rows]
+	[data-anim-row] {
+		--delay: 200ms;
+		--inc: calc(#{$defaultDuration}/10);
+		@include animation;
+		transition-delay: var(--delay);
+		transition-delay: calc((var(--inc) * var(--row-index)) + var(--delay));
+	}
+
+[data-anim] {
+	@include animation;
+	transform: translateY(2em);
+	opacity: 0;
+
+	--delay: 0ms;
+	--inc: calc(#{$defaultDuration}/10);
+	transition-delay: var(--delay);
+	transition-delay: calc((var(--inc) * var(--row-index)) + var(--delay));
+}
+
+[data-reveal-image][data-scroll] figure {
+	img {
+		clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+		transform: scale(1.2);
+	}
+}
+
+.is-ready [data-reveal-image][data-scroll].is-inview img {
+	@include animation(all,2s);
+	/*opacity: 1;*/
+	transform: none;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+
+html.is-ready {
+
+	[data-load],
+	.is-inview [data-anim-words],
+	.is-inview [data-anim-chars]:not([data-anim-scroll]) {
+
+		.word,
+		.char,
+		[data-anim-row] {
+			opacity: 1;
+			transform: none;
+		}
+
+	}
+
+	.is-inview [data-anim] {
+		opacity: 1;
+		transform: none;
+	}
+}

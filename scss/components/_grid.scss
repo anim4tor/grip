@@ -1,0 +1,158 @@
+/*	
+
+	GRIDS
+
+*/
+
+
+.grid {
+	
+	display: grid;
+	/*flex-grow: 1;*/
+	row-gap: var(--grid-gap);
+	column-gap: var(--grid-gap);
+	width: 100%;
+
+	&__2 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	&__3 {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	&__4 {
+		grid-template-columns: repeat(4, 1fr);
+		grid-auto-columns: auto;
+		/*justify-items: center;*/
+
+		& > *:last-child {
+			justify-self: end;
+		}
+
+		& > *:first-child {
+			justify-self: start;
+		}
+	}
+
+	&__5 {
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: 2fr 3fr 2fr 1fr 1fr;
+		grid-auto-columns: auto;
+		/*justify-items: center;*/
+
+		& > *:last-child {
+			justify-self: end;
+		}
+
+		& > *:first-child {
+			justify-self: start;
+		}
+	}
+
+	&__5__alt {
+		grid-template-columns: 2fr 3fr 3fr 1fr;
+
+	}
+
+	&__2_2 {
+		display: grid;
+		row-gap: 0;
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	&__3_2 {
+		display: grid;
+		row-gap: 0;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	&.center {
+		align-items: center;
+		text-align: center;	
+	}
+
+	&__col {
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.5rem;
+		/*text-align: center;	*/
+	}
+	/*text-align: center;*/
+}
+
+.grid__tabs {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	column-gap: var(--app-gap);
+	padding: 1em var(--app-h-padding);
+	border-bottom: 1px solid rgba(color(light), 0.2);
+
+	[data-tab] {
+		opacity: 0.2;
+		&.--active {
+			opacity: 1;
+			/*font-size: 1.5em;*/
+			color: var(--accent);
+			/*font-family: var(--f-display);*/
+		}
+	}
+	
+}
+
+.grid-pad {
+	padding: var(--pad) 0;
+}
+
+.grid-start {
+	display: flex;
+
+	&, & > * {
+		/*justify-self: start;*/
+		text-align: left;
+		justify-content: flex-start;
+		align-items: center;
+	}
+}
+
+.grid-center {
+	display: flex;
+	flex-direction: row;
+	&, & > * {
+		/*justify-self: start;*/
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+.grid-end {
+	display: flex;
+
+	&, & > * {
+		justify-self: end;
+		text-align: right;
+		justify-content: end;
+	}
+}
+
+.grid-top {
+	justify-content: flex-start;
+}
+
+.flex-start {
+	align-items: flex-start;
+}
+
+.grid-align-center {
+	align-items: center;
+}
+
+.grid-around {
+	justify-content: space-around;
+}
+.--no-gap-left {
+	margin-left: calc(-1*var(--grid-gap));
+}

@@ -1,0 +1,42 @@
+/*	
+
+	TAG
+
+*/
+
+
+.tag {
+	position: relative;
+
+	font-family: var(--f-display);
+	font-size: 0.7rem;
+	font-weight: 300;
+	line-height: 1.5rem;
+	white-space: nowrap;
+	letter-spacing: 0;
+
+	display: inline-block;
+	flex-grow: 0;
+	vertical-align: middle;	
+	padding: 0rem 0.5rem 0rem;
+	border-radius: 0.5rem;
+	border: 1px solid var(--col);
+
+	&.--fill {
+		&:before {
+			position: absolute;
+			top: 0; bottom: 0; left: 0; right: 0;
+			border-radius: 0.5rem;
+			background: var(--background);
+			opacity: 0.2;
+		}
+		border: none;
+	}
+}
+
+.tag__list {
+	display: flex;
+	row-gap: 0.5em;
+	column-gap: 0.5em;
+	flex-wrap: wrap;
+}

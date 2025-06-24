@@ -1,0 +1,94 @@
+/*	
+
+	CARD
+
+*/
+
+.card {
+	position: relative;
+	width: 100%;	
+	overflow: hidden;
+	border-radius: var(--card-radius);
+	padding: var(--card-padding);
+
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+
+	&__inline {
+		flex-direction: row;
+		align-items: center;
+	}
+
+	&, & * {
+		row-gap: 1em;
+	}
+
+	/*background: var(--aside-bg);*/
+
+	
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		row-gap: 1em;
+	}
+
+		&__meta {
+			display: flex;
+			flex-direction: column;
+
+			row-gap: 0.5rem;
+			flex-grow: 1;
+
+			h2 {
+				max-width: 70%;
+			}
+		}
+
+			&__action {
+				position: absolute;
+				top: calc(var(--card-padding)*0.75);
+				right: calc(var(--card-padding)*0.75);
+				border-radius: var(--check-radius);
+/*				margin-top: -0.4em;*/
+/*				margin-right: -0.4em;*/
+			}
+
+		&__end {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+		}
+		
+		&__progress {
+			position: absolute;
+			right: var(--card-padding);
+
+			.arrow-up {
+			  width: 0; 
+			  height: 0; 
+			  border-left: 7px solid transparent;
+			  border-right: 7px solid transparent;
+			  
+			  border-bottom: 7px solid color(green);
+			  border-radius: 0;
+			}
+
+			.arrow-down {
+			  width: 0; 
+			  height: 0; 
+			  border-left: 7px solid transparent;
+			  border-right: 7px solid transparent;
+			  
+			  border-top: 7px solid color(red);
+			  border-radius: 0;
+			}
+		}
+}
+
+
+	
+

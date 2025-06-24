@@ -1,0 +1,26 @@
+[data-circle-text] {
+	/*position: absolute;
+	left: 0; 
+	top: 0;
+	width: 100%;
+	height: 100%;*/
+	/*text-transform: uppercase;*/
+	
+
+	.radial-char {
+		position: absolute; 
+		top: -50%; 
+		left: -25%;
+		display: inline-block;
+		transform-origin: bottom center;
+		height: 50%;
+		width: 50%;
+		text-align: center;
+
+		span {
+			display: inline-block;
+			/*transform: scaleY(-1);*/
+		}
+	}
+	
+}

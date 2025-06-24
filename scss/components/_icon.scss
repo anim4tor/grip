@@ -1,0 +1,31 @@
+/* 
+
+	ICONS 
+
+*/
+
+.icon {
+	position: relative;
+
+	width: 	var(--btn-size);
+	height: 	var(--btn-size);
+	border-radius: var(--btn-radius);
+	/*background: color(border);*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	svg path {
+		stroke: var(--col);
+	}
+
+	&:last-child {
+		
+	}
+
+	&.checkbox {
+		border-radius: 0.5em;
+	}
+}
+
+

@@ -1,0 +1,64 @@
+
+/*
+
+	ASIDE
+	
+*/
+
+aside.--left {
+	overflow: hidden;
+
+	.chatbot {
+		height: var(--header-width);
+		width: 	var(--header-width);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	nav {
+		width: 	var(--header-width);
+		display: flex;
+		flex-direction: column;
+		width: 100%;	
+	}
+
+	@include animation;
+
+	/*&:hover {
+		width: 200px;
+		.nav__label {
+			transform: none;
+			opacity: 1;	
+		} 
+	}*/
+
+}
+
+aside.--right {
+
+	.aside {
+
+		&__title {
+			margin-bottom: var(--pad);
+		}
+
+		&__figure {
+			height: 17vw;
+			border-radius: var(--pad-two-third);
+			overflow: hidden;
+			margin-bottom: var(--pad);
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&__content {
+			padding: 0 var(--pad);
+		}
+	}
+
+}

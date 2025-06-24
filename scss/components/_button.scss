@@ -1,0 +1,36 @@
+/* 
+
+BUTTONS 
+
+*/
+
+button, .button {
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: calc(var(--btn-size) + 1em);
+	min-width: calc(var(--btn-size) + 1em);
+	border-radius: var(--btn-radius);
+	font-size: 	0.9em;
+	/*padding: 0.4em 0em;*/
+
+	&__label {
+		padding: 0 1em;
+		&:last-child:not(:only-child) {
+			margin-left: -1em;	
+		}
+		&:only-child {
+			padding: 0 3em;
+		}
+	}
+
+	&__icon {
+		position: relative;
+	}
+
+	&.checkbox {
+		border-radius: var(--check-radius);
+	}
+
+}

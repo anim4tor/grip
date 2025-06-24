@@ -1,0 +1,90 @@
+/*
+
+	PROJECTS
+
+*/
+
+.project {
+
+	& {
+		&:nth-child(4n+1) {
+			justify-content: flex-end;
+			.project__inner {
+				width: 66.6666%;
+			}
+		}
+		&:nth-child(4n+2) {
+			justify-content: flex-start;
+			.project__inner {
+				width: 58%;
+			}
+		}
+		&:nth-child(4n+3) {
+			justify-content: flex-end;
+			.project__inner {
+				width: 42%;
+			}
+		}
+		&:nth-child(4n+4) {
+			justify-content: flex-start;
+			.project__inner {
+				width: 75%;
+			}
+		}
+	}
+
+		&__inner {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+		}
+
+			&__link {
+				display: flex;
+				flex-direction: column;
+			}
+
+			&__image {
+				img {
+					min-height: 24vw;
+					max-height: 35vw;
+				}
+			}
+			&__head {
+				padding: var(--pad) 0;
+			}
+
+			&__title {
+				padding-top: calc(var(--pad)*.5);
+			}
+
+		&__gallery {
+			&__item {
+				&:nth-child(4n+1) {
+					justify-content: flex-end;
+					.image {
+						width: 66.6666%;
+					}
+				}
+				&:nth-child(4n+2) {
+					justify-content: flex-start;
+					.image {
+						width: 58%;
+					}
+				}
+				&:nth-child(4n+3) {
+					justify-content: flex-end;
+					.image {
+						width: 42%;
+					}
+				}
+				&:nth-child(4n+4) {
+					justify-content: flex-start;
+					.image {
+						width: 75%;
+					}
+				}
+			}
+		}
+
+}

@@ -1,0 +1,78 @@
+/* 
+
+	TABS
+
+*/
+
+[data-pane-container] {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	min-height: 60vh;
+	position: relative;
+	
+}
+	[data-pane] {
+
+		position: absolute;
+		flex-shrink: 0;
+		transform-origin: center center;
+		width: 100%;
+		opacity: 0;
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--app-gap);
+
+
+	}
+
+
+[data-tab-widget] {
+	&.--init {
+
+		[data-pane] {
+			/*visibility: hidden;*/
+
+			&.--active {
+				z-index: 1;	
+				opacity: 1;	
+				position: relative;
+				visibility: visible;
+				/*animation: pane-in 400ms $defaultEasing 50ms forwards;*/
+			}
+			&.--inactive {
+				visibility: visible;
+				/*animation: pane-out 400ms $defaultEasing forwards;*/
+			}
+		}
+
+	}
+}
+
+@keyframes pane-in {
+	0% {
+		opacity: 0;
+		transform: translateX(100%) scale(1);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0%) scale(1);
+	}
+}
+@keyframes pane-out {
+	0% {
+		opacity: 1;
+		transform: translateX(0%) scale(1);
+	}
+	99% {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(100%) scale(1);
+		/*display: none;*/
+	}
+}
+

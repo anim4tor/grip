@@ -1,0 +1,372 @@
+/*
+
+	MODAL
+
+*/
+
+[data-modal-open] {
+	cursor: pointer;
+}
+
+
+
+.modal {
+
+	&__layout {
+		z-index: 1000;
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		/*bottom: 0;*/
+		width: 100vw;
+
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-end;
+		pointer-events: none;
+
+	}
+
+		& {
+			/*width: Max(500px, 40vw);*/
+			
+			transition-duration: 1000ms;
+			transform-origin: center center;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			align-items: flex-end;
+
+/*			padding: var(--pad);*/
+/*			margin-bottom: var(--card-pad);*/
+
+
+			height: 100dvh;
+			width: 100vw;
+			overflow-y: scroll;
+			overflow-x: hidden;
+
+			/*@include animation;*/
+
+			/*defaults*/
+			pointer-events: none;
+
+			@include sm-screen {
+				padding: 0;
+				padding-top: var(--pad);
+			}
+		}
+
+	
+			&__overlay {
+				z-index: 99;
+				@include animation;
+				transition-duration: 0.8s;
+				
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				/*height: 100%;*/
+
+				background: linear-gradient(to top, rgba(color(text),.7) 0%, rgba(color(text),.5) 100%);
+
+				@include xs-screen {
+					width: 100vw;
+				}
+			}
+
+			&__load {
+				z-index: 100;
+				position: relative;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: flex-end;
+				align-items: flex-end;
+			}
+
+			&__inner {
+				overflow: hidden;
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				bottom: 0;
+				left: 0;
+				right: 0;
+
+				--modal-width: var(--modal-size);
+				width: var(--modal-width);
+				max-height: 50dvh;
+
+				background: var(--modal-bg);
+				border-radius: var(--card-radius);
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+				padding: var(--card-pad);
+
+				&.--medium {
+					--modal-width: var(--modal-size-large);
+				}
+			}
+
+			&__header {
+				position: relative;
+				display: flex;
+				justify-content: space-between;
+				font-size: 0.9em;
+				align-items: center;
+				padding: Max(1rem, 2vw);
+				border-bottom: 1px solid color(medium,.5);
+			}
+
+			&__title {
+				position: relative;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				padding: var(--pad-2) var(--card-spacing) var(--pad);
+			}
+
+			&__nav {
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				flex-wrap: wrap;
+
+				/*overflow-x: scroll;*/
+
+				&.--inline {
+					margin-left: 1em;
+				}
+			}
+
+			&__footer {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				
+				padding: Max(1rem, 2vw);
+				border-top: 1px solid color(medium,.5);
+			}
+
+
+			&__pane__container {
+				/*position: relative;*/
+				margin-left: calc(var(--card-pad)*-1);
+				width: calc(var(--modal-width) + var(--card-pad)*2);
+				padding: 0 var(--card-pad);
+				overflow: hidden;
+
+				[data-tab-pane] {
+					/*width: calc(var(--modal-width));*/
+				}
+
+				[data-pane] {
+
+					width: calc(var(--modal-width) - var(--card-pad)*2);
+
+					&.--active {
+						z-index: 1;
+						position: relative;
+						width: calc(var(--modal-width));
+					}
+				}
+			}
+
+			
+
+		&__close {
+			z-index: 2;
+			position: absolute;
+			top: var(--pad);
+			right: var(--pad);
+
+			display: flex;
+			border-radius: 50%;
+			justify-content: flex-end;
+
+			filter: var(--img-filter);
+			
+			@include animation;
+
+			img {
+				/*opacity: 0.25;*/
+				width: 50%;
+				height: 50%;
+				filter: invert(1);
+			}
+
+			@include sm-screen {
+				display: none;
+			}
+			
+		}
+
+		&__draghandle {
+			position: relative;
+			z-index: 1;
+			background: color(invert);
+			width: 100%;
+			height: calc(1em + 2px);
+			margin-bottom: 1em;
+
+			/*default*/
+			display: none;
+
+			&:after {
+				content: '';
+				position: absolute;
+				top: 0.5em;
+				left: 0;
+				right: 0;
+				height: 2px;
+				background: color(medium);
+				transform: scaleX(.15);
+			}
+
+			@include sm-screen {
+				display: block;
+			}
+
+		}
+}
+
+[data-modal-open] {
+	display: block;
+}
+
+html {
+	[data-barba="wrapper"] {
+		@include animation;
+		transition-duration: 1000ms;
+		transform: none;
+		transform-origin: 50vw 50vh;
+	}
+	.modal {
+		/*visibility: hidden;*/
+		pointer-events: none;
+		&__load {
+			transform-origin: top center;
+			animation: modal-out 400ms ease-in forwards;
+		}
+		&__inner {
+			transform-origin: top center;
+			animation: modal-card-out 800ms $defaultEasing forwards;
+		}
+		&__overlay {
+			pointer-events: none;	
+			opacity: 0;
+		}
+	}
+}
+html.has-modal {
+	[data-barba="wrapper"] {
+/*		transform: scale(0.9);*/
+	}
+	.modal { 
+		/*visibility: visible;*/
+		pointer-events: all;
+		&__layout {
+			pointer-events: all;	
+			/*visibility: visible;*/
+		}
+		&__load {
+			transform-origin: top center;
+			animation: modal-in 400ms $defaultEasing forwards;
+		}
+		&__inner {
+			transform-origin: top center;
+			animation: modal-card-in 400ms $defaultEasing forwards;
+
+			&.--next-out,
+			&.--next-in.--next-out,
+			{
+				animation: modal-card-next-out 800ms $defaultEasing forwards;
+			}
+
+			&.--next-in {
+				animation: modal-card-next-in 500ms $defaultEasing forwards;
+			}
+
+			&.--active {
+				/* position: relative; */
+			}
+		}
+		&__overlay {
+			opacity: 1;
+			pointer-events: all;	
+
+		}
+	}
+}
+html.no-scroll {
+	body {
+		height: 100%;
+		overflow: hidden;
+	}
+}
+
+@keyframes modal-in {
+	0% {
+		/*opacity: 0;*/
+		transform: translateY(100%);
+	}
+	100% {
+		/*opacity: 1;*/
+		transform: translateY(0%);
+	}
+}
+@keyframes modal-card-in {
+	0% {
+		/*opacity: 0;*/
+		transform: scale(1.5);
+	}
+	100% {
+		/*opacity: 1;*/
+		transform: scale(1);
+	}
+}
+@keyframes modal-out {
+	0% {
+		opacity: 1;
+		transform: translateY(0%);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+}
+@keyframes modal-card-out {
+	0% {
+		/*opacity: 1;*/
+		transform: scale(1);
+	}
+	100% {
+		/*opacity: 0;*/
+		transform: scale(1.2);
+	}
+}
+@keyframes modal-card-next-out {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+}
+@keyframes modal-card-next-in {
+	0% {
+		opacity: 0;
+		transform: translateY(100%) scale(1);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0%) scale(1);
+	}
+}
