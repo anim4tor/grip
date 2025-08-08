@@ -17,7 +17,7 @@
           <?php snippet('organisms/Header'); ?>
         <?php endif ?>
 
-        <main data-main class="inner-b__10">
+        <main data-main class="inner-y__7">
           <?php if ($main = $slots->main()): ?>
             <!-- The main --> 
             <?= $main ?>

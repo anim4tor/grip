@@ -1,5 +1,5 @@
-<header>
-	<div class="inner__1 inner-t__4 inner-b__2 flex align__center justify__space-between gap__05">
+<header class="fixed inset__top-stretch z__1">
+	<div class="inner__1 inner-t__3 inner-b__1 flex align__center justify__space-between gap__05 bg__dark">
 		<div class="flex gap__1 align__center ">
 			<!-- <a class="button circle bg__invert/20"><span class="icon"><?= svg('public/assets/images/ui/ui_chevron-down.svg') ?></span></a> -->
 			<div class="grid gap__05 align__center">
@@ -15,14 +15,14 @@
 </header>
 
 <section data-section>
-	<div class="grid grid__2 gap-x__05 gap-y__1 inner__1">
-		
+	<div class="grid grid__2 gap-x__07 gap-y__1 inner__1">
+
 		<card class="grid inner__1 inner-y__2 bg__white/10 relative border">
 			<header class="absolute inset__top-stretch flex justify__end inner__05 op__4">
 				<a class="button circle"><span class="icon"><?= svg('public/assets/images/ui/ui_settings.svg') ?></span></a>
 			</header>
 			<div class="grid gap__2 place__end-start">	
-				<figure class="button circle --large progress">
+				<figure class="progress --large">
 					<h3 class="font__size__1">2</h3>
 				</figure>
 				<div class="grid gap__02">
@@ -219,7 +219,7 @@
 				</calendar>
 				<div class="flex justify__space-between align__center">
 					<div class="flex gap__1 align__center">	
-						<figure class="button circle progress">
+						<figure class="progress">
 							<h3 class="font__size__2">2</h3>
 						</figure>
 						<div class="grid gap__02">
@@ -255,7 +255,7 @@
 				<a class="button circle"><span class="icon"><?= svg('public/assets/images/ui/ui_settings.svg') ?></span></a>
 			</header>
 			<div class="grid gap__2 place__end-start">	
-				<figure class="button circle --large progress">
+				<figure class="progress --large">
 					<h3 class="font__size__1">2</h3>
 				</figure>
 				<div class="grid gap__02">

@@ -11,3 +11,7 @@ card {
 	display: block;
 	border-radius: var(--card-radius);
 }
+
+.shadow {
+	box-shadow: 0 0 calc(var(--spacing)*2) calc(var(--spacing)*0.5) rgba(var(--color-dark),1);
+}
