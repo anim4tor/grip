@@ -1,0 +1,58 @@
+/* 
+
+	BUTTONS 
+
+*/
+:root {
+	--button-size: 52px;
+	--button-radius: 1rem;
+}
+.button {
+	display: inline-block;
+	position: relative;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	flex-shrink: 0;
+
+	font-size: 1em;
+	height: var(--button-size);
+	min-width: var(--button-size);
+	border-radius: var(--button-radius);
+	white-space: nowrap;
+	color: currentColor;
+
+	&.circle {
+		--circle-size: var(--button-size);
+		border-radius: calc(var(--circle-size, var(--button-size))/2);
+		width: var(--circle-size, var(--button-size));
+		height: var(--circle-size, var(--button-size));
+
+		&.--large {
+			--circle-size: calc(var(--button-size)*1.5);
+		}
+	}
+}
+.progress {
+	--progress: 360*0.2;
+	position: relative;
+	&:after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: 50%;
+		background: conic-gradient(
+		  white calc(var(--progress)*1deg),
+		  rgba(white,.2) calc(var(--progress)*1deg),
+		);
+		aspect-ratio: 1;
+		mask: radial-gradient(calc(var(--circle-size)/2), #0000 calc(100% - var(--circle-size)*0.05), #000 calc(100% - var(--circle-size)*0.045));
+	}
+}
+
+.button__group {
+	display: flex;
+	gap: calc(var(--spacing)*0.5);
+}

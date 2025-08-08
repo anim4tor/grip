@@ -1,0 +1,127 @@
+/*
+
+	COUNTER
+
+*/
+
+
+
+.counter {
+	
+	/*defaults*/
+	--size: Max(2.2em,2.2vw);
+	display: flex;
+	align-items: center;
+
+	&__trigger {
+		/*width: 4em;*/
+		text-align: center;
+		display: none;
+	}
+
+	&__widget {
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		
+		input {
+			height: var(--size);
+			max-width: 4em;
+
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+
+			text-align: center;
+			@include text-btn;
+
+			border: 1px solid var(--col);
+			border-radius: calc(var(--size)/2)
+
+		}
+
+		span {
+			cursor: pointer;
+			position: relative;
+
+			width: var(--size);
+			height: var(--size);
+
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+
+			@include text-btn;
+			color: transparent;
+			
+			&:before {
+				opacity: 0.4;
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				border-radius: 50%;
+				border: 1px solid var(--col);
+			}
+
+			&:first-child {
+				background-image: url(../img/ui_minus.svg);
+			}
+
+			&:last-child {
+				background-image: url(../img/ui_plus.svg);
+			}
+
+			background-size: 50% 50%;
+			background-position: center center;
+			background-repeat: no-repeat;
+
+		}
+
+
+		/* Chrome, Safari, Edge, Opera */
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+		  -webkit-appearance: none;
+		  margin: 0;
+		}
+
+		/* Firefox */
+		input[type=number] {
+		  -moz-appearance: textfield;
+		}
+
+	}
+	&.--active {
+		
+	}
+	
+
+}
+
+[data-ingredient-counter] {
+	input[data-active] {
+		color: color(light);
+		--col: #{color(light)};
+		background-color: color(acc);
+		border: none;
+	}
+}
+
+[data-counter-update].--updating {
+	opacity: 0.5;
+	mask-image: linear-gradient(to right, #fff, rgba(#fff,.2), #fff);
+  	mask-size: 200% 100%;
+  	animation: clip-fade 0.5s linear infinite alternate;
+}
+
+@keyframes clip-fade {
+  100% {
+    mask-position: right;
+  }
+}

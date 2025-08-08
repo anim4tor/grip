@@ -1,0 +1,77 @@
+/*
+
+	COLLAPSIBLE
+
+*/
+accordion-list {
+  display: block;
+}
+
+collapsible {
+  display: block;
+}
+collapsible summary[collapsible-trigger] {
+  cursor: pointer;
+}
+collapsible detail[collapsible-detail] {
+  display: grid;
+  grid-template-rows: 0fr;
+  contain: paint;
+  @include animation;
+  transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);;
+  margin: 0 calc(-1*var(--pad));
+  padding: 0 calc(1*var(--pad));
+
+  & > div {
+  	min-height: 0;
+  	@include animation;
+  	transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);;
+  	visibility: hidden;
+
+  	[collapsible-reveal] {
+  		will-change: transform;
+  		@include animation(transform);
+  		transition-delay: 0ms;
+  		transform: translateY(100%) scale(0);
+  	}
+  }
+}
+collapsible[open] detail[collapsible-detail] {
+  --init: 1;
+  grid-template-rows: 1fr;
+
+  & > div {
+  	visibility: visible;
+
+  	[collapsible-reveal] {
+  		transform: none;
+
+		@for $i from 1 through 30 {
+			&:nth-child(#{$i}) {
+				transition-delay: calc(var(--init) * 50ms + var(--delay) + #{$i} * 50ms);
+			}
+		}
+  	}
+  }
+}
+
+[collapsible-icon] {
+  span {
+    display: block;
+    width: 1.2rem;
+    border-top: 1px solid currentColor;
+
+    &:nth-child(2) {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+/*FAQS*/
+
+.faq__item {
+  collapsible[open], collapsible:hover {
+    background-color: color(dark);
+    color: color(invert);
+  }
+}

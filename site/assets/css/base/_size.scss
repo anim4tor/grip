@@ -1,0 +1,99 @@
+/*  
+
+  SIZE
+
+*/
+:root {
+
+}
+
+$limit: 20;
+$aspect: (
+  widescreen: 16/9, 
+  square: 1/1, 
+  portrait: 2/3, 
+  landscape: 3/2, 
+  tv: 2/1
+);
+
+@mixin size_scale($prop, $max: $limit) {
+  @for $i from 1 through $max {
+    &__#{$i} {
+      #{$prop}: calc(#{$i} * var(--spacing));
+    }
+  } 
+}
+
+@mixin aspect() {
+  @each $label, $value in $aspect {
+    @if($label == 'spacing') {
+      @for $w from 1 through $value {
+        @for $h from 1 through $value {
+          &__#{$w}\/#{$h} {
+            --aspect-ratio: #{$w}/#{$h};
+          }
+        }
+      }
+    } @else {
+      &__#{$label} {
+        --aspect-ratio: #{$value};
+      }
+    }
+  }
+}
+
+@each $modifier , $breakpoint in $map-grid-props {
+  @if($modifier == '') {
+    .w {
+      @include size_scale(width);
+    }
+    .h {
+      @include size_scale(height);
+    }
+
+    .min-w {
+      @include size_scale(min-width);
+    }
+    .min-h {
+      @include size_scale(min-height);
+    }
+
+    .max-w {
+      @include size_scale(max-width);
+    }
+    .max-h {
+      @include size_scale(max-height);
+    }
+
+    .aspect {
+      @include aspect;
+    }
+  } @else {
+    @include create-mq($breakpoint, 'max') {
+      .#{$modifier}\:w {
+        @include size_scale(width);
+      }
+      .#{$modifier}\:h {
+        @include size_scale(height);
+      }
+
+      .#{$modifier}\:min-w {
+        @include size_scale(min-width);
+      }
+      .#{$modifier}\:min-h {
+        @include size_scale(min-height);
+      }
+
+      .#{$modifier}\:max-w {
+        @include size_scale(max-width);
+      }
+      .#{$modifier}\:max-h {
+        @include size_scale(max-height);
+      }
+
+      .#{$modifier}\:aspect {
+        @include aspect;
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+/*	
+
+	HORIZONTAL SPACING
+
+*/
+:root {
+	--hpad: calc(var(--pad)*var(--scale-hpad));
+
+	--wrap: 0;
+	--wrap-left: 0;
+	--wrap-right: 0;
+}
+
+@each $modifier , $breakpoint in $map-grid-props {
+	@if($modifier == '') {
+	  	@for $i from 0 through 20 {
+	  		.wrap__#{$i} {
+				--wrap: #{$i};
+				padding-left: var(--wrap);
+				padding-right: var(--wrap);
+
+				@include xs-screen {
+					--wrap: 1;
+				}
+			}
+			.wrap__left__#{$i} {
+				--wrap-left: #{$i};
+				padding-left: calc(var(--hpad)*var(--wrap-left));
+/*				margin-left: calc(var(--hpad)*var(--wrap-left));*/
+				@include xs-screen {
+					--wrap-left: 1;
+				}
+				
+			}
+			.wrap__right__#{$i} {
+				--wrap-right: #{$i};
+				padding-right: calc(var(--hpad)*var(--wrap-right));
+/*				margin-right: calc(var(--hpad)*var(--wrap-right));*/
+
+				@include xs-screen {
+					--wrap-right: 1;
+				}
+				
+			}
+  		}
+	} @else {
+	  	@include create-mq($breakpoint, 'max') {
+		    @for $i from 0 through 20 {
+				.#{$modifier}\:wrap__#{$i} {
+					--wrap: #{$i};
+					padding-left: calc(var(--hpad)*var(--wrap)) !important;
+					padding-right: calc(var(--hpad)*var(--wrap)) !important;
+					
+				}
+				.#{$modifier}\:wrap__left__#{$i} {
+					--wrap-left: #{$i};
+					padding-left: calc(var(--hpad)*var(--wrap-left));
+					
+				}
+				.#{$modifier}\:wrap__right__#{$i} {
+					--wrap-right: #{$i};
+					padding-right: calc(var(--hpad)*var(--wrap-right));
+					
+				}
+			}
+			.#{$modifier}\:wrap__none {
+				--wrap-right: 0;
+				--wrap-left: 0;
+				--wrap: 0;
+				padding-left: 0;
+				padding-right: 0;
+				
+			}
+  		}
+	}
+
+}

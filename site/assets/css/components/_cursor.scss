@@ -1,0 +1,86 @@
+/*
+
+  CURSORS
+  
+*/
+
+.cursor.__circle  {
+  z-index: 10000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+/*  mix-blend-mode: difference;*/
+
+  width: 10px;
+  height: 10px;
+  left: -5px;
+  top: -5px;
+
+/*  border-radius: 50%;*/
+  /*border: 1.5px solid rgba(white,.4);*/
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  [data-cursor-text] {
+    position: relative;
+    z-index: 1;
+    display: none;
+    background: color(text);
+    padding: 0.6em 2em;
+    color: color(invert);
+    border: none;
+/*    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);*/
+    @include animation;
+    will-change: transform;
+/*    border: 1px solid rgb(var(--col),0.5);*/
+    
+  }
+
+  &.over-link {
+    mix-blend-mode: initial;
+    [data-cursor-text] {
+      display: flex;
+/*      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%) !important;*/
+    }
+  }
+
+/*  display: none;*/
+}
+
+
+body, body * {
+ /*cursor: none !important;*/
+ @include xs-screen {
+  cursor: initial;
+ }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  };
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+[data-cursor] {
+  &.--play {
+    .cursor__icon.--play {
+      opacity: 1;
+    }
+  }
+}
+
+[data-cursor-mask-target] {
+/*  z-index: 1;*/
+  pointer-events: none;
+  mask-image: radial-gradient(circle at calc(100% * var(--clientX)) calc(100% * var(--clientY)), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 70%);
+}
+
+[data-link]:hover {
+  cursor: none;
+}

@@ -1,0 +1,180 @@
+/*
+
+	TYPOGRAPHY
+	
+*/
+
+@for $i from 1 through 5 {
+    .font__size__#{$i} {
+        font-size: var(--font-size-#{$i});
+        &.xl, &.large {
+            font-size: calc(var(--font-size-#{$i}) * 2);
+        }
+        &.l {
+            font-size: calc(var(--font-size-#{$i}) * 1.2);
+        }
+        &.m {
+            font-size: calc(var(--font-size-#{$i}) * 1.2);
+        }
+        &.s {
+            font-size: calc(var(--font-size-#{$i}) * 0.8);
+        }
+        &.xs {
+            font-size: calc(var(--font-size-#{$i}) * 0.6);
+        }
+    }
+}
+
+/*
+	FONT FACES
+*/
+
+@font-face {
+    font-family: 'Canela';
+    src: url('../fonts/Canela-Thin-Web.woff2') format('woff2'),
+        url('../fonts/Canela-Thin-Web.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Canela';
+    src: url('../fonts/Canela-ThinItalic-Web.woff2') format('woff2'),
+        url('../fonts/Canela-ThinItalic-Web.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apris';
+    src: url('../fonts/Apris-Thin.woff2') format('woff2'),
+        url('../fonts/Apris-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/*
+	IMPORTS
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://use.typekit.net/ako1oce.css");
+
+/*
+    BODY
+*/
+
+
+html {font-size: 100%;} /*16px*/
+
+body {
+  font-family: var(--font-family-body), sans-serif;
+  font-size: var(--font-size-default);
+  line-height: var(--line-height-default);
+  font-weight: 300;
+}
+
+
+/*
+    HEADINGS
+*/
+$headings: 1, 2, 3, 4, 5, 6;
+
+@each $level in $headings {
+  h#{$level} {
+    font-family: var(--font-family-heading);
+  }
+  h#{$level},
+  .font__size__#{$level},
+  .font__size__#{$level} > * {
+    --output-size: var(--font-size-#{$level});
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-#{$level});
+    line-height: var(--line-height-#{$level});
+    font-weight: var(--font-weight-heading);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.025em;
+}
+
+.size__smaller {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: calc(var(--output-size)*0.75);
+    }
+}
+.size__larger {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: calc(var(--output-size)*1.25);
+    }
+}
+.size__extra {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: calc(var(--output-size)*1.5);
+    }
+}
+
+
+/*
+    PARAGRAPHS
+*/
+
+$bodys: xs, sm, default, md, lg, xl;
+
+@each $level in $bodys {
+  p.#{$level} {
+    font-family: var(--font-family-body);
+  }
+  p.#{$level},
+  .font__size__#{$level},
+  .font__size__#{$level} > p {
+    font-size: var(--font-size-#{$level});
+    line-height: var(--line-height-#{$level});
+    font-weight: var(--font-weight-body);
+  }
+}
+
+p {
+    max-width: 42em;
+}
+
+/*
+    OVERRIDES
+*/
+
+.font__family__body,
+.font__family__body > * {
+    font-family: var(--font-family-body), sans-serif;
+    font-weight: 300;
+}
+.font__family__heading,
+.font__family__heading > * {
+    font-family: var(--font-family-heading), serif;
+    font-weight: 100;
+}
+.font__family__button,
+.font__family__button > * {
+    font-family: var(--button-face), monospace;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8em;
+
+}
+
+/*
+    ITALIC
+*/
+
+p i {
+  font-family: var(--font-family-heading), serif;
+  letter-spacing: -0.05em;
+  font-size: 0.9em;
+  line-height: 0.9em;
+  font-style: italic;
+}

@@ -1,0 +1,37 @@
+/*
+
+	STICKY 
+
+*/
+
+.position__sticky, .sticky {
+	position: sticky;
+	top: 0;
+
+	&.bottom {
+		top: auto;
+		bottom: 0;
+	}
+
+	@include xs-screen {
+		position: relative;
+		top: auto;
+	}
+}
+
+.offset__header {
+	top: var(--header-height);
+	@include xs-screen {
+		top: auto;
+	}
+}
+
+.sticky__wrapper {
+	position: relative;
+	margin-top: -100dvh;
+	min-height: 200dvh;
+}
+
+.clip {
+	clip-path: inset(0% 0% 0% 0%);
+}

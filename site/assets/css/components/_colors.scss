@@ -1,0 +1,21 @@
+/*
+
+	COLOR ClASSES
+
+*/
+
+
+@each $label, $hex in $colors {
+
+  .bgc-#{$label} {
+	background-color: #{$hex};
+    --background: #{$hex};
+
+  }
+
+  .c-#{$label} {
+    color: #{$hex};
+    --col: #{$hex};
+  }
+
+}

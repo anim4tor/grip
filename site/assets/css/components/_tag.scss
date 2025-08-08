@@ -1,0 +1,22 @@
+/*	
+
+	TAG
+
+*/
+
+
+.tag {
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	display: inline-block;
+	padding: calc(var(--pad)*0.15) calc(var(--pad)*0.35);
+	border-radius: 0.5em;
+
+	background: rgba(var(--col),.1);
+	
+}

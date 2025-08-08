@@ -1,0 +1,33 @@
+/*
+
+	FORM
+
+*/
+[data-form] {
+
+	&.valid {
+		[data-form-body], [data-form-invalid] {
+			display: none;
+		}
+		[data-form-valid] {
+			display: grid;
+		}
+
+	}
+
+	&.invalid {
+		[data-form-valid] {
+			display: none;
+		}
+		[data-form-invalid] {
+			display: grid;
+		}
+	}
+}
+
+[data-form-valid] {
+	display: none;
+}
+[data-form-invalid] {
+	display: none;
+}

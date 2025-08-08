@@ -1,0 +1,36 @@
+/*	
+
+	TABLE
+
+*/
+
+
+.table {
+	--counter-init: 0;
+	counter-reset: row;
+	.row {
+
+		grid-template-columns: minmax(50px, 0.5fr) repeat(var(--ncol), minmax(0, 1fr));
+
+		&:before {
+		  content: 	'•';
+		  font-family: var(--font-family-heading);
+		  
+		  display: inline-block;
+		  margin-right: 1rem;
+		  padding: Max(var(--v-pad-min), calc(var(--v-pad-unit)*0.5)) 0;
+		  vertical-align: middle;
+		  flex-shrink: 0;
+		  white-space: nowrap;
+		  counter-increment: row;
+		  content: "0" counter(row) " / ";
+		  font-size: 1.0em;
+		  grid-column: 1;
+		}
+	}
+
+	.cell {
+		padding: Max(var(--v-pad-min), calc(var(--v-pad-unit)*0.5)) 0;
+	}	
+	
+}

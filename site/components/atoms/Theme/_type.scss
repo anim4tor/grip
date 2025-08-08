@@ -1,0 +1,245 @@
+/*
+
+	TYPOGRAPHY
+	
+*/
+@import "../Media/media";
+/*
+    FONT FACES
+*/
+
+/*
+	IMPORTS
+*/
+
+:root {
+    --font-size-1: 32px;
+    --font-size-2: 20px;
+    --font-weight-heading: 500;
+    --font-weight-body: 500;
+}
+
+@import url("https://use.typekit.net/utk6myv.css");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono&display=swap');
+
+html {font-size: 100%;} /*16px*/
+body {
+  font-family: var(--font-family-body), sans-serif;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-default);
+  font-weight: var(--font-weight-body);
+  letter-spacing: 0.025em;
+}
+
+/*
+    HEADINGS
+*/
+$headings: 1, 2, 3, 4, 5, 6;
+
+
+@each $modifier , $breakpoint in $map-grid-props {
+    @if($modifier == '') {
+        @each $level in $headings {
+          h#{$level} {
+            font-family: var(--font-family-heading);
+          }
+          h#{$level},
+          .font__size__#{$level} {
+            --output-size: var(--font-size-#{$level});
+            font-family: var(--font-family-body);
+            font-size: var(--output-size);
+            line-height: var(--line-height-#{$level});
+            font-weight: var(--font-weight-heading);
+          }
+        }
+    } @else {
+        @each $level in $headings {
+            @include create-mq($breakpoint, 'max') {
+              .#{$modifier}\:font__size__#{$level} {
+                --output-size: var(--font-size-#{$level});
+                font-family: var(--font-family-body);
+                font-size: var(--output-size);
+                line-height: var(--line-height-#{$level});
+                font-weight: var(--font-weight-heading);
+              }
+            }
+        }
+    }
+}
+
+.xl {
+    font-size: calc(var(--output-size) * 3);
+}
+.l {
+    font-size: calc(var(--output-size) * 2);
+}
+.m {
+    font-size: calc(var(--output-size) * 1.2);
+}
+.s {
+    font-size: calc(var(--output-size) * 0.8);
+}
+.xs {
+    font-size: calc(var(--output-size) * 0.6);
+}
+
+.light {
+    font-weight: 200;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: 0.05em;
+}
+h1 {
+    font-family: var(--font-family-heading);
+    font-weight: 600;
+    margin-top: 0.24em;
+    letter-spacing: -0.025em;
+
+}
+
+.size__smaller {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: calc(var(--output-size)*0.75);
+    }
+}
+.size__larger {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: calc(var(--output-size)*1.25);
+    }
+}
+.size__extra {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: calc(var(--output-size)*1.5);
+    }
+}
+
+
+/*
+    PARAGRAPHS
+*/
+
+$bodys: xs, sm, default, md, lg, xl;
+
+
+
+@each $modifier , $breakpoint in $map-grid-props {
+    @if($modifier == '') {
+        @each $level in $bodys {
+          p.#{$level} {
+            font-family: var(--font-family-body);
+          }
+          p.#{$level},
+          .font__size__#{$level},
+          .font__size__#{$level} > p {
+            font-size: var(--font-size-#{$level});
+            line-height: var(--line-height-#{$level});
+        /*    line-height: 0.9em;*/
+            font-weight: var(--font-weight-body);
+          }
+        }
+    } @else {
+        @each $level in $bodys {
+            @include create-mq($breakpoint, 'max') {
+              .#{$modifier}\:font__size__#{$level},
+              .#{$modifier}\:font__size__#{$level} > p {
+                font-size: var(--font-size-#{$level});
+                line-height: var(--line-height-#{$level});
+            /*    line-height: 0.9em;*/
+                font-weight: var(--font-weight-body);
+              }
+            }
+        }
+    }
+}
+
+p {
+    max-width: 42em;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/*
+    OVERRIDES
+*/
+
+.font__family__body,
+.font__family__body > * {
+    font-family: var(--font-family-body), sans-serif;
+    font-weight: 300;
+}
+.font__family__heading,
+.font__family__heading > * {
+    font-family: var(--font-family-heading), serif;
+    font-weight: 100;
+}
+.font__family__button,
+.font__family__button > * {
+    font-family: var(--button-face), monospace;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8em;
+
+}
+
+
+.mono {
+  font-family: var(--font-family-mono), mono;
+  font-size: 0.7rem;
+  font-weight: 300;
+  line-height: 1.4em;
+  text-transform: uppercase;
+
+  h1, h2, h3, h4, h5 {
+    text-transform: capitalize;
+  }
+
+  &.xs {
+    @include xs-screen {
+        font-size: 0.6rem;
+        margin-top: 0.5em;
+    }
+  }
+}
+
+.lower {
+    text-transform: capitalize;
+}
+.upper {
+    text-transform: uppercase;
+}
+
+/*
+    ITALIC
+*/
+
+p i {
+  font-family: var(--font-family-heading), serif;
+  letter-spacing: -0.05em;
+  font-size: 0.9em;
+  line-height: 0.9em;
+  font-style: italic;
+}
+
+.hyphens {
+   -webkit-hyphens: auto;
+   -moz-hyphens: auto;
+   hyphens: auto; 
+   word-wrap: break-word
+}
+
+.dot {
+    --size: 2px;
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background-color: currentColor;
+
+    &.large {
+        --size: 5px;
+    }
+}

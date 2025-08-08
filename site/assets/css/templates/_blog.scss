@@ -1,0 +1,27 @@
+/*
+
+	BLOG
+
+*/
+
+.blog {
+	
+	&__post__image {
+		height: calc(100vh - var(--header-height));
+	}
+	--font-blog-1 : var(--font-size-1);
+	--font-blog-2 : var(--font-size-2);
+	--font-blog-3 : var(--font-size-3);
+	--font-blog-4 : var(--font-size-3);
+	--font-blog-5 : var(--font-size-5);
+
+	@for $i from 1 through 5 {
+		.font__size__#{$i} {
+       	 	font-size: calc(var(--font-blog-#{$i})*0.7);
+       	}
+       	h#{$i} {
+       	 	font-size: calc(var(--font-blog-#{$i})*0.7);
+       	}
+	    
+	}
+}

@@ -1,0 +1,35 @@
+/*	
+
+	GAP
+
+*/
+:root {
+	--gap-unit: calc(var(--pad)*var(--scale-gap));
+	
+}
+
+@mixin gap {
+	gap: calc(var(--gap-unit) * var(--gap));
+}
+@each $modifier , $breakpoint in $map-grid-props {
+	@if($modifier == '') {
+		@for $i from 1 through 20 {
+			.gap__#{$i} {
+				--gap-index: #{$i};
+				--gap: calc(var(--gap-unit) * var(--gap-index));
+				gap: var(--gap);
+			}
+			
+		}
+	} @else {
+	  @include create-mq($breakpoint, 'max') {
+	    @for $i from 1 through 20 {
+	    	.#{$modifier}\:gap__#{$i} {
+				--gap-index: #{$i};
+	    		--gap: calc(var(--gap-unit) * var(--gap-index));
+				gap: var(--gap);
+			}
+  		}
+	  }
+	}
+}

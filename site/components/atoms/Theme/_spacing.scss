@@ -1,0 +1,97 @@
+/*	
+
+	SPACING
+
+*/
+@import "../Media/media";
+:root {
+	--vpad: calc(var(--spacing)*var(--scale-vpad));
+	--hpad: calc(var(--spacing)*var(--scale-hpad));
+}
+
+$limit: 20;
+$dirs: ( 
+	'': '',
+	x: inline,
+	y: block,
+	t: top,
+	r: right,
+	b: bottom,
+	l: left
+);
+
+@mixin spacing_scale($props, $var: spacing, $min: 0, $max: $limit) {
+	@each $label, $dir in $dirs {
+		@if($label == '') {
+			@for $i from $min through $max {
+				$j: $i;
+		    	@if($i < 0) {
+		    		$j: -$i;
+		    	} 
+			    &__#{$j} {
+					@each $prop in $props {
+						#{$prop}: calc(#{$i} * var(--#{$var}));
+					}
+			    }
+			} 
+			@for $i from 1 through 9 {
+			    &__0#{$i} {
+					@each $prop in $props {
+						#{$prop}: calc(#{$i/10} * var(--#{$var}));
+					}
+			    }
+			} 
+		} @else {
+			@for $i from $min through $max {
+				$j: $i;
+		    	@if($i < 0) {
+		    		$j: -$i;
+		    	} 
+			    &-#{$label}__#{$j} {
+				    @each $prop in $props {
+				      	#{$prop}-#{$dir}: calc(#{$i} * var(--#{$var}));
+				  	}
+			    }
+			} 
+			@for $i from 1 through 9 {
+			     &-#{$label}__0#{$i} {
+					@each $prop in $props {
+						#{$prop}-#{$dir}: calc(#{$i/10} * var(--#{$var}));
+					}
+			    }
+			} 
+		}
+	}
+}
+
+@each $modifier , $breakpoint in $map-grid-props {
+	@if($modifier == '') {
+		.wrap {
+			@include spacing_scale( ( margin ), spacing, 0, 20 );
+		}
+		.inner {
+			@include spacing_scale( ( padding ), spacing, 0, 20 );
+		}
+		.-wrap {
+			@include spacing_scale( ( margin ), spacing, -10, 0 );
+		}
+		.-inner {
+			@include spacing_scale( ( padding ), spacing, -10, 0 );
+		}
+	} @else {
+		@include create-mq($breakpoint, 'max') {
+			.#{$modifier}\:wrap {
+				@include spacing_scale( ( margin ), spacing, 0, 20 );
+			}
+			.#{$modifier}\:inner {
+				@include spacing_scale( ( padding ), spacing, 0, 20 );
+			}
+			.#{$modifier}\:-wrap {
+				@include spacing_scale( ( margin ), spacing, -10, 0 );
+			}
+			.#{$modifier}\:-inner {
+				@include spacing_scale( ( padding ), spacing, -10, 0 );
+			}
+		}
+	}
+}

@@ -1,0 +1,28 @@
+title: Web
+icon: display
+
+options:
+  title: false
+  duplicate: false
+  status: false
+  url: false
+  delete: false
+
+tabs:
+  pages:
+    label: Obsah
+    columns:
+      - width: 3/5
+        sections:
+          pages:
+            type: pages
+            label: Stránky
+            layout: cards
+            size: small
+            query: site.children
+            image:
+              query: page.image
+              cover: true
+              back: "#F1EEE7"
+         
+  meta: tabs/meta/site

@@ -1,0 +1,54 @@
+/*
+
+	SERVICES PAGE
+
+*/
+
+.service {
+	&__image {
+		max-height: 60vh;
+
+		@include xs-screen {
+			max-height: initial;
+			height: 50vh;
+		}
+	}
+
+	&__info {
+/*		padding-right: 20%;*/
+
+		@include xs-screen {
+			padding-right: 0;
+		}
+	}
+
+	&__menu {
+		background: rgba(var(--bg),1);
+		li {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			position: relative;
+
+			&.is-active a {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				position: relative;
+				&:before {
+					position: absolute;
+					right: calc(100% + 0.5rem);
+					content: '';
+					width: 8px;
+					height: 8px;
+					border-radius: 50%;
+					background: rgba(var(--col),1);
+
+					display: inline-flex;
+					flex-shrink: 0;
+					flex-grow: 0;
+				}
+			}
+		}
+	}
+}

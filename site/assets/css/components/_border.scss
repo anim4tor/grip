@@ -1,0 +1,51 @@
+/* 
+
+  BORDERS 
+
+*/
+
+@mixin border-bottom {
+  border-bottom: 1px dashed rgba(var(--col),0.2);
+}
+@mixin border-top {
+  border-top: 1px dashed rgba(var(--col),0.2);
+}
+
+@mixin border-left {
+  border-left: 1px dashed rgba(var(--col),0.2);
+}
+@mixin border-right {
+  border-right: 1px dashed rgba(var(--col),0.2);
+}
+
+.border {
+  &__top {
+    @include border-top;
+  }
+  &__bottom {
+    @include border-bottom;
+  }
+  &__left {
+    @include border-left;
+  }
+  &__right {
+    @include border-right;
+  }
+}
+
+.xs__border__none {
+  @include xs-screen {
+    border: none;
+  }
+}
+
+.dashed {
+  border-style: dashed;
+}
+.dotted {
+  border-style: dotted;
+}
+
+.radius {
+  border-radius: var(--radius);
+}

@@ -1,0 +1,55 @@
+/* 
+
+	ICONS 
+
+*/
+:root {
+	--icon-size: 1.2em;
+	--icon-large: 2.5em;
+}
+
+.icon {
+	z-index: 1;
+	position: relative;
+/*	width: 	var(--icon-size);*/
+	height: var(--icon-size);
+	width: var(--icon-size);
+	border-radius: var(--btn-radius);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	flex-grow: 0;
+
+	svg {
+		width: 100%;
+		height: 100%;
+		path {
+/*			fill: rgba(var(--col),1);*/
+/*			stroke: rgba(var(--col),1);*/
+/*			stroke-width: 2;*/
+		}
+	}
+
+	&.large {
+		--icon-size: var(--icon-large);
+	}
+
+	&.inline {
+		svg path {
+			@include animation;
+			fill: rgba(var(--col),1);
+			stroke: rgba(var(--col),1);
+			stroke-width: 0.0025em;
+		}
+	}
+}
+
+
+svg {
+
+	path {
+		@include animation;
+		fill: rgba(var(--col),1);
+	}
+}

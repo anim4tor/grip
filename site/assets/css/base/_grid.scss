@@ -1,0 +1,280 @@
+/*	
+
+	GRIDS
+
+*/
+:root {
+
+/*	--pad: Clamp(0.5rem,1vw,1.5rem);*/
+
+	--bleed: 8rem;
+}
+
+@mixin grid_columns() {
+	@for $col from 1 through 12 {
+		&__#{$col} {
+			--ncol: #{$col};
+			display: grid;
+			position: relative;
+			grid-template-columns: repeat(var(--ncol), minmax(0, 1fr));
+		}
+	}
+}
+@mixin grid_utils() {
+
+	display: grid;
+
+	&__top {
+		align-items: start;
+		align-content: start;
+	}
+
+	&__middle {
+		align-items: center;
+		align-content: center;
+	}
+
+	&__bottom {
+		align-items: end;
+		align-content: end;
+	}
+
+	&__between {
+		align-content: space-between;
+	}
+
+	&__around {
+		align-content: space-around;
+	}
+
+	&__start {
+		justify-content: start;
+		justify-items: start;
+		text-align: left;
+	}
+
+	&__center {
+		justify-content: center;
+		justify-items: center;
+		text-align: center;
+	}
+
+	&__end {
+		justify-content: end;
+		justify-items: end;
+		text-align: right;
+	}
+
+	&__stretch {
+/*		align-content: stretch;*/
+/*		justify-items: stretch;*/
+		justify-content: stretch;
+	}
+
+	&__auto {
+		display: grid;
+		grid-auto-columns: auto;
+	}
+
+	&__self {
+
+		&__top {
+			align-self: start;
+		}
+
+		&__middle {
+			align-self: center;
+		}
+
+		&__bottom {
+			align-self: end;
+		}
+
+		&__stretch {
+			align-self: stretch;
+			justify-self: stretch;
+		}
+
+		&__start {
+			justify-self: start;
+			text-align: left;
+		}
+
+		&__center {
+			justify-self: center;
+			text-align: center;
+		}
+
+		&__end {
+			justify-self: end;
+			text-align: right;
+		}
+
+	}
+
+	.space {
+			&__between {
+				justify-content: space-between;
+				align-content: space-between;
+			}
+
+			&__around {
+				justify-content: space-around;
+				align-content: space-around;
+			}
+	}
+
+	&__stack {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+
+		& > * {
+			grid-column: 1 !important;
+			grid-row: 1 !important;
+		}
+	}
+
+	&__fullheight {
+/*		height: 100vh;*/
+		min-height: calc(100vh);
+/*		margin-top: -1px;*/
+	}
+	&__fullwidth {
+/*		width: 100vw;*/
+		min-width: calc(100vw);
+/*		margin-top: -1px;*/
+	}
+
+	&__fullscreen {
+		width: 100vw;
+		height: 100vh;
+		min-height: 100dvh;
+
+	}
+
+	&__absolute {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+}
+
+
+@each $modifier , $breakpoint in $map-grid-props {
+	@if($modifier == '') {
+		.grid {
+		  @for $col from 1 through 12 {
+	  		&__#{$col} {
+	  			--ncol: #{$col};
+	  			display: grid;
+	  			position: relative;
+	  			grid-template-columns: repeat(var(--ncol), minmax(0, 1fr));
+					
+					@include create-mq($screen-mobile, 'max') {
+						--ncol: 1;
+					}
+
+	  		}
+	  		&__auto__#{$col} {
+	  			--ncol: #{$col};
+	  			display: grid;
+	  			position: relative;
+	  			grid-template-columns: repeat(var(--ncol), min-content);
+					@include xs-screen {
+						--ncol: 1;
+					}
+	  		}
+	  	}
+		  @include grid_utils;
+		}
+	} @else {
+	  @include create-mq($breakpoint, 'max') {
+	    .#{$modifier}\:grid {
+	      @include grid_columns;
+	      @include grid_utils;
+	    }
+	  }
+	}
+}
+
+@each $modifier , $breakpoint in $map-grid-props {
+	@if($modifier == '') {
+		.hide {
+		  display: none;
+		}
+
+	} @else {
+	  @include create-mq($breakpoint, 'max') {
+	    .#{$modifier}\:hide {
+			  display: none;
+			}
+			.#{$modifier}\:show {
+				display: flex;
+			  &.flex {
+			    display: flex;
+			  }
+			  &.grid {
+			    display: grid;
+			  }
+			}
+	  }
+	}
+
+}
+
+
+.col__first {
+	grid-column: 1;
+}
+.col__last {
+	grid-column: var(--ncol);
+}
+
+@for $col from 1 through 12 {
+	.col__#{$col} {
+		grid-column: #{$col};
+	}
+}
+
+
+@each $modifier , $breakpoint in $map-grid-props {
+	@if($modifier == '') {
+		@for $i from 1 through 20 {
+		
+			.col__#{$i} {
+				grid-column: #{$i};
+			}
+			.row__#{$i} {
+				grid-row: #{$i};
+			}
+			.span__#{$i} {
+				grid-column: span #{$i};
+			}
+			.span__row__#{$i} {
+				grid-row: span #{$i};
+			}
+		}
+	} @else {
+	  @include create-mq($breakpoint, 'max') {
+	    @for $i from 1 through 20 {
+	    	
+				.#{$modifier}\:col__#{$i} {
+					grid-column: #{$i};
+				}
+				.#{$modifier}\:row__#{$i} {
+					grid-row: #{$i};
+				}
+  			.#{$modifier}\:span__#{$i} {
+					grid-column: span #{$i};
+				}
+				.#{$modifier}\:span__row__#{$i} {
+					grid-row: span #{$i};
+				}
+  		}
+	  }
+	}
+}

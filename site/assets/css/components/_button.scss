@@ -1,0 +1,78 @@
+/* 
+
+BUTTONS 
+
+*/
+
+.button {
+/*	height: 2.5em;*/
+	display: inline-block;
+	position: relative;
+
+/*	overflow: hidden;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	flex-shrink: 0;
+
+	height: auto;
+	padding: 0.6em 4em;
+	border-radius: 0.25em;
+	white-space: nowrap;
+
+	background-color: transparent;
+	color: currentColor;
+	border: 1px solid currentcolor;
+
+	@include animation;
+	
+	
+	&.button__small {
+    	padding: 0.35em 0.8em;
+	}
+
+	@include xs-screen {
+		height: auto;
+		padding: calc(var(--pad)*.75) calc(var(--pad)*.75);
+	}
+
+	span {
+		position: relative;
+	}
+
+	&[data-label] {
+		cursor: pointer;
+		overflow: hidden;
+		transition-delay: 0ms !important;
+		&:hover {
+			background-color: rgba(var(--button-hover-bg, var(--col)),1);
+			color: rgba(var(--button-hover-color, var(--background)),1);
+			border-color: transparent;
+		}
+	}
+
+	svg {
+		height: 1em;
+	}
+}
+
+.button[data-active] {
+	background-color: rgba(var(--button-hover-bg, var(--col)),1);
+	color: rgba(var(--button-hover-color, var(--background)),1);
+	border-color: transparent;
+}
+
+.bg__text .button[data-label]:before {
+	background: darken(color(bright-purple),5);
+}
+
+.button__group {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+
+	& > .button:not(:first-child) {
+		margin-left: -1px;
+	}
+}

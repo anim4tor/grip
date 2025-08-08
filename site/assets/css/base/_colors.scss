@@ -1,0 +1,147 @@
+/*	
+
+	COLORS
+
+*/
+
+:root {
+	--color-black: #000;
+	--color-white: #FFF;
+}
+
+$utils: ( 
+	inherit: inherit, 
+	current: currentcolor, 
+	transparent: transparent 
+);
+
+$alphas: (
+	/10 	: 0.1,
+	/20		: 0.2,
+	/30		: 0.3,
+	/40		: 0.4,
+	/50		: 0.5,
+	/60		: 0.6,
+	/70		: 0.7,
+	/80		: 0.8,
+	/90		: 0.9,
+	/100	: 1.0,
+);
+$hues: (
+	
+);
+
+$colors : (
+	acc 		: #8F9E2E,
+	prim		: #001C18,
+	sec			: #E8E5DE,
+	sand		: #cdcac2,
+	olive		: #59594E,
+
+	/*greys*/
+	light		: #faf9f5,
+	border	: #F5F2FF,
+	medium	: #ACA3C5,
+	dark		: #000,
+	
+	/*status*/
+	green		: #31cf28,
+	red			: #DA203E,
+	yellow	: #fff5e2,
+	
+	/*type*/
+	text 		: #000000,
+
+	/*defaults*/
+	black 		: #000000,
+	white 		: #ffffff,
+	invert		: #f2f2f2
+
+);
+
+$opacity : (
+	/*opacity*/
+	1 		: 0.1,
+	2			: 0.2,
+	3			: 0.3,
+	4 		: 0.4,
+	5			: 0.5,
+	6			: 0.6,
+	7 		: 0.7,
+	8			: 0.8,
+	9			: 0.9,
+
+);
+
+@function toRGB($color) {
+    @return red($color), green($color), blue($color);
+}
+
+@function color($color, $alpha: 1) {
+  @return rgba(map-get($colors, $color), $alpha)
+}
+
+@function grad($color1, $color2, $angle: 0deg) {
+  @return linear-gradient($angle, $color1, $color2)
+}
+
+:root {
+
+	/*
+
+		COLORS
+			
+	*/
+
+	@each $label, $alpha in $opacity {
+	    .op-#{$label} {
+	     	opacity: #{$alpha};
+	    }
+	}
+	
+	@each $label, $hex in $colors {
+		$rgb : toRGB($hex);
+	    --c-#{$label}: #{$rgb};
+	}
+
+	@each $label, $hex in $colors {
+	  $rgb : toRGB($hex);
+
+	 
+	  .bg-#{$label} {
+		  background-color: #{$hex};
+	    --background: #{$rgb};
+
+	  }
+
+
+	  .c-#{$label} {
+	    color: #{$hex};
+	    --col: #{$rgb};
+	  }
+
+	  @each $aLabel, $alpha in $opacity {
+	   	  .bg-#{$label}-#{$aLabel} {
+	   			background-color: rgba($hex,$alpha);
+	   	    --background: #{$rgb},#{$alpha};
+
+	   	  }
+
+	   	  .c-#{$label}-#{$aLabel} {
+	   	    color: #{rgba($hex,$alpha)};
+	   	    --col: #{$rgb},#{$alpha};
+	   	  }
+	  }
+
+	}
+
+}
+
+.bg-transparent {
+		  background-color: rgba(black,0);
+	    --background: 0,0,0,0;
+}
+
+.bg__inherit {
+	background: rgb(var(--bg));
+}

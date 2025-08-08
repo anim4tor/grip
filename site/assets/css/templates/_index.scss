@@ -1,0 +1,55 @@
+.wrapper {
+	position: relative;
+	z-index: 1;
+
+
+}
+
+.no-overflow {
+	position: relative;
+	width: 100vw;
+	overflow: hidden;
+}
+
+
+.grid__gallery {
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 1fr;
+	height: 100vh;
+
+	.grid__image {
+		grid-column: 1;
+		grid-row: 1;
+		opacity: 0;
+
+		&.active {
+			z-index: 1;
+			opacity: 1;
+		}
+	}
+}
+
+.instagram {
+	position: relative;
+	width: 100vw;
+	overflow: hidden;
+
+	.wrapper {
+		height: 100vh;
+	}
+
+	&__gallery {
+		pointer-events: none;
+		position: absolute;
+		top: -5%;
+		bottom: -20%;
+		
+/*		z-index: 1;*/
+	}
+
+	img {
+		aspect-ratio: 1.1;
+		transform: scale(0.8) !important;
+	}
+}

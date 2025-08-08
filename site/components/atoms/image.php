@@ -1,0 +1,1 @@
+<img loading="auto" src="<?= $img->url() ?>" alt="<?= $img->alt()->esc() ?>">

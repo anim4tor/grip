@@ -1,0 +1,204 @@
+/*  
+
+  POSITION
+
+*/
+
+@import "../Media/media";
+
+:root {
+  
+}
+
+$limit: 20;
+$position: (
+  static, 
+  relative, 
+  absolute, 
+  fixed, 
+  sticky, 
+  auto
+);
+$inset: (
+  top-left: 0% auto auto 0%,
+  top-right: 0% 0% auto auto,
+  bottom-left: auto auto 0% 0%,
+  bottom-right: auto 0% 0% auto,
+  stretch-left: 0% auto 0% 0%,
+  center-left: auto auto auto 0%,
+  stretch-right: 0% 0% 0% auto,
+  center-right: auto 0% auto auto,
+  bottom-stretch: auto 0% 0%,
+  top-stretch: 0% 0% auto,
+  stretch: 0%
+);
+$dirs: ( 
+  '': '',
+  x: inline,
+  y: block,
+  t: top,
+  r: right,
+  b: bottom,
+  l: left
+);
+
+@mixin position($modifier: '') {
+  @each $label in $position {
+    .#{$modifier}#{$label} {
+      position: #{$label};
+    }
+  }
+}
+
+@mixin inset() {
+  @each $label, $value in $inset {
+    &__#{$label} {
+      inset: #{$value};
+    }
+  }
+}
+
+@mixin inset_scale($props, $var: spacing, $min: 1, $max: $limit) {
+  @each $label, $dir in $dirs {
+    @if($label == '') {
+      @for $i from $min through $max {
+        $j: $i;
+          @if($i < 0) {
+            $j: -$i;
+          } 
+          &__#{$j} {
+          @each $prop in $props {
+            #{$prop}: calc(#{$i} * var(--#{$var}));
+          }
+          }
+      } 
+    } @else {
+      @for $i from $min through $max {
+        $j: $i;
+          @if($i < 0) {
+            $j: -$i;
+          } 
+          &-#{$label}__#{$j} {
+            @each $prop in $props {
+                #{$prop}-#{$dir}: calc(#{$i} * var(--#{$var}));
+            }
+          }
+      } 
+    }
+  }
+}
+
+@mixin spacing_scale($props, $var: spacing, $min: 0, $max: $limit) {
+  @each $label, $dir in $dirs {
+    @if($label == '') {
+      @for $i from $min through $max {
+        $j: $i;
+          @if($i < 0) {
+            $j: -$i;
+          } 
+          &__#{$j} {
+          @each $prop in $props {
+            #{$prop}: calc(#{$i} * var(--#{$var}));
+          }
+          }
+      } 
+      @for $i from 1 through 9 {
+          &__0#{$i} {
+          @each $prop in $props {
+            #{$prop}: calc(#{$i/10} * var(--#{$var}));
+          }
+          }
+      } 
+    } @else {
+      @for $i from $min through $max {
+        $j: $i;
+          @if($i < 0) {
+            $j: -$i;
+          } 
+          &-#{$label}__#{$j} {
+            @each $prop in $props {
+                #{$prop}-#{$dir}: calc(#{$i} * var(--#{$var}));
+            }
+          }
+      } 
+      @for $i from 1 through 9 {
+           &-#{$label}__0#{$i} {
+          @each $prop in $props {
+            #{$prop}-#{$dir}: calc(#{$i/10} * var(--#{$var}));
+          }
+          }
+      } 
+    }
+  }
+}
+
+
+@each $modifier , $breakpoint in $map-grid-props {
+  @if($modifier == '') {
+    @include position;
+    .inset {
+      @include inset;
+    }
+    .top {
+      @include spacing_scale( ( top ), spacing, 0, 10 );
+    }
+    .-top {
+      @include spacing_scale( ( top ), spacing, -10, 0 );
+    }
+    .left {
+      @include spacing_scale( ( left ), spacing, 0, 10 );
+    }
+    .-left {
+      @include spacing_scale( ( left ), spacing, -10, 0 );
+    }
+    .bottom {
+      @include spacing_scale( ( bottom ), spacing, 0, 10 );
+    }
+    .-bottom {
+      @include spacing_scale( ( bottom ), spacing, -10, 0 );
+    }
+    .right {
+      @include spacing_scale( ( right ), spacing, 0, 10 );
+    }
+    .-right {
+      @include spacing_scale( ( right ), spacing, -10, 0 );
+    }
+    .z, [style*='--z:'] {
+      z-index: var(--z);
+    }
+  } @else {
+    @include create-mq($breakpoint, 'max') {
+      @include position(#{$modifier}\:);
+      .#{$modifier}\:inset {
+        @include inset;
+      }
+      .#{$modifier}\:top {
+        @include spacing_scale( ( top ), spacing, 0, 10 );
+      }
+      .#{$modifier}\:-top {
+        @include spacing_scale( ( top ), spacing, -10, 0 );
+      }
+      .#{$modifier}\:left {
+        @include spacing_scale( ( left ), spacing, 0, 10 );
+      }
+      .#{$modifier}\:-left {
+        @include spacing_scale( ( left ), spacing, -10, 0 );
+      }
+      .#{$modifier}\:bottom {
+        @include spacing_scale( ( bottom ), spacing, 0, 10 );
+      }
+      .#{$modifier}\:-bottom {
+        @include spacing_scale( ( bottom ), spacing, -10, 0 );
+      }
+      .#{$modifier}\:right {
+        @include spacing_scale( ( right ), spacing, 0, 10 );
+      }
+      .#{$modifier}\:-right {
+        @include spacing_scale( ( right ), spacing, -10, 0 );
+      }
+      .#{$modifier}\:z, .#{$modifier}\:[style*='--mobile-z:'] {
+        z-index: var(--z);
+      }
+    }
+  }
+}

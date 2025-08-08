@@ -1,0 +1,173 @@
+/* 
+
+  IMAGES 
+
+*/
+
+:root {
+  --image-radius: calc(var(--pad)/4);
+  --image-radius: 0;
+}
+figure {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--image-radius);
+  
+  img, video, iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--image-radius);
+
+/*    @include animation;*/
+  }
+
+  video {
+  	height: 100%;	
+  	width: 	100%;
+  }
+
+  &.fullscreen {
+    width: 100vw;
+    height: 100vh;
+
+    @include xs-screen {
+      height: 100vh;
+    }
+  }
+
+  &.circle {
+    border-radius: 50%;
+  }
+}
+
+img {
+}
+
+.fullscreen {
+  width: 100vw;
+  height: 100vh;
+
+  @include xs-screen {
+    height: 100vh;
+  }
+}
+
+figure[data-scroll] {
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    grid-column: 1;
+    grid-row: 1;
+    height: 120%;
+    transform: translateY(calc(-20% + var(--progress)*40%));
+
+    &[data-scroll-top] {
+      height: 100%;
+      transform: translateY(calc(0% + var(--progress)*20%));
+    }
+  }
+}
+
+.aspect {
+  @for $i from 1 through 10 {
+    @for $j from 1 through 10 {
+      &__#{$i}__#{$j} {
+        aspect-ratio: #{$i/$j};
+      }
+      
+    }
+    
+  }
+}
+
+@for $i from 1 through 16 {
+  @for $j from 1 through 16 {
+    [data-ratio='#{$i}/#{$j}'] {
+      aspect-ratio: #{$i/$j};
+    }
+  }
+}
+
+.aspect__fit {
+  position: relative;
+  align-self: stretch;
+  justify-self: stretch;
+  
+}
+
+@each $modifier , $breakpoint in $map-grid-props {
+
+  @include create-mq($breakpoint, 'max') {
+    @for $i from 1 through 16 {
+      @for $j from 1 through 16 {
+        
+        .#{$modifier}aspect__#{$i}__#{$j} {
+          aspect-ratio: #{$i/$j};
+        }
+        
+      }
+      
+    }
+  }
+
+}
+
+
+.height {
+  @for $i from 1 through 10 {
+    &__#{$i} {
+      height: calc(10vw * #{$i});
+      @include xs-screen {
+        height: calc(10vh * #{$i});
+      }
+    }
+    &__xs__#{$i} {
+      @include xs-screen {
+        height: calc(10vh * #{$i});
+      }
+    }
+    @for $j from 1 through 10 {
+      &__#{$i}#{$j} {
+        height: calc( ( 10vw * #{$i} ) + ( 1vw * #{$j} ) );
+        @include xs-screen {
+          height: calc( ( 10vh * #{$i} ) + ( 1vh * #{$j} ) );
+        }
+      }
+      
+    }
+  }
+}
+
+.google__reviews {
+  $cols: ( 
+    1: 1,
+    3: 2,
+    2: 0,
+  );
+  & > div {
+    will-change: transform;
+    @include xs-screen {
+      transform: none !important;
+    }
+  }
+  @each $i, $amount in $cols {
+    & > div:nth-child(#{$i}) {
+      transform: translateY(calc(10%*#{$amount} - var(--progress)*20%*#{$amount}));
+    }
+  }    
+}
+
+.thumb {
+  width: calc(var(--pad)*3);
+  height: calc(var(--pad)*3);
+  border-radius: 50%;
+
+  &.small {
+    width: calc(var(--pad)*1.5);
+    height: calc(var(--pad)*1.5);
+  }
+}

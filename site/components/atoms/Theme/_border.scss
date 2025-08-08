@@ -1,0 +1,90 @@
+/* 
+
+  BORDERS 
+
+*/
+@import "../Media/media";
+
+:root {
+  --border-width: 1.5px;
+}
+
+$directions : (
+  __left    : 'left',
+  __right   : 'right',
+  __top     : 'top',
+  __bottom  : 'bottom',
+); 
+$opacity : (
+  __1     : 0.1,
+  __2     : 0.2,
+  __3     : 0.3,
+  __4     : 0.4,
+  __5     : 0.5,
+  __6     : 0.6,
+  __7     : 0.7,
+  __8     : 0.8,
+  __9     : 0.9,
+  __10    : 1.0,
+);
+
+@mixin border($direction : '', $alpha : 0.1) {
+  @if($direction == '') {
+    border: var(--border-width) solid rgba(var(--col), $alpha);
+  } @else {
+    border-#{$direction}: var(--border-width) solid rgba(var(--col), $alpha);
+  }
+}
+
+@each $dLabel, $direction in $directions {
+  @each $aLabel, $alpha in $opacity {
+    .border#{$dLabel}#{$aLabel} {
+        @include border($direction, $alpha);
+    }
+  }
+}
+
+.border {
+  @include border;
+
+  &__all {
+    @include border;
+  }
+  &__top {
+    @include border(top);
+  }
+  &__bottom {
+    @include border(bottom);
+  }
+  &__left {
+    @include border(left);
+  }
+  &__right {
+    @include border(right);
+  }
+
+}
+
+.sm__border__none {
+  @include sm-screen {
+    border: none;
+  }
+}
+
+html body hr {
+  border: none;
+  @include border(bottom);
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+.dashed {
+  border-style: dashed;
+}
+.dotted {
+  border-style: dotted;
+}
+.radius {
+  border-radius: var(--radius);
+}

@@ -1,0 +1,1 @@
+<a href="<?= $url ?>" class="button <?= $class ?>" data-label="<?= $label ?>"><?= $label ?></a>

@@ -1,0 +1,13 @@
+/*	
+
+	CARD
+
+*/
+
+:root {
+	--card-radius: calc(var(--spacing)*1.5);
+}
+card {
+	display: block;
+	border-radius: var(--card-radius);
+}

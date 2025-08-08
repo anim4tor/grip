@@ -1,0 +1,54 @@
+/*
+
+	ABOUT PAGE
+
+*/
+
+.about {
+	&__clients {
+	}
+}
+	.client__list {
+		background: rgba(var(--bg),1);
+		a {
+			cursor: auto;
+		}
+		a[data-link] {
+			cursor: none;
+			width: 100%;
+			&:hover {
+				background: rgba(color(dark-purple),0.05);
+			}
+		}
+		figure {
+			mix-blend-mode: multiply;
+			width: 100%;
+			padding: calc(var(--pad)*2);
+			border-radius: 0;
+/*				border-left: 1px solid rgba(var(--col),.2);*/
+/*				border-top: 1px solid rgba(var(--col),.2);*/
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				width: 60%;
+				object-fit: scale-down;
+
+				@include xs-screen {
+					width: 100%;
+				}
+			}
+
+			.plus {
+				position: absolute;
+				bottom: var(--pad);
+				right: var(--pad);
+				opacity: .25;
+			}
+		}
+
+		[data-cursor-mask-target] {
+			mask-image: radial-gradient(circle at calc(100% * var(--clientX)) calc(100% * var(--clientY)), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.0) 25%);
+		}
+	}

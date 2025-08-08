@@ -1,0 +1,1 @@
+<a modal-open href="modal/<?= $url ?>" class="button <?= $class ?>" data-label="<?= $label ?>"><?= $label ?></a>

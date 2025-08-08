@@ -1,0 +1,58 @@
+/* 
+
+	TABS:
+	Defaults
+
+*/
+
+[data-pane-container] {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;	
+}
+[data-pane-container] {
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+}
+	[data-pane] {
+		grid-column: 1;
+		grid-row: 1;
+		visibility: hidden;
+		display: none;
+
+		@include animation;
+		opacity: 0;
+
+		@include xs-screen {
+			display: grid;
+			opacity: 1;
+			visibility: visible;
+		}
+
+		&[data-active] {
+			visibility: visible;
+			display: grid;
+			opacity: 1;
+		}
+	}
+
+
+[data-tab] {
+	cursor: pointer;
+	&[data-active] {
+		background: color(dark);
+		color: color(dark);
+		& * {
+			color: color(invert);
+		}
+	}
+	&:not([data-active]) {
+		
+	}
+}
+
+[data-tab][data-active].title {
+	height: 100%;
+}

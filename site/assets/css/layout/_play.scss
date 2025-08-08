@@ -1,0 +1,166 @@
+/*
+
+	GAME
+
+*/
+
+.play {
+	cursor: pointer;
+
+	&__list {
+		/*display: flex;*/
+		display: grid;
+	    grid-gap: calc(var(--pad)*1);
+	    grid-template-columns: auto auto auto auto;
+	    /*grid-auto-flow: column;*/
+	    /*margin-right: -33.33%;*/
+	    /*width: 133.33%;*/
+	    width: 100%;
+	    &:before {
+	    	pointer-events: none;
+	    	z-index: 1;
+
+	    	/*content: '';*/
+	    	position: absolute;
+	    	top: 0;
+	    	left: 80vw;
+	    	width: 20vw;
+	    	height: 30vw;
+	    	background: linear-gradient(to right, transparent 0%, color(black));
+	    }
+	}
+	& {
+		height: 100%;
+		/*border-bottom: 1px solid rgb(var(--col));*/
+
+		&:hover {
+			.play__hover {
+				opacity: 1;
+				transform: none;
+			}
+
+			.play__figure img {
+				transform: none;
+				transform: scale(1.05);
+				filter: brightness(0.5);
+			}
+		}
+	}
+	&__inner {
+		height: 100%;
+		padding-bottom: calc(var(--pad)*.5);
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__figure {
+		/*min-height: 30vw;*/
+		height: 30vw;
+
+		clip-path: polygon(calc(0% + 2rem) 0, 100% 0, 100% calc(100% - 2rem), calc(100% - 2rem) 100%, 0 100%, 0 calc(0% + 2rem));
+
+		&.--small {
+			height: 20vw;
+		}
+
+		img {
+			@include animation;
+			transform: scale(1.0);
+		}
+	}
+
+		&__hover {
+			z-index: 1;
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			@include animation;
+			opacity: 0;
+			transform: translate(-0.5rem,0.5rem);
+
+			svg path {
+				/*stroke-width: 2;*/
+			}
+		}
+
+	&__meta {
+		border-top: 1px solid rgba(var(--col),.5);
+		padding: calc(var(--pad)*.5) 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		.btn {
+			margin-top: 0;
+		}
+	}
+
+	&__head {
+		/*display: flex;*/
+		/*flex-direction: row;*/
+		/*align-items: flex-start;*/
+		/*justify-content: space-between;*/
+		/*padding: var(--pad) 0;*/
+		padding: calc(var(--pad)*.5) 0;
+		display: flex;
+		flex-direction: column;
+		/*flex-grow: 1;*/
+		justify-content: space-between;
+		p {
+			padding-right: 20%;
+		}
+		/*> div {
+			display: flex;
+			flex-direction: column;
+			padding-right: 20%;	
+		}*/
+/*
+		.btn {
+			margin-top: 0;	
+		}*/
+
+	}
+
+		&__title {
+			text-transform: uppercase;
+		}
+
+	&__end {
+		padding: var(--pad) 0;
+	}
+
+	&:hover {
+		img {
+			filter: none;
+		}
+	}
+
+	&.--sold {
+		.play__figure:before {
+			z-index: 1;	
+			content: 'Vyprodáno';
+			position: absolute;
+			left: 0;	
+			right: 0;
+			bottom: 0;	
+			top: 0;		
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			font-family: Rayhead, sans-serif;
+			font-size: 3vw;
+			line-height: 0.9;
+			text-transform: uppercase;	
+			white-space: nowrap;
+			-webkit-text-stroke-width: 0.04em;
+			-webkit-text-stroke-color: color(black);
+			mix-blend-mode: screen;
+			color: color(beige);	
+		}
+		img {
+			filter: saturate(0) sepia(0.4) brightness(1.0) contrast(0.5);
+		}
+	}
+}

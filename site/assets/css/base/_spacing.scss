@@ -1,0 +1,83 @@
+/*	
+
+	SPACING
+
+*/
+
+:root {
+	--vpad: calc(var(--pad)*var(--scale-vpad));
+	--hpad: calc(var(--pad)*var(--scale-hpad));
+}
+
+$limit: 20;
+$dirs: ( 
+	'': '',
+	x: inline,
+	y: block,
+	t: top,
+	r: right,
+	b: bottom,
+	l: left
+);
+
+@mixin spacing_scale($props, $var: spacing, $min: 1, $max: $limit) {
+	@each $label, $dir in $dirs {
+		@if($label == '') {
+			@for $i from $min through $max {
+				$j: $i;
+		    	@if($i < 0) {
+		    		$j: -$i;
+		    	} 
+			    &__#{$j} {
+					@each $prop in $props {
+						#{$prop}: calc(#{$i} * var(--#{$var}));
+					}
+			    }
+			} 
+		} @else {
+			@for $i from $min through $max {
+				$j: $i;
+		    	@if($i < 0) {
+		    		$j: -$i;
+		    	} 
+			    &-#{$label}__#{$j} {
+				    @each $prop in $props {
+				      	#{$prop}-#{$dir}: calc(#{$i} * var(--#{$var}));
+				  	}
+			    }
+			} 
+		}
+	}
+}
+
+@each $modifier , $breakpoint in $map-grid-props {
+	@if($modifier == '') {
+		.wrap {
+			@include spacing_scale( ( margin ), spacing, 0, 10 );
+		}
+		.inner {
+			@include spacing_scale( ( padding ), spacing, 0, 10 );
+		}
+		.-wrap {
+			@include spacing_scale( ( margin ), spacing, -10, 0 );
+		}
+		.-inner {
+			@include spacing_scale( ( padding ), spacing, -10, 0 );
+		}
+	} @else {
+		@include create-mq($breakpoint, 'max') {
+			.#{$modifier}\:wrap {
+				@include spacing_scale( ( margin ), spacing, 0, 10 );
+			}
+			.#{$modifier}\:inner {
+				@include spacing_scale( ( padding ), spacing, 0, 10 );
+			}
+			.#{$modifier}\:-wrap {
+				@include spacing_scale( ( margin ), spacing, -10, 0 );
+			}
+			.#{$modifier}\:-inner {
+				@include spacing_scale( ( padding ), spacing, -10, 0 );
+			}
+		}
+	}
+}

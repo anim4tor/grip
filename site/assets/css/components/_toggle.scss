@@ -1,0 +1,54 @@
+/*
+
+	TOGGLES
+
+*/
+
+[data-toggle] {
+	
+	overflow: hidden;
+
+	[data-trigger] {
+		display: flex;
+		cursor: pointer;
+		justify-content: space-between;
+		&:after {
+/*			font-size: var(--font-size-sm);*/
+		}
+	}
+	[data-content] {
+		
+	}
+
+}
+
+[data-toggle][closed] {
+	[data-trigger] {
+		opacity: 1;
+		&:hover {
+			opacity: .6;
+		}
+		&:after {
+			content: '+';
+		}
+	}
+	[data-content] {
+		display: none;
+		opacity: 0;
+	}
+}
+[data-toggle] {
+	[data-trigger] {
+		opacity: 0.4;
+		&:hover {
+			opacity: .6;
+		}
+		&:after {
+			content: '-';
+		}
+	}
+	[data-content] {
+		display: initial;
+		opacity: 1;
+	}
+}

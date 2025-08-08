@@ -1,0 +1,28 @@
+/*
+
+	SERVICE
+
+*/
+
+
+.service__list {
+
+	@include xs-screen {
+		--gap: 1rem;
+	}
+
+}
+
+.grid__item {
+	padding: 0 2rem ;
+
+	@include xs-screen {
+		border: none;
+		@include border(top);
+		@include border(left);
+		@include border(right);
+		&:last-child {
+			@include border(bottom);
+		}
+	}
+}

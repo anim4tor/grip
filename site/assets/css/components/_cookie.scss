@@ -1,0 +1,54 @@
+/*
+
+	COOKIE
+
+*/
+
+.cookie {
+	&__bar {
+		z-index: 1000;
+		position: fixed;
+		bottom:  Max(2em,2vw);
+		right:  Max(2em,2vw);
+
+		background-color: color(dark-purple);
+		color: color(light);
+		border-radius: Max(1em,2vw);
+		box-shadow: 0 1em 2em 0 rgba(#000,0.2);
+
+		padding: Max(2em,2vw);
+		width: Max(300px, 30vw);
+
+		@include sm-screen {
+			width: 100%;
+			top: 0;
+			left: 0;
+			bottom: auto;
+			padding: 1em;
+			border-radius: 0;
+
+		}
+
+	}
+		&__close {
+			margin-top: 2em;	
+		}
+}
+
+html {
+	.cookie__bar {
+		visibility: hidden;
+		opacity: 0;
+
+		@include animation;
+		transition-duration: 600ms;
+		transform: translateY(100%);
+	}
+}
+html.--no-cookie {
+	.cookie__bar {
+		visibility: visible;
+		opacity: 1;
+		transform: none;
+	}
+}

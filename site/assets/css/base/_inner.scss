@@ -1,0 +1,69 @@
+/*	
+
+	VERTICAL SPACING
+
+*/
+:root {
+	--vpad: calc(var(--pad)*var(--scale-vpad));
+}
+
+[class*="inner"] {
+	
+}
+
+@each $modifier , $breakpoint in $map-grid-props {
+	@if($modifier == '') {
+	  	@for $i from 0 through 20 {
+	  		.inner__#{$i} {
+				--inner: #{$i};
+				padding-top: calc(var(--vpad)*var(--inner));
+				padding-bottom: calc(var(--vpad)*var(--inner));
+				
+			}
+			.inner__top__#{$i} {
+				--inner-top: #{$i};
+				padding-top: calc(var(--vpad)*var(--inner-top));
+				
+			}
+			.inner__bottom__#{$i} {
+				--inner-bottom: #{$i};
+				padding-bottom: calc(var(--vpad)*var(--inner-bottom));
+				
+			}
+  		}
+	} @else {
+	  	@include create-mq($breakpoint, 'max') {
+		    @for $i from 0 through 20 {
+				.#{$modifier}\:inner__#{$i} {
+					--inner: #{$i};
+					padding-top: calc(var(--vpad)*var(--inner)) !important;
+					padding-bottom: calc(var(--vpad)*var(--inner)) !important;
+					
+				}
+				.#{$modifier}\:inner__top__#{$i} {
+					--inner-top: #{$i};
+					padding-top: calc(var(--vpad)*var(--inner-top));
+					
+				}
+				.#{$modifier}\:inner__bottom__#{$i} {
+					--inner-bottom: #{$i};
+					padding-bottom: calc(var(--vpad)*var(--inner-bottom));
+					
+				}
+			}
+			.#{$modifier}\:inner__none {
+				--inner-bottom: 0;
+				--inner-top: 0;
+				--inner: 0;
+				padding-top: 0;
+				padding-bottom: 0;
+				
+			}
+  		}
+	}
+
+}
+
+.inner__top__header {
+	margin-top: calc(var(--header-height));
+}

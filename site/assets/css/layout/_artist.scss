@@ -1,0 +1,81 @@
+/*
+
+	ARTIST
+
+*/
+
+.artist {
+	cursor: pointer;
+	
+	&:hover {
+		.artist__hover {
+			opacity: 1;
+			transform: none;
+		}
+
+		.artist__figure img {
+			transform: none;
+			transform: scale(1.05);
+
+			filter: brightness(0.5);
+		}
+	}
+
+	&__list {
+		/*display: flex;*/
+		display: grid;
+	    grid-gap: calc(var(--pad)*.5);
+	    grid-template-columns: auto auto auto;
+	}
+
+	&__inner {
+
+	}
+
+	&__figure {
+		min-height: 20vw;
+		height: 20vw;
+		clip-path: polygon(calc(0% + 2rem) 0, 100% 0, 100% calc(100% - 2rem), calc(100% - 2rem) 100%, 0 100%, 0 calc(0% + 2rem));
+		
+
+		img {
+			width: 101%;	
+			display: block;
+
+			@include animation;
+			transform: scale(1.0);
+
+		}
+	}
+
+		&__hover {
+			z-index: 1;
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			@include animation;
+			opacity: 0;
+			transform: translate(-0.5rem,0.5rem);
+
+			svg path {
+				/*stroke-width: 2;*/
+			}
+		}
+
+	&__head {
+		display: flex;
+		flex-direction: column;
+		padding: calc(var(--pad)*.5) 0;
+		border-top: 1px solid rgba(var(--col),.5);
+
+	}
+
+		&__name {
+
+		}
+
+	&__end {
+		padding: var(--pad) 0;
+	}
+}

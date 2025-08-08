@@ -1,0 +1,36 @@
+# name: field.blocks.text.name
+# icon: text
+# wysiwyg: true
+# preview: text
+# fields:
+#   text:
+#     type: writer
+#     nodes: false
+#     placeholder: field.blocks.text.placeholder
+name: field.blocks.text.name
+icon: text
+wysiwyg: true
+preview: text
+fields:
+  level:
+    label: field.blocks.heading.level
+    type: toggles
+    empty: false
+    default: "default"
+    labels: false
+    options:
+      - value: large
+        text: Large
+      - value: medium
+        text: Medium
+      - value: default
+        text: Default
+      - value: small
+        text: Small
+      - value: xsmall
+        text: Tiny
+
+  text:
+    label: field.blocks.heading.text
+    type: writer
+    placeholder: field.blocks.text.placeholder

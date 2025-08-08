@@ -1,0 +1,16 @@
+/*
+
+	SCROLL
+
+*/
+
+html.lenis{height:auto}.lenis.lenis-smooth{scroll-behavior:auto}.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}.lenis.lenis-stopped{overflow:hidden}.lenis.lenis-scrolling iframe{pointer-events:none}
+
+[data-on-scroll-right] {
+	--amount: 15vw;
+	transform: translateX(calc(-1*var(--amount) + Min(1,(var(--progress)*1.5)) * var(--amount)));
+}
+[data-on-scroll-left] {
+	--amount: 15vw;
+	transform: translateX(calc(var(--amount) - Min(1,(var(--progress)*1.5)) * var(--amount)));
+}

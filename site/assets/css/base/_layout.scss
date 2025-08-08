@@ -1,0 +1,135 @@
+/*	
+
+	LAYOUT
+
+*/
+
+:root {
+	
+}
+
+$display: (
+	grid, 
+	flex, 
+	block, 
+	inline-flex, 
+	inline-block, 
+	none
+);
+$flow: (
+	horizontal: row, 
+	vertical: column, 
+	none: none
+);
+$pos: (
+	start, 
+	center, 
+	end, 
+	stretch, 
+	none, 
+	space-between, 
+	space-around
+);
+
+
+@mixin display($modifier: '') {
+  @each $label in $display {
+    .#{$modifier}#{$label} {
+      display: #{$label};
+    }
+  }
+}
+@mixin grid_columns {
+	@for $col from 1 through 12 {
+		&__#{$col} {
+			--ncol: #{$col};
+			display: grid;
+			grid-template-columns: repeat(var(--ncol), minmax(0, 1fr));
+		}
+	}
+}
+@mixin grid_span {
+	@for $width from 1 through 12 {
+		&__#{$width} {
+			--width: #{$width};
+			grid-column: span var(--width);
+		}
+	}
+}
+@mixin flow() {
+	@each $label, $value in $flow {
+		&__#{$label} {
+			flex-flow: #{$value};
+			grid-auto-flow: #{$value};
+		}
+	}
+}
+@mixin place() {
+	@each $align in $pos {
+		@each $justify in $pos {
+			&__#{$align}-#{$justify} {
+				place-items: #{$align} #{$justify};
+			}
+		}
+	}
+}
+@mixin align() {
+	@each $align in $pos {
+		&__#{$align} {
+			align-content: #{$align};
+		}
+	}
+} 
+@mixin justify() {
+	@each $justify in $pos {
+		&__#{$justify} {
+			justify-content: #{$justify};
+		}
+	}
+}
+
+@each $modifier , $breakpoint in $map-grid-props {
+	@if($modifier == '') {
+		@include display;
+		.grid {
+			@include grid_columns;
+		}
+		.span {
+			@include grid_span;
+		}
+		.flow {
+			@include flow;
+		}
+		.place {
+			@include place;
+		}
+		.align {
+			@include align;
+		}
+		.justify {
+			@include justify;
+		}
+	} @else {
+		@include create-mq($breakpoint, 'max') {
+			.#{$modifier}\:grid {
+				@include grid_columns;
+			}
+			.#{$modifier}\:span {
+				@include grid_span;
+			}
+			@include display(#{$modifier}\:);
+			.#{$modifier}\:flow {
+				@include flow;
+			}
+			.#{$modifier}\:place {
+				@include place;
+			}
+			.#{$modifier}\:align {
+				@include align;
+			}
+			.#{$modifier}\:justify {
+				@include justify;
+			}
+		}
+	}
+}

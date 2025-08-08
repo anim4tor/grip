@@ -1,0 +1,61 @@
+/*
+	UTILS
+	--------------------------------------------------
+*/
+	@use "utils/animate";
+	@use "utils/reset";
+
+
+/*
+	ATOMS 
+	--------------------------------------------------
+*/
+	@use "../../components/atoms/Theme/theme";
+	@use "../../components/atoms/Theme/colors";
+	@use "../../components/atoms/Theme/layout";
+	@use "../../components/atoms/Theme/spacing";
+	@use "../../components/atoms/Theme/position";
+	@use "../../components/atoms/Theme/size";
+	@use "../../components/atoms/Theme/type";
+	@use "../../components/atoms/Theme/border";
+	@use "../../components/atoms/Theme/effects";
+
+	@use "../../components/atoms/Icon/icon";
+	@use "../../components/atoms/Button/button";
+
+/*
+	MOLECULES
+	--------------------------------------------------
+*/
+	@use "../../components/molecules/Card/card";
+	
+	
+/*
+	ORGANISMS
+	--------------------------------------------------
+*/
+	@use "../../components/organisms/Body/body";
+	@use "../../components/organisms/Header/header";
+	@use "../../components/organisms/Footer/footer";
+	@use "../../components/organisms/Aside/aside";
+
+
+/*
+	TEMPLATES
+	--------------------------------------------------
+*/	
+
+/*
+	THEMES
+	--------------------------------------------------
+*/
+
+/*
+	VENDOR
+	--------------------------------------------------
+*/
+
+
+* {
+	/*border: 1px solid red;*/
+}

@@ -1,0 +1,59 @@
+/*	
+
+	ACCORDIONS
+
+*/
+
+
+[data-acc-trigger] {
+	
+    cursor: pointer;
+
+	&:hover {
+		& + .acc__content {
+			opacity: 1;
+		}
+	}
+}
+
+
+
+[data-acc] {
+	cursor: pointer;
+
+	&.--opened {
+		[data-acc-icon] {
+			transform: scaleY(-1);
+		}
+	}
+}
+
+	[data-acc-content] {
+		/*display: none;*/
+	}
+
+
+/*	
+
+	SCROLL
+	ACCORDIONS
+
+*/
+
+.acc {
+
+	display: flex;
+	flex-direction: column;
+	grid-gap: 1rem;
+
+	&:not(:last-child) {
+		border-bottom: 1px solid rgba(var(--col),0.2);
+	}
+
+	&__title {
+		
+		padding: 4rem 0	;
+		display: flex;
+		grid-gap: 1rem;
+	}
+}

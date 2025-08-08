@@ -1,0 +1,227 @@
+/*
+
+	HEADER
+	
+*/
+:root {
+	--header-height: calc(var(--pad)*4);
+	--bg: transparent;
+/*	--header-color: color(light-purple);*/
+
+	@include xs-screen {
+		--header-height: calc(var(--pad)*5);
+	}
+}
+
+
+
+.header {
+	z-index: 8888;
+	position: fixed;
+	inset: 0 0 0 0;
+
+	&__backdrop {
+		position: fixed;
+		inset: 0 0 0 0;
+		@include animation;
+	}
+	&__inner {
+		position: relative;
+		clip-path: polygon(0 0, 100% 0%, 100% var(--height), calc(0% + Max(1rem, 1vw)) var(--height), 0 calc(var(--height) - Max(1rem, 1vw)));
+		@include animation;
+		pointer-events: all;
+		grid-template-rows: auto 1fr;
+	}
+
+		&__modal {
+			height: calc(100vh - 2*var(--pad));
+			display: grid;
+			grid-template-rows: auto 1fr auto;
+		}
+
+	&__bg {
+		position: absolute;
+		inset: 0 0 0 0;
+		border-radius: 0.25rem;
+/*		clip-path: polygon(0 0, 100% 0%, 100% 100%, calc(0% + 1vw) 100%, 0 calc(100% - 1vw));*/
+	}
+	&__bar {
+		overflow: hidden;
+/*		clip-path: polygon(0 0, 100% 0%, 100% 100%, calc(0% + 1vw) 100%, 0 calc(100% - 1vw));*/
+	}
+		&__logo svg {
+			height: Max(3rem,3vw);
+			width: auto;
+		}
+		&__language {
+			clip-path: inset(0 0 5% 0);
+		}
+		&__menu {
+			cursor: pointer;
+			height: 100%;
+
+			.menu__button {
+				--size: 2rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 0.2rem;
+				width: var(--size);
+				height: var(--size);
+				overflow: hidden;
+				span {
+					position: relative;
+					display: block;
+					border-top: 1px solid currentColor;
+					width: var(--size);
+					@include animation;
+				}
+				
+				span {
+					&:nth-child(1) {
+						transition-delay: 0ms;
+					}
+					&:nth-child(2) {
+						transition-delay: 50ms;
+					}
+					&:nth-child(3) {
+						transition-delay: 100ms;
+					}
+					&:before {
+						@include animation;
+						content: '';
+						position: absolute;
+						top: -1px;
+						right: calc(100% + 0.5rem);
+						width: 100%;
+						border-top: 1px solid currentColor;
+					}
+				}
+					
+			
+			}
+
+			&:hover {
+				span {
+					transition-delay: 200ms;
+					transform: translateX(calc(100% + 0.5rem));
+				}
+			}
+
+		}
+
+	&__modal {
+
+	}
+	&__nav {
+		margin-bottom: -1px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+		&__link {
+			padding: 0.75em 0;
+			font-weight: 500;
+		}
+
+		detail .header__link {
+			&:hover {
+				background: rgba(color(black),.05);
+			}
+		}
+
+	&__footer {
+		border-bottom-right-radius: 0.25rem;
+		clip-path: polygon(0 0, 100% 0%, 100% 100%, calc(0% + Max(1rem, 1vw)) 100%, 0 calc(100% - Max(1rem, 1vw)));
+	}
+}
+
+.header {
+	pointer-events: none;
+}
+[data-header] {
+	--height: Max(6rem, 7vw);
+	@include animation;
+	
+	[data-header-bar] {	
+		pointer-events: all;
+		height: var(--height);
+		@include animation(height);
+	}
+	&[opened] {
+		--height: 100%;
+
+		[data-backdrop] {
+			backdrop-filter: blur(1rem) brightness(0.5);
+			pointer-events: all;
+		}
+		[data-header-bar] {	
+			--height: Max(6rem, 7vw);
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+/*			border-bottom: 1px dashed currentColor;*/
+
+			.header__menu {
+				border: none;
+				span:nth-child(1):before {
+					transform: translateY(calc(0.2rem + 1px)) rotate(45deg);
+				}
+				span:nth-child(2):before {
+					transform: scaleX(0);
+					transition-duration: 200ms;
+				}
+				span:nth-child(3):before {
+					transform: translateY(calc(-0.2rem - 1px)) rotate(-45deg);
+				}
+				span {
+					transform: translateX(calc(100% + 0.5rem));
+				}
+
+			}
+		}
+
+		nav {
+			display: grid;
+		}
+
+		[data-header-modal] {
+			display: grid;
+			visibility: visible;
+		}
+		[data-header-bg] {
+			height: calc(100%);
+		}
+	}
+	&[hide]:not([opened]) {
+		& {
+			transform: translateY(-10rem);
+		}
+	}
+	&[collapsed]:not([opened]) {
+		--height: Max(5rem, 6vw);
+
+		[data-header-bar] {
+/*			--height: 6.5rem;*/
+		}
+
+	}
+}
+
+@keyframes menu-hover {
+	0% {
+		transform: scaleX(1);
+		transform-origin: top right;
+	}
+	45% {
+		transform: scaleX(0);
+		transform-origin: top right;
+	}
+	55% {
+		transform: scaleX(0);
+		transform-origin: top left;
+	}
+	100% {
+		transform: scaleX(1);
+		transform-origin: top left;
+	}
+}

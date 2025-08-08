@@ -1,0 +1,46 @@
+/*
+
+	FORM INPUTS
+
+*/
+input, textarea, select {
+	border-bottom: 1px solid rgba(var(--col),.2);
+	padding: calc(var(--pad)*0.5) 0;
+	font-family: var(--font-body);
+	font-size: calc(var(--font-size-5)*1);
+	color: rgba(var(--col),1);
+	font-weight: 300;
+	width: 100%;
+
+	&::placeholder {
+		color: rgba(var(--col),.4);
+
+	}
+
+	&.invalid {
+		animation: invalid 2s linear;
+/*		border-color: color(red);*/
+	}
+}
+
+.field {
+	width: 100%;
+}
+
+@keyframes invalid {
+	0% {
+		border-color: color(red);
+	}
+	100% {
+		border-color: rgba(var(--col),.5);
+	}
+}
+
+.honeypot {
+    position: absolute;
+    left: -9999px;
+}
+
+input[type="file"] {
+	font-size: calc(var(--font-size-md)*1);
+}

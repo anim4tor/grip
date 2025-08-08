@@ -1,0 +1,136 @@
+/*	
+
+	COLORS
+
+*/
+@import "../Media/media";
+:root {
+
+}
+
+$colors : (
+	acc 		: #8F9E2E,
+	prim		: #001C18,
+	sec			: #E8E5DE,
+	sand		: #cdcac2,
+	olive		: #59594E,
+
+	/*greys*/
+	light		: #faf9f5,
+	border	: #F5F2FF,
+	medium	: #ACA3C5,
+	dark		: #0B0B0D,
+	
+	/*status*/
+	green		: #31cf28,
+	red			: #DA203E,
+	yellow	: #fff5e2,
+	
+	/*type*/
+	text 		: #000000,
+
+	/*defaults*/
+	black 		: #000000,
+	white 		: #ffffff,
+	invert		: #f2f2f2
+
+);
+
+$utils: ( 
+	inherit: inherit, 
+	current: currentcolor, 
+	transparent: transparent 
+);
+
+$alphas: (
+	10 	  : 0.1,
+	20		: 0.2,
+	30		: 0.3,
+	40		: 0.4,
+	50		: 0.5,
+	60		: 0.6,
+	70		: 0.7,
+	80		: 0.8,
+	90		: 0.9,
+	100	  : 1.0,
+);
+$hues: (
+	
+);
+
+$opacity : (
+	/*opacity*/
+	1 		: 0.1,
+	2			: 0.2,
+	3			: 0.3,
+	4 		: 0.4,
+	5			: 0.5,
+	6			: 0.6,
+	7 		: 0.7,
+	8			: 0.8,
+	9			: 0.9,
+);
+
+@function toRGB($color) {
+    @return red($color), green($color), blue($color);
+}
+
+@function color($color, $alpha: 1) {
+  @return rgba(map-get($colors, $color), $alpha)
+}
+
+@mixin bg-color {
+  @each $label, $hex in $colors {
+		&__#{$label} {
+		  background-color: #{color($label)};
+		}
+		@each $aLabel, $alpha in $alphas {
+		 	  &__#{$label}\/#{$aLabel} {
+ 	    	  background-color: #{color($label,$alpha)};
+		 	  }
+		}
+  } 
+}
+
+@mixin text-color {
+  @each $label, $hex in $colors {
+		&__#{$label} {
+		  color: #{color($label)};
+		}
+		@each $aLabel, $alpha in $alphas {
+		 	  &__#{$label}\/#{$aLabel} {
+ 	    	  color: #{color($label,$alpha)};
+		 	  }
+		}
+  } 
+}
+
+
+@each $modifier , $breakpoint in $map-grid-props {
+	@if($modifier == '') {
+		.bg {
+			@include bg-color;
+		}
+		.color {
+			@include text-color;
+		}
+	
+	} @else {
+		@include create-mq($breakpoint, 'max') {
+			.#{$modifier}\:bg {
+				@include bg-color;
+			}
+			.#{$modifier}\:color {
+				@include text-color;
+			}
+		}
+	}
+}
+
+:root {
+	
+	@each $label, $hex in $colors {
+	    --color-#{$label}: #{toRGB($hex)};
+	}
+
+}

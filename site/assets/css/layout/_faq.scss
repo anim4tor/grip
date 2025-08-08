@@ -1,0 +1,81 @@
+/*
+
+	FAQ
+
+*/
+
+.faq {
+	&__header {
+		padding: Max(2rem, 2vw) 0;
+		align-items: center;
+		.label {
+			max-width: 80%;
+		}
+	}
+	
+}
+
+[data-question] {
+	cursor: pointer;
+	overflow: hidden;
+	@include animation;
+	transition-duration: 1000ms;
+
+	[data-summary] {
+		height: calc(Max(2rem, 2vw) * 2 + 0.7rem);
+		&:after {
+			content: '+';
+			width: 1rem;
+			height: 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: var(--font-heading);
+			font-size: var(--font-size-3);
+			line-height: 0.8em;
+		}
+	}
+	[data-answer] {
+/*			display: none;*/
+/*			opacity: 0;*/
+/*			transform: translateY(15%);*/
+		@include animation;
+
+	}
+/*	padding-bottom: 1.5rem;	*/
+}
+
+[data-question][closed] {
+	height: calc(Max(2rem, 2vw) * 2 + 0.7rem);
+	[data-summary] {
+		opacity: 1;
+		&:hover {
+			opacity: .6;
+		}
+	}
+	[data-summary]:after {
+		content: '+';
+	}
+	[data-answer] {
+		opacity: 0;
+		transform: translateY(50%);
+	}
+}
+[data-question] {
+	height: var(--height);
+	[data-summary] {
+		opacity: 0.4;
+	}
+	[data-summary]:after {
+		content: '-';
+	}
+	[data-answer] {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.hidden {
+	visibility: hidden;
+	display: none;
+}

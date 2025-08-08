@@ -1,0 +1,129 @@
+/*
+
+	SLIDER
+
+*/
+
+[data-slider] {
+	--count: 1;
+	--per: 1.0;
+	--speed: 1;
+	--height: auto;
+	--width: calc(100vw - var(--wrap,0vw)*2);
+	--panes-width: calc(var(--count)*var(--item-width) - var(--width));
+	--item-width: calc(var(--width)/var(--per));
+
+	&[data-scroll-slider] {
+		--height: calc(100vh*var(--count)*1/var(--speed));
+	}
+	&[data-align="center"] {
+		--offset: calc((var(--width) - var(--item-width)) / 2);
+		--panes-width: calc(var(--count)*var(--item-width) + var(--offset)*2 - var(--width));
+	}
+
+	height: var(--height);
+
+	/*--height: 100vh;
+	height: calc(var(--height) * (var(--count)));*/
+
+	[data-slider-sticky] {
+		position: sticky;
+		top: calc(var(--header-height) - 1px);
+		top: 0;
+/*		height: var(--height);*/
+		width: 100%;
+		overflow-x: hidden;
+
+		@include xs-screen {
+			height: auto;
+			overflow: hidden;
+		}
+	}
+
+}
+
+[data-slider-panes] {
+	width: var(--panes-width);
+	display: flex;
+/*	align-items: flex-start;*/
+	flex-wrap: nowrap;
+	will-change: transform;
+
+	transform: translateX(calc(-100% * var(--progress)));
+
+	@include xs-screen {
+		position: relative;
+		align-items: center;
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+
+	&:before, &:after {
+		content: '';
+		flex-shrink: 0;
+		display: grid;
+		width: var(--offset);
+		height: 100%;
+	}
+}
+	[data-slide] {
+
+		width: var(--item-width);
+		flex-shrink: 0;
+		flex-grow: 0;
+
+		&:not(:last-of-type) {
+			border-right: 0;
+		}
+
+		@include xs-screen {
+			width: calc(100% - 4rem);
+		}
+	}
+
+
+.process {
+	
+	width: 100%;
+	position: relative;
+
+	@include xs-screen {
+		height: auto;
+	}
+
+	
+
+		
+		/*&__spacer {
+			border-top: 1px solid rgba(var(--col),0.2);
+
+			display: block;
+			width: 33.33vw;
+
+			@include xs-screen {
+				width: 0;
+			}
+		}*/
+}
+
+.service__list {
+
+	@include xs-screen {
+		--gap: 1rem;
+	}
+
+}
+
+.grid__item {
+	padding: 0 2rem ;
+
+	@include xs-screen {
+		border: none;
+		@include border(top);
+		@include border(left);
+		@include border(right);
+		&:last-child {
+			@include border(bottom);
+		}
+	}
+}

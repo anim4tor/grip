@@ -1,0 +1,211 @@
+/*
+
+	MODAL
+
+*/
+
+[data-modal-open], [data-modal-close] {
+	cursor: pointer;
+}
+
+:root {
+	--modal-width: 60vw;
+	--modal-duration: 1.2s;
+	--modal-easing: cubic-bezier(0.16, 1, 0.3, 1);
+	@include xs-screen {
+		--modal-width: 100vw;
+	}
+}
+
+
+.modal {
+
+	&__layout {
+		z-index: 10003;
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		width: 100vw;
+
+		display: grid;
+		pointer-events: none;
+
+	}
+
+		&__overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color: rgba(color(text),.4);
+
+			@include animation;
+			opacity: 0;
+
+			backdrop-filter: blur(30px);
+
+			grid-column: 1;
+			grid-row: 1;
+
+		}
+
+		&__load {
+			grid-column: 1;
+			grid-row: 1;
+			
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr;
+
+			height: 100vh;
+
+		}
+
+	
+			& {
+				z-index: 1000;
+				position: absolute;
+
+				min-width: $screen-xs;
+				width: calc(var(--size)*1% - 2*var(--inset)*var(--pad));
+				place-self: var(--position);
+				inset: calc( var(--inset)*var(--pad) );
+
+				@include xs-screen {
+					width: 100%;
+					height: auto;
+					inset: 0;
+					min-width: 0;
+				}
+
+				.modal__close {
+					position: relative;
+					inset: auto;		
+				}
+				
+				iframe {
+					height: calc(100vh - var(--header-height)) !important;
+				}
+			}
+			
+			
+				&__inner {
+					grid-template-rows: auto 1fr;
+					height: 100%;
+					animation: var(--animation);	
+					animation-duration: var(--modal-duration);	
+					animation-timing-function: var(--modal-easing);	
+				}
+
+				&__close {
+					position: fixed;
+					right: calc(var(--pad));
+					top: calc(var(--pad)*0.5);
+					@include animation;
+
+					a {
+						letter-spacing: 0.3em;
+						text-transform: uppercase;
+						font-weight: 300 !important;
+						@include xs-screen {
+							font-size: 0.6rem;
+						}
+					}
+
+					@include xs-screen {
+						z-index: 1;
+						position: absolute;
+						top: calc(var(--pad)*1);
+					}
+
+				}
+
+			&__main {
+				height: 100dvh;
+				width: var(--modal-width);
+				overflow-y: scroll;
+				grid-column: 1;
+				grid-row: 1;
+
+
+				
+			}
+
+			&__fullheight {
+				height: calc(100vh);
+				height: calc(100dvh);
+			}
+
+			&__header {
+				height: var(--header-height);
+			}
+
+			&__form {
+/*				padding: 7rem 0 0;*/
+			}
+
+			
+			
+		
+}
+
+html {
+	.modal {
+		&__layout {
+			@include animation(all, 1.2s);
+			visibility: hidden;
+			pointer-events: none;
+		}
+		
+		&__main {
+			@include animation(all, 1.2s);
+			transform: translateX(calc(-1*var(--modal-width)));
+
+		}
+
+		&__close {
+			opacity: 0;
+			transform: translateX(calc(1*var(--pad)));
+		}
+
+	}
+}
+
+html.has-modal {
+	.modal {
+
+		&__layout {
+			visibility: visible;
+			pointer-events: all;
+		}
+
+		&__overlay {
+			opacity: 1;
+			pointer-events: all;
+		}
+		
+		&__main {
+			transform: translateX(0%);
+		}
+		&__close {
+			opacity: 1;
+			transform: none;
+			transition-delay: 400ms;
+
+		}
+
+	}
+}
+
+html.no-scroll {
+	body {
+		height: 100vh;
+		overflow: hidden;
+	}
+}
+

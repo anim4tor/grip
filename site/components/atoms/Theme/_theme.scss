@@ -1,0 +1,74 @@
+/*  
+
+    THEME
+
+*/
+@import "../Media/media";
+:root {
+
+    --scale: 1;
+    --scale-fluid: 2;
+    --scale-min: 1;
+    --scale-vpad: 1;
+    --scale-hpad: 1;
+    --scale-gap: 1;
+    --spacing: Max(calc(var(--scale-min) * 1rem), calc(var(--scale-fluid) * 1vw * var(--scale)));
+    --pad: var(--spacing);
+
+    --font-base: 1;
+    --font-base-flexible: 1;
+    --font-heading-scale: 1.6;
+    --font-heading-min: 1;
+    --font-body-scale: 1.25;
+    --font-body-min: 0.8;
+    --font-family-body: 'neue-haas-grotesk-display', sans-serif !important;
+    --font-family-heading: 'aktiv-grotesk-extended', sans-serif !important;
+    --font-family-mono: 'Roboto Mono', mono;
+
+    $headings: 5, 4, 3, 2, 1;
+    $size: 1;
+    $scale: 1.325;
+    $min: 1;
+    $line: 1.2;
+    @each $level in $headings {
+        --font-size-#{$level}: Max(#{$min}rem, #{$size}vw);
+        --line-height-#{$level}: #{$line};
+        $size: $size * $scale;
+        $min: $min * $scale;
+        $line: $line - ( 0.035 * $scale );
+    }
+
+    $bodys: xs, sm, default, md, lg, xl;
+
+    $size: 0.5;
+    $scale: 1.225;
+    $min: 0.8 * 0.65;
+    $line: 1.4;
+    @each $level in $bodys {
+        --font-size-#{$level}: Max(#{$min}rem, #{$size}vw);
+        --line-height-#{$level}: #{$line};
+        $size: $size * $scale;
+        $min: $min * $scale;
+        $line: $line - ( 0.01 * $scale );
+    }
+
+    --button-vpad: 0.8;
+    --button-hpad: 1.5;
+    --primary-button-face: the-seasons;
+    --primary-button-border-radius: 0.4;
+    --primary-button-border-width: 1;
+    --primary-button-size: 1;
+}
+
+[theme], [theme="dark"] {
+    color: rgba(var(--col),1);
+    background: rgba(var(--background),1);
+
+    --background: var(--color-dark);
+    --col: var(--color-white);
+}
+
+[theme="invert"] {
+    --background: var(--color-white);
+    --col: var(--color-dark);
+}

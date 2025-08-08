@@ -1,0 +1,51 @@
+/*	
+
+	CARD
+
+*/
+
+.card {
+	display: grid;
+	background: var(--card-bg);
+
+	&:has(header) {
+		grid-template-rows: auto 1fr;
+	}
+	&:has(header):has(footer) {
+		grid-template-rows: auto 1fr auto;
+	}
+
+	
+	.dot {
+		--size: 0.8rem;
+		width: var(--size);
+		height: var(--size);
+		border-radius: 50%;
+/*		border: 1px solid currentcolor;*/
+		background: rgba(color(dark),0.1);
+	}
+
+
+}
+
+.card__list {
+	--offset: 10rem;
+}
+.card__wrapper {
+	will-change: transform;
+	transform: translateY( Max(0rem ,calc(var(--offset)*var(--index) - var(--progress)*2*var(--offset)*var(--index)) ));
+
+	&[href]:hover {
+		card {
+			background: color(bright-purple);
+		}
+
+	}
+	&:hover {
+		.dot {
+			background: color(bright-purple);
+			color: color(bright-purple);
+		}
+	}
+
+}
