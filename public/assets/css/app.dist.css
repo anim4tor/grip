@@ -28282,6 +28282,8 @@ html body hr {
     opacity: calc(10 / 10);
   }
 }
+/*defaults*/
+/*$defaultEasing: cubic-bezier(0.860, 0.000, 0.070, 1.000);*/
 /*  
 
     ICON
@@ -28447,9 +28449,208 @@ footer,
 
 /*
 
-	ASIDE
+	MODAL
 
 */
+/*
+
+    MEDIA
+
+*/
+/*defaults*/
+/*$defaultEasing: cubic-bezier(0.860, 0.000, 0.070, 1.000);*/
+[data-modal-open], [data-modal-close] {
+  cursor: pointer;
+}
+
+:root {
+  --modal-width: 60vw;
+  --modal-duration: 1.2s;
+  --modal-easing: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media screen and (max-width: 480px) {
+  :root {
+    --modal-width: 100vw;
+  }
+}
+
+.modal__layout {
+  z-index: 10003;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: end;
+      align-content: end;
+  pointer-events: none;
+}
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(var(--color-dark), 0.4);
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: all;
+  opacity: 0;
+  /*			backdrop-filter: blur(30px);*/
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+.modal__load {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+  grid-template-rows: 1fr;
+  height: calc(100vh - var(--spacing) * 4);
+}
+.modal__load > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+.modal {
+  z-index: 1000;
+  width: 100%;
+}
+.modal .modal__close {
+  position: relative;
+  inset: auto;
+}
+.modal__inner {
+  -ms-grid-rows: auto 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  -webkit-animation: var(--animation);
+          animation: var(--animation);
+  -webkit-animation-duration: var(--modal-duration);
+          animation-duration: var(--modal-duration);
+  -webkit-animation-timing-function: var(--modal-easing);
+          animation-timing-function: var(--modal-easing);
+}
+.modal__close {
+  position: fixed;
+  right: calc(var(--pad));
+  top: calc(var(--pad) * 0.5);
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: all;
+}
+.modal__close a {
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 300 !important;
+}
+@media screen and (max-width: 480px) {
+  .modal__close a {
+    font-size: 0.6rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .modal__close {
+    z-index: 1;
+    position: absolute;
+    top: calc(var(--pad) * 1);
+  }
+}
+.modal__main {
+  height: 100dvh;
+  width: var(--modal-width);
+  overflow-y: scroll;
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+.modal__fullheight {
+  height: 100vh;
+  height: 100dvh;
+}
+.modal__header {
+  height: var(--header-height);
+}
+.modal__form {
+  /*				padding: 7rem 0 0;*/
+}
+
+html .modal__layout {
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 1.2s;
+          transition-duration: 1.2s;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: all;
+  visibility: hidden;
+  pointer-events: none;
+}
+html .modal__load {
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  -webkit-transform: translateY(100vh);
+          transform: translateY(100vh);
+}
+html .modal__close {
+  opacity: 0;
+  -webkit-transform: translateX(calc(1 * var(--pad)));
+          transform: translateX(calc(1 * var(--pad)));
+}
+
+html.has-modal .modal__layout {
+  visibility: visible;
+  pointer-events: all;
+}
+html.has-modal .modal__overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+html.has-modal .modal__load {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+}
+html.has-modal .modal__close {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-transition-delay: 400ms;
+          transition-delay: 400ms;
+}
+
+html.no-scroll body {
+  height: 100vh;
+  overflow: hidden;
+}
+
 /*
 	TEMPLATES
 	--------------------------------------------------

@@ -1,0 +1,63 @@
+/* 
+
+	TABS:
+	Defaults
+
+*/
+[data-tabs] {
+	overflow: hidden;
+}
+
+[data-pane-container] {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	align-items: start;
+}
+
+	[data-pane] {
+		grid-column: 1;
+		grid-row: 1;
+		visibility: hidden;
+		pointer-events: none;
+		position: relative;
+/*		display: none;*/
+
+/*		@include animation;*/
+		opacity: 0;
+
+		@include xs-screen {
+			display: grid;
+			opacity: 1;
+			visibility: visible;
+		}
+
+		&[data-active] {
+			z-index: 1;
+			visibility: visible;
+			pointer-events: all;
+			display: grid;
+			opacity: 1;
+		}
+	}
+
+
+[data-tab] {
+	cursor: pointer;
+	&[data-active] {
+
+		background: rgba(var(--col),1);
+		color: rgba(var(--background),1);
+		& * {
+			color: rgba(var(--background),1);
+		}
+	}
+	&:not([data-active]) {
+		
+	}
+}
+
+[data-tab][data-active].title {
+	height: 100%;
+}

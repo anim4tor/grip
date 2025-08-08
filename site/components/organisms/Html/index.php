@@ -13,8 +13,8 @@
 
 <?php endsnippet() ?>
 
-<!-- The end --> 
-<?php snippet('organisms/Aside'); ?>
+<!-- The modal --> 
+<?php snippet('organisms/Modal'); ?>
 
 <!-- The end --> 
 <?php snippet('organisms/End'); ?>

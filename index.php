@@ -23,7 +23,7 @@ $kirby = new Kirby([
             'engine'       => __DIR__ . '/site/engine',
                 'blueprints'    => __DIR__ . '/site/engine/blueprints',
                 'collections'   => __DIR__ . '/site/engine/collections',
-                'controlers'    => __DIR__ . '/site/engine/controlers',
+                'controllers'    => __DIR__ . '/site/engine/controllers',
                 'models'        => __DIR__ . '/site/engine/models',
                 'plugins'       => __DIR__ . '/site/engine/plugins',
 

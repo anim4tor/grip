@@ -1,0 +1,3 @@
+<!-- modal -->
+
+<?php go('workouts') ?>

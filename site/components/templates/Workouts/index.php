@@ -21,7 +21,7 @@
 			<header class="absolute inset__top-stretch flex justify__end inner__05 op__4">
 				<a class="button circle"><span class="icon"><?= svg('public/assets/images/ui/ui_settings.svg') ?></span></a>
 			</header>
-			<div class="grid gap__2 place__end-start">	
+			<a modal-open href="modal/workout/1" class="grid gap__2 place__end-start">	
 				<figure class="progress --large">
 					<h3 class="font__size__1">2</h3>
 				</figure>
@@ -29,7 +29,7 @@
 					<h2>Chest + triceps</h2>
 					<p class="op__5">Fridays</p>
 				</div>
-			</div>
+			</a>
 		</card>
 
 		<card class="grid inner__1 inner-y__2 bg__white/10 relative border">

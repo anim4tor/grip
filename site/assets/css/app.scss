@@ -20,6 +20,7 @@
 	@use "../../components/atoms/Theme/border";
 	@use "../../components/atoms/Theme/effects";
 
+	@use "../../components/atoms/Animation/animation";
 	@use "../../components/atoms/Icon/icon";
 	@use "../../components/atoms/Button/button";
 
@@ -37,7 +38,7 @@
 	@use "../../components/organisms/Body/body";
 	@use "../../components/organisms/Header/header";
 	@use "../../components/organisms/Footer/footer";
-	@use "../../components/organisms/Aside/aside";
+	@use "../../components/organisms/Modal/modal";
 
 
 /*

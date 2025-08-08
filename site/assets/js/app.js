@@ -15,4 +15,26 @@ var isWindow = navigator.platform.indexOf('Win') > -1 ? true : false;
 //@prepros-append vendor/locomotive-scroll.min.js
 
 //@prepros-append ../../components/atoms/Scroll/index.js
+//@prepros-append ../../components/molecules/Tabs/index.js
+//@prepros-append ../../components/molecules/Collapsible/index.js
+//@prepros-append ../../components/organisms/Modal/index.js
+
+function init() {
+  initScroll()
+  initModals()
+  initTabs()
+  initCollapsibles()
+}
+
+window.addEventListener('load', (event) => {
+
+  document.documentElement.classList.add('loading');
+  preloadImages('[data-preload]').then(() => {
+    document.documentElement.classList.remove('loading'); // Remove loading state
+    init()
+  });
+  
+});
+
+
 
