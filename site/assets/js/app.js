@@ -20,7 +20,7 @@ var isWindow = navigator.platform.indexOf('Win') > -1 ? true : false;
 //@prepros-append ../../components/organisms/Modal/index.js
 
 function init() {
-  initScroll()
+  // initScroll()
   initModals()
   initTabs()
   initCollapsibles()

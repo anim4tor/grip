@@ -10,25 +10,23 @@
     <?php snippet('organisms/loader'); ?>
 
     <!-- Scroll container -->
-    <app data-scroll-container data-app>
+    <app data-app theme>
+      <?php if($header): ?>
+        <!-- The header --> 
+        <?php snippet('organisms/Header'); ?>
+      <?php endif ?>
+
+      <main data-main class="inner-y__7">
+        <?php if ($main = $slots->main()): ?>
+          <!-- The main --> 
+          <?= $main ?>
+        <?php endif ?>
+      </main>
       
-        <?php if($header): ?>
-          <!-- The header --> 
-          <?php snippet('organisms/Header'); ?>
-        <?php endif ?>
-
-        <main data-main class="inner-y__7">
-          <?php if ($main = $slots->main()): ?>
-            <!-- The main --> 
-            <?= $main ?>
-          <?php endif ?>
-        </main>
-
-        <?php if($footer): ?>
-          <!-- The footer --> 
-          <?php snippet('organisms/Footer'); ?>
-        <?php endif ?>
-        
+      <?php if($footer): ?>
+        <!-- The footer --> 
+        <?php snippet('organisms/Footer'); ?>
+      <?php endif ?>
     </app>
 
 </body>

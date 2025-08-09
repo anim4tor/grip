@@ -134,3 +134,8 @@ $opacity : (
 	}
 
 }
+
+.bg__inherit {
+	background: rgba(var(--background),1);
+/*	--background: rgba(var(--background),1);*/
+}

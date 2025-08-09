@@ -23,21 +23,21 @@ $dirs: (
 @mixin spacing_scale($props, $var: spacing, $min: 0, $max: $limit) {
 	@each $label, $dir in $dirs {
 		@if($label == '') {
+			$neg: 1;
 			@for $i from $min through $max {
-				$j: $i;
 		    	@if($i < 0) {
-		    		$j: -$i;
+		    		$neg: -1;
 		    	} 
-			    &__#{$j} {
+			    &__#{$i} {
 					@each $prop in $props {
-						#{$prop}: calc(#{$i} * var(--#{$var}));
+						#{$prop}: calc(#{$neg*$i} * var(--#{$var}));
 					}
 			    }
 			} 
 			@for $i from 1 through 9 {
 			    &__0#{$i} {
 					@each $prop in $props {
-						#{$prop}: calc(#{$i/10} * var(--#{$var}));
+						#{$prop}: calc(#{$neg*$i/10} * var(--#{$var}));
 					}
 			    }
 			} 

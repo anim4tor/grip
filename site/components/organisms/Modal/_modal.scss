@@ -45,7 +45,7 @@
 			bottom: 0;
 			width: 100vw;
 			height: 100vh;
-			background-color: rgba(var(--color-dark),.4);
+/*			background-color: rgba(var(--color-dark),.4);*/
 
 			@include animation;
 			opacity: 0;
@@ -57,7 +57,7 @@
 
 		}
 
-		&__load {
+		&__widget {
 			grid-column: 1;
 			grid-row: 1;
 			
@@ -66,18 +66,33 @@
 			grid-template-rows: 1fr;
 
 			height: calc(100vh - var(--spacing)*4);
+			border-radius: var(--card-radius);
+			overflow: hidden;
+
+			position: relative;
+
+			&:before {
+				content: '';
+				position: absolute;
+				inset: calc(var(--spacing)*0.5) 40% auto;
+				width: 20%;
+				height: 3px;
+				border-radius: 3px;
+				background-color: currentColor;
+			}
 
 		}
 
 	
 			& {
-				z-index: 1000;
-				width: 100%;
+				overflow-y: scroll;
 
 				.modal__close {
 					position: relative;
 					inset: auto;		
 				}
+
+				
 	
 			}
 			
@@ -143,16 +158,27 @@
 }
 
 html {
+	[data-app] {
+		display: grid;
+		@include animation((transform, background));
+		transform: none;
+
+		card, header, button, a.button {
+			@include animation((transform, opacity));
+			opacity: 1;
+		}
+	}
 	.modal {
 		&__layout {
-			@include animation(all, 1.2s);
-			visibility: hidden;
+			@include animation(transform);
+/*			visibility: hidden;*/
 			pointer-events: none;
+			transform: scale(1.1);
 		}
 		
-		&__load {
+		&__widget {
 			@include animation(transform);
-			transform: translateY(calc(1*100vh));
+			transform: translateY(calc(1*100%));
 
 		}
 
@@ -165,11 +191,26 @@ html {
 }
 
 html.has-modal {
+	[data-app] {
+		transform: scale(0.9) translateY(-1rem);
+		background: rgba(var(--color-white),0.2);
+		border-radius: var(--card-radius);
+		overflow: hidden;
+
+		card, button, a.button {
+			transform: scale(0.75);
+			opacity: 0;
+		}
+		header {
+			opacity: 0;
+		}
+	}
 	.modal {
 
 		&__layout {
-			visibility: visible;
+/*			visibility: visible;*/
 			pointer-events: all;
+			transform: none;
 		}
 
 		&__overlay {
@@ -177,7 +218,7 @@ html.has-modal {
 			pointer-events: all;
 		}
 		
-		&__load {
+		&__widget {
 			transform: translateY(0%);
 		}
 		&__close {

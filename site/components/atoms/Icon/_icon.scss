@@ -6,7 +6,7 @@
 :root {
     --icon-size: 28px;
 }
-.icon {
+icon, .icon {
     width: var(--icon-size);
     height: var(--icon-size);
 

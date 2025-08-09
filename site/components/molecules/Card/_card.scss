@@ -10,6 +10,8 @@
 card {
 	display: block;
 	border-radius: var(--card-radius);
+	overflow: hidden;
+	-webkit-tap-highlight-color: rgba(var(--color-white),.1);
 }
 
 .shadow {

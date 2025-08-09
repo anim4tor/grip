@@ -33,7 +33,7 @@ class Modal {
     }
 
     add(html) {
-        this.DOM.load.insertAdjacentHTML('beforeend', html)
+        this.DOM.load.innerHTML = html
         this.DOM.close = document.querySelectorAll('[data-modal-close]')
         this.initEvents()
         this.open()
@@ -46,12 +46,16 @@ class Modal {
         document.documentElement.classList.add('no-scroll');
         document.documentElement.classList.add('has-modal');
         this.is_open = true
+
+        initModals(this.DOM.load)
     }
 
     close() {
         document.documentElement.classList.remove('has-modal');
         document.documentElement.classList.remove('no-scroll');
-        this.DOM.load.innerHTML = ''
+        setTimeout( () => {
+            this.DOM.load.innerHTML = ''
+        }, 600)
         this.is_open = false
     }
 
@@ -70,10 +74,10 @@ class Modal {
 // bind modal events
 var MODAL = new Modal()
 
-function initModals() {
+function initModals(container = document) {
     console.log('Init Modal controls ...')
 
-    const modalOpen  = document.querySelectorAll('[modal-open]');
+    const modalOpen  = container.querySelectorAll('[modal-open]');
     const modalLoad = document.querySelector('[data-modal-load]')
 
     modalOpen.forEach(function(el) {
