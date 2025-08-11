@@ -29563,13 +29563,14 @@ footer,
   -ms-grid-column: 1;
 }
 .modal__widget:before {
+  z-index: 1;
   content: "";
   position: absolute;
   inset: calc(var(--spacing) * 0.5) 40% auto;
   width: 20%;
   height: 3px;
   border-radius: 3px;
-  background-color: modalColor;
+  background-color: currentColor;
 }
 .modal {
   overflow-y: scroll;
@@ -29844,6 +29845,413 @@ html.no-scroll body {
             transform: none;
   }
 }
+/*
+
+  MODAL
+
+*/
+/*
+
+    MEDIA
+
+*/
+/*defaults*/
+[open-dialog], [close-dialog] {
+  cursor: pointer;
+}
+
+:root {
+  --modal-width: 60vw;
+  --modal-offset: calc(var(--spacing)*2);
+}
+@media screen and (max-width: 480px) {
+  :root {
+    --modal-width: 100vw;
+  }
+}
+
+dialog {
+  padding: 0;
+  border: none;
+}
+
+.dialog__layout {
+  z-index: 10003;
+  position: fixed;
+  inset: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: end;
+      align-content: end;
+  pointer-events: none;
+}
+.dialog__overlay {
+  position: absolute;
+  inset: 0;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 600ms;
+          transition-duration: 600ms;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: all;
+  background: rgba(var(--color-dark), 0.5);
+  opacity: 0;
+}
+.dialog__widget {
+  z-index: 1;
+  position: relative;
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+  grid-template-rows: 1fr;
+  height: auto;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+.dialog__widget > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+.dialog__widget:before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  inset: calc(var(--spacing) * 0.5) 40% auto;
+  width: 20%;
+  height: 3px;
+  border-radius: 3px;
+  background-color: currentColor;
+}
+.dialog {
+  overflow-y: scroll;
+  background: rgba(var(--color-invert), 0.1);
+}
+.dialog .modal__close {
+  position: relative;
+  inset: auto;
+}
+
+html [dialog-widget] .dialog__layout {
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 600ms;
+          transition-duration: 600ms;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  visibility: hidden;
+  pointer-events: none;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+html [dialog-widget] .dialog__widget {
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 600ms;
+          transition-duration: 600ms;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+html [dialog-widget] .dialog__close {
+  opacity: 0;
+  -webkit-transform: translateX(calc(1 * var(--pad)));
+          transform: translateX(calc(1 * var(--pad)));
+}
+
+html.has-dialog [dialog-widget] .dialog__layout {
+  visibility: visible;
+  pointer-events: all;
+  -webkit-transform: none;
+          transform: none;
+}
+html.has-dialog [dialog-widget] .dialog__overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+html.has-dialog [dialog-widget] .dialog__widget {
+  pointer-events: all;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+}
+html.has-dialog [dialog-widget] .dialog__close {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-transition-delay: 400ms;
+          transition-delay: 400ms;
+}
+
+html.no-scroll body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/*
+
+  SELECT
+
+*/
+select {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+select option {
+  font-family: var(--f-body);
+  font-size: var(--f-size-2);
+}
+
+.select {
+  z-index: 1000;
+  /*  position: fixed;*/
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 var(--pad);
+  border-top-left-radius: var(--card-radius);
+  border-top-right-radius: var(--card-radius);
+  /*height: 35vh;*/
+  overflow-y: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.select.--line {
+  height: calc(var(--pad) * 5);
+  overflow: auto;
+  -ms-scroll-snap-type: both mandatory;
+      scroll-snap-type: both mandatory;
+  overscroll-behavior-y: contain;
+}
+.select.--dialog {
+  padding: var(--pad-two-third) 0;
+}
+.select.--dialog:before, .select.--dialog:after {
+  content: none;
+}
+.select .dialog {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /*padding: 0 var(--pad-2);*/
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.select .dialog .option {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.select .dialog .option button {
+  position: relative;
+}
+.select:before {
+  content: "";
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--pad-2);
+  /*    margin-bottom:  calc(-1*var(--pad));*/
+  /*margin-top:  calc(-1*var(--pad));*/
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--background)), to(transparent));
+  background: linear-gradient(to bottom, var(--background) 0%, transparent 100%);
+  /*background:   red;*/
+  pointer-events: none;
+}
+.select:after {
+  content: "";
+  z-index: 1;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  height: var(--pad-2);
+  /*    margin-top:  calc(-1*var(--pad));*/
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  background: -webkit-gradient(linear, left bottom, left top, from(var(--background)), to(transparent));
+  background: linear-gradient(to top, var(--background) 0%, transparent 100%);
+  /*background:   red;*/
+  pointer-events: none;
+}
+.select .option {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: var(--pad-3);
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  scroll-snap-align: center center;
+  scroll-snap-stop: normal defaults;
+}
+.select .option.--border {
+  border-bottom: 1px solid var(--col);
+  width: calc(100% + var(--pad) * 4);
+}
+.select .option.selected {
+  opacity: 1;
+}
+.select .option.selected button.checkbox {
+  visibility: visible;
+}
+.select .option button {
+  position: absolute;
+  right: 0;
+}
+.select .option button.checkbox {
+  visibility: hidden;
+}
+.select.is-subselect {
+  overflow-y: hidden;
+}
+.select.is-subselect [data-select-group] > [data-select-sub] {
+  -webkit-transform: translateX(-100%) scale(0.5);
+          transform: translateX(-100%) scale(0.5);
+  opacity: 0;
+}
+.select__group {
+  width: 100%;
+}
+.select.--sub {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, right top, from(transparent), to(color(back)));
+  background: linear-gradient(to right, transparent 0%, color(back) 100%);
+}
+
+[data-select-group] {
+  /*  @extend .select;*/
+  position: relative;
+  padding: 0;
+  overflow-y: scroll;
+}
+[data-select-group] [data-select] {
+  max-height: 50dvh;
+  overflow-y: scroll;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 600ms;
+          transition-duration: 600ms;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: all;
+}
+[data-select-group].open {
+  overflow: hidden;
+}
+[data-select-group].open [data-select] {
+  -webkit-transform: scale(0.8) translateX(-50%);
+          transform: scale(0.8) translateX(-50%);
+  opacity: 0;
+}
+[data-select-group].open [data-subselect].active {
+  -webkit-transform: none;
+          transform: none;
+}
+
+[data-subselect] {
+  max-height: 50dvh;
+  overflow-y: scroll;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 600ms;
+          transition-duration: 600ms;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: all;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+[data-subselect].open {
+  -webkit-transform: none;
+          transform: none;
+}
+
+[data-select-default] {
+  display: none;
+}
+[data-select-default]:only-child {
+  display: initial;
+}
+
+[data-select-widget].open [data-select-widget] {
+  -webkit-transform: none;
+          transform: none;
+}
+[data-select-widget].open [data-select-widget]:before {
+  opacity: 1;
+}
+[data-select-widget].open [data-select-close] {
+  opacity: 1;
+  pointer-events: all;
+}
+.is-selected [data-select-option]:not(.selected) {
+  opacity: 0.5;
+}
+
 /*
 	TEMPLATES
 	--------------------------------------------------

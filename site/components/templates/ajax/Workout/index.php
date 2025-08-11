@@ -8,7 +8,7 @@
 </toolbar>
 <header class="">
 	<div class="inner-x__1 inner-b__2 flex align__center justify__space-between gap__05">
-		<div class="flex gap__1 align__center bg__inherit">
+		<div class="flex gap__1 align__center">
 
 			<div class="grid gap__05 align__center inner-t__04">
 				<h1>Upper body</h1>

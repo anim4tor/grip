@@ -17,6 +17,7 @@
 <?php snippet('organisms/Modal'); ?>
 
 <!-- The dialog --> 
+<?php snippet('organisms/Dialog'); ?>
 
 <!-- The end --> 
 <?php snippet('organisms/End'); ?>

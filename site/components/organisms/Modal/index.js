@@ -116,6 +116,7 @@ class Modal {
     }
 
     initEvents() {
+        console.log('Init Modal events ...')
         var _this = this
         this.DOM.close = document.querySelectorAll('[modal-close]')
         this.DOM.close.forEach(function(el) {
@@ -138,6 +139,12 @@ class Modal {
 
     after() {
         this.initEvents()
+        this.DOM.widget.querySelectorAll('[open-dialog]').forEach(function(el) {
+            el.addEventListener("click", e => {
+                e.preventDefault()
+                DIALOG.fetch(e)
+            });
+        })
     }
 }
 // bind modal events
