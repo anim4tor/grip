@@ -1,0 +1,19 @@
+/*	
+
+	SET
+
+*/
+@import "../../atoms/Theme/border";
+:root {
+	
+}
+set, .set {
+
+	.checkbox {
+		&:hover {
+			icon {
+				opacity: 0.5;
+			}
+		}
+	}
+}

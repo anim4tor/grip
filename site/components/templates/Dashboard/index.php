@@ -234,6 +234,25 @@
 			</div>
 		</card>
 
+		<card class="grid span__2 inner__1 inner-y__1 bg__white/5 relative border" style="--progress: 0.66">
+			<div class="card__progress "></div>
+			<div class="flex justify__space-between align__center">
+				<div class="flex gap__1 align__center">	
+					<div class="grid ">
+						<h2>Volume lifted</h2>
+						<p class="op__5">Last 7 days</p>
+					</div>
+				</div>
+				<figure class="font__size__2">
+					<span class="l">3.200</span>
+					<span class="s op__5 light">kg</span>
+				</figure>
+				<div class="op__4">
+					<a class="button circle"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
+				</div>
+			</div>
+		</card>
+
 		<card class="grid inner__1 inner-y__2 bg__white/10 relative border">
 			<header class="absolute inset__top-stretch flex justify__end inner__05 op__4">
 				<a class="button circle"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>

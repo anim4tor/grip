@@ -6,6 +6,7 @@
 :root {
 	--button-size: 52px;
 	--button-radius: 2rem;
+	--checkbox-radius: 1rem;
 }
 .button {
 	display: inline-block;
@@ -67,7 +68,7 @@
 	&:before {
 		content: '';
 		position: absolute;
-		inset: calc(var(--circle-size)*0.1);
+		inset: calc(var(--circle-size)*0.075);
 		border-radius: 50%;
 		border: 2px solid currentColor;
 		opacity: .05;
@@ -75,10 +76,18 @@
 
 	&.--exercise {
 		--circle-size: calc(var(--button-size) * 1.231);
+		margin: 0 calc(-0.5 * var(--button-size) * 1.231);
 		&:before {
 			content: none;
 		}
 	}
+}
+
+.checkbox {
+	padding: 0;
+	width: var(--button-size);
+	height: var(--button-size);
+	border-radius: var(--checkbox-radius);
 }
 
 .button__group {

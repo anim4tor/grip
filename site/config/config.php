@@ -3,7 +3,7 @@
 return [
     'debug'  => true,
     'panel.install' => true,
-    'home' => 'workouts',
+    'home' => 'dashboard',
     'routes' => function ($kirby) {
       return [
           [

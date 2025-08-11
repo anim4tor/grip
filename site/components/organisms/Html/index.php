@@ -16,6 +16,8 @@
 <!-- The modal --> 
 <?php snippet('organisms/Modal'); ?>
 
+<!-- The dialog --> 
+
 <!-- The end --> 
 <?php snippet('organisms/End'); ?>
 
