@@ -1,0 +1,44 @@
+/*
+
+  DROPDOWN
+
+*/
+@import "../../atoms/Media/media";
+@import "../../atoms/Theme/colors";
+@import "../../atoms/Animation/animation";
+@import "../../molecules/Card/card";
+
+[open-dropdown], [close-dropdown] {
+  cursor: pointer;
+}
+
+:root {
+ 
+}
+
+dropdown {
+  padding: 0;
+  color: currentColor;
+}
+
+.dropdown {
+  z-index: 10004;
+  position: fixed;
+  inset: auto auto var(--spacing);
+  @extend card;
+  box-shadow: 0 0 calc(var(--spacing)*2) 100px var(--color-black);
+
+  &::backdrop {
+    display: block;
+    background: rgba(0, 0, 0, 100%);
+  }
+}
+
+html {
+
+}
+
+html.has-dropdown {
+
+  
+}

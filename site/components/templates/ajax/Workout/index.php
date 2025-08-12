@@ -3,7 +3,7 @@
 	<nav class="button__group">
 		<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
 		<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_calendar.svg') ?></icon></a>
-		<a modal-reveal class="button bg__invert color__dark">Start</a>
+		<a open-dialog href="modal/dialog/finish_session" modal-reveal class="button bg__invert color__dark">Start</a>
 	</nav>
 </toolbar>
 <header class="">

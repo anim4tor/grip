@@ -5,12 +5,15 @@
 */
 @import "../../atoms/Theme/border";
 :root {
-	--card-radius: calc(var(--spacing)*1.5);
+	--card-radius: var(--radius);
+	--card-bg: 35, 35, 37;
 }
 card, .card {
 	display: block;
+	@include border;
 	border-radius: var(--card-radius);
 	overflow: hidden;
+	background: rgba(var(--card-bg),1);
 	-webkit-tap-highlight-color: rgba(var(--color-white),.1);
 }
 

@@ -1,6 +1,9 @@
 <?php
 
 require 'kirby/bootstrap.php';
+function formatNum($num) {
+    return str_pad($num, 2, '0', STR_PAD_LEFT);
+}
 $kirby = new Kirby([
     'roots' => [
         // 'index'   => __DIR__,

@@ -1,6 +1,6 @@
 /*
 
-    MODAL
+    DIALOG
 
 */
 class Dialog {
@@ -26,32 +26,24 @@ class Dialog {
     // async fetch(template = 'default', id = '') {
     async fetch(e) {
         // let url = `${window.location.protocol}//${window.location.host}${lang}/modals.json/template${eq}${template}/id${eq}${id}`;
-
-        this.url = e.target.closest('[open-dialog]').getAttribute('href')
-        console.log('Fetching dialog url:', this.url)
-        try {
-          const response = await fetch(this.url);
-          const json = await response.json();
-          // console.log(json)
-          this.add(json.html)  
-        } catch (error) {
-          console.log('Fetch error: ', error);
+        if(!this.is_open) { 
+            this.url = e.target.closest('[open-dialog]').getAttribute('href')
+            console.log('Fetching dialog url:', this.url)
+            try {
+              const response = await fetch(this.url);
+              const json = await response.json();
+              // console.log(json)
+              this.add(json.html)  
+            } catch (error) {
+              console.log('Fetch error: ', error);
+            }
         }
     }
 
     add(html) { 
-        // console.log(this.next, this.back)
-        if (this.next) {
-            this.openNext(html)
-        } else if(this.back) {
-            this.openPrev(html)
-        } else {
-            console.log('Adding new dialog')
-            this.renderCard(html)
-            // this.initEvents()
-            this.open()
-        }
-        
+        console.log('Adding new dialog')
+        this.renderCard(html)
+        this.open()
     }
 
     renderCard(html) {
@@ -63,20 +55,26 @@ class Dialog {
     }
 
     open() {
-        console.log('Opening dialog')
-        document.documentElement.classList.add('no-scroll');
-        document.documentElement.classList.add(this.openClass);
-        this.is_open = true
-        this.after()
+        if(!this.is_open) { 
+            console.log('Opening dialog')
+            document.documentElement.classList.add('no-scroll');
+            document.documentElement.classList.add(this.openClass);
+            this.is_open = true
+            setTimeout( () => {
+                this.after()
+            }, 300)
+        }
     }
 
     close() {
-        document.documentElement.classList.remove(this.openClass);
-        document.documentElement.classList.remove('no-scroll');
-        setTimeout( () => {
-            this.DOM.load.innerHTML = ''
-        }, 600)
-        this.is_open = false
+        if(this.is_open) { 
+            document.documentElement.classList.remove(this.openClass);
+            document.documentElement.classList.remove('no-scroll');
+            setTimeout( () => {
+                this.DOM.load.innerHTML = ''
+                this.is_open = false
+            }, 300)
+        }
     }
 
     initEvents() {

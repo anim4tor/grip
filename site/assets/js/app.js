@@ -17,6 +17,7 @@ var isWindow = navigator.platform.indexOf('Win') > -1 ? true : false;
 //@prepros-append ../../components/atoms/Scroll/index.js
 //@prepros-append ../../components/molecules/Tabs/index.js
 //@prepros-append ../../components/molecules/Collapsible/index.js
+//@prepros-append ../../components/molecules/Dropdown/index.js
 //@prepros-append ../../components/organisms/Dialog/index.js
 //@prepros-append ../../components/organisms/Modal/index.js
 
@@ -24,6 +25,7 @@ function init() {
   // initScroll()
   initModals()
   initDialogs()
+  initDropdowns()
   initTabs()
   initCollapsibles()
 }

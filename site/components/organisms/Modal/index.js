@@ -145,6 +145,12 @@ class Modal {
                 DIALOG.fetch(e)
             });
         })
+        this.DOM.widget.querySelectorAll('[open-dropdown]').forEach(function(el) {
+            el.addEventListener("click", e => {
+                e.preventDefault()
+                DROPDOWN.fetch(e)
+            });
+        })
     }
 }
 // bind modal events

@@ -7,6 +7,7 @@
 
 :root {
   --border-width: 1.5px;
+  --radius: calc(var(--spacing)*1.5);
 }
 
 $directions : (
@@ -85,6 +86,11 @@ html body hr {
 .dotted {
   border-style: dotted;
 }
-.radius {
+
+@mixin radius {
   border-radius: var(--radius);
+  overflow: hidden;
+}
+.radius {
+  @include radius;
 }
