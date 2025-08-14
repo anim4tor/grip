@@ -140,7 +140,7 @@ $dirs: (
       @include inset;
     }
     .top {
-      @include spacing_scale( ( top ), spacing, 0, 10 );
+      @include spacing_scale( ( top ), spacing, 0, 20 );
     }
     .-top {
       @include spacing_scale( ( top ), spacing, -10, 0 );
@@ -152,7 +152,7 @@ $dirs: (
       @include spacing_scale( ( left ), spacing, -10, 0 );
     }
     .bottom {
-      @include spacing_scale( ( bottom ), spacing, 0, 10 );
+      @include spacing_scale( ( bottom ), spacing, 0, 20 );
     }
     .-bottom {
       @include spacing_scale( ( bottom ), spacing, -10, 0 );
@@ -173,7 +173,7 @@ $dirs: (
         @include inset;
       }
       .#{$modifier}\:top {
-        @include spacing_scale( ( top ), spacing, 0, 10 );
+        @include spacing_scale( ( top ), spacing, 0, 20 );
       }
       .#{$modifier}\:-top {
         @include spacing_scale( ( top ), spacing, -10, 0 );
@@ -185,7 +185,7 @@ $dirs: (
         @include spacing_scale( ( left ), spacing, -10, 0 );
       }
       .#{$modifier}\:bottom {
-        @include spacing_scale( ( bottom ), spacing, 0, 10 );
+        @include spacing_scale( ( bottom ), spacing, 0, 20 );
       }
       .#{$modifier}\:-bottom {
         @include spacing_scale( ( bottom ), spacing, -10, 0 );

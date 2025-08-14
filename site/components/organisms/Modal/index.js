@@ -22,12 +22,13 @@ class Modal {
         this.back = false
         this.url = null
         this.openClass = 'has-modal'
-        this.init()
     }
 
     init() {
-
+        console.log('Init Modal controls ...')
+        this.initEvents()
     }
+
 
     // async fetch(template = 'default', id = '') {
     async fetch(e) {
@@ -116,53 +117,39 @@ class Modal {
     }
 
     initEvents() {
-        console.log('Init Modal events ...')
         var _this = this
-        this.DOM.close = document.querySelectorAll('[modal-close]')
-        this.DOM.close.forEach(function(el) {
-            el.addEventListener("click", e => {
-                // console.log(e.target)
+        document.addEventListener("click", e => {
+            e.stopPropagation()
+            var el = e.target.closest('[modal-close]')
+            if (el !== null) {
                 e.preventDefault()
                 _this.close()
-                // initScroll()
-            });
+            }
         })
-        this.DOM.widget.querySelectorAll('[modal-open]').forEach(function(el) {
-            el.addEventListener("click", e => {
-                // console.log(e.target)
+        document.addEventListener("click", e => {
+            e.stopPropagation()
+            var el = e.target.closest('[modal-open]')
+            if (el !== null) {
                 e.preventDefault()
                 _this.fetch(e)
-                // initScroll()
-            });
+            }
         })
+        // this.DOM.widget.querySelectorAll('[modal-open]').forEach(function(el) {
+        //     el.addEventListener("click", e => {
+        //         // console.log(e.target)
+        //         e.preventDefault()
+        //         _this.fetch(e)
+        //     });
+        // })
     }
 
     after() {
-        this.initEvents()
-        this.DOM.widget.querySelectorAll('[open-dialog]').forEach(function(el) {
-            el.addEventListener("click", e => {
-                e.preventDefault()
-                DIALOG.fetch(e)
-            });
-        })
-        this.DOM.widget.querySelectorAll('[open-dropdown]').forEach(function(el) {
-            el.addEventListener("click", e => {
-                e.preventDefault()
-                DROPDOWN.fetch(e)
-            });
-        })
+        
     }
 }
 // bind modal events
 var MODAL = new Modal()
 
 function initModals(container = document) {
-    console.log('Init Modal controls ...')
-    const modalOpen  = container.querySelectorAll('[modal-open]');
-    modalOpen.forEach(function(el) {
-        el.addEventListener("click", (e) => {
-          e.preventDefault()
-          MODAL.fetch(e)
-        })
-    })
+    MODAL.init()
 }

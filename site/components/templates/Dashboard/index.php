@@ -9,7 +9,7 @@
 		</div>
 		<nav class="button__group">
 			<a class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
-			<a class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_add.svg') ?></icon></a>
+			<a open-dropdown href="modal/dropdown/workouts_add" class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_add.svg') ?></icon></a>
 		</nav>
 	</div>
 </header>
@@ -17,11 +17,11 @@
 <section data-section>
 	<div class="grid grid__2 gap-x__07 gap-y__1 inner__1">
 
-		<card class="grid bg__white/10 relative border">
+		<card class="grid bg__white/10 relative border" style="--progress: 0.3">
 			<header class="absolute inset__top-stretch flex justify__end inner__05 op__4">
 				<a class="button circle"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
 			</header>
-			<a modal-open href="modal/workout/1" class="grid gap__2 place__end-start inner__1 inner-y__2">	
+			<a modal-open href="modal/workout/index" class="grid gap__2 place__end-start inner__1 inner-y__2">	
 				<figure class="progress --large">
 					<h3 class="font__size__1">2</h3>
 				</figure>
@@ -48,7 +48,7 @@
 			</div>
 		</card>
 
-		<card class="grid span__2 inner__1 inner-y__2 bg__white/10 relative border">
+		<card class="grid span__2 inner__1 inner-y__2 bg__white/10 relative border" style="--progress: 0.7">
 			<div class="grid gap__2 place__center-stretch">	
 				<calendar class="grid__3 gap__1">
 					<month class="grid gap__1 justify__center">
@@ -269,7 +269,7 @@
 			</div>
 		</card>
 		
-		<card class="grid inner__1 inner-y__2 bg__white/10 relative border">
+		<card class="grid inner__1 inner-y__2 bg__white/10 relative border" style="--progress: 0.3">
 			<header class="absolute inset__top-stretch flex justify__end inner__05 op__4">
 				<a class="button circle"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
 			</header>

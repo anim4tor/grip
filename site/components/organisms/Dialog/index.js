@@ -12,14 +12,13 @@ class Dialog {
             loaderer: {}
         };
 
-        
         this.is_open = false
         this.url = null
         this.openClass = 'has-dialog'
-        this.init()
     }
 
     init() {
+        console.log('Init Dialog controls ...')
         this.initEvents()
     }
 
@@ -78,16 +77,22 @@ class Dialog {
     }
 
     initEvents() {
-        console.log('Init Dialog events ...')
         var _this = this
-        this.DOM.close = document.querySelectorAll('[close-dialog]')
-        this.DOM.close.forEach(function(el) {
-            el.addEventListener("click", e => {
-                // console.log(e.target)
+        document.addEventListener("click", e => {
+            e.stopPropagation()
+            var el = e.target.closest('[close-dialog]')
+            if (el !== null) {
                 e.preventDefault()
                 _this.close()
-                // initScroll()
-            });
+            }
+        })
+        document.addEventListener("click", e => {
+            e.stopPropagation()
+            var el = e.target.closest('[open-dialog]')
+            if (el !== null) {
+                e.preventDefault()
+                _this.fetch(e)
+            }
         })
     }
 
@@ -99,12 +104,5 @@ class Dialog {
 var DIALOG = new Dialog()
 
 function initDialogs(container = document) {
-    console.log('Init Dialog controls ...')
-    const dialogOpen  = container.querySelectorAll('[open-dialog]');
-    dialogOpen.forEach(function(el) {
-        el.addEventListener("click", (e) => {
-          e.preventDefault()
-          DIALOG.fetch(e)
-        })
-    })
+    DIALOG.init()
 }

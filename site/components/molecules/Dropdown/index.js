@@ -26,15 +26,15 @@ class Dropdown {
             try {
               const response = await fetch(this.url);
               const json = await response.json();
-              // console.log(json)
-              this.add(e, json.html)  
+              console.log(json)
+              this.add(e,json.html)  
             } catch (error) {
               console.log('Fetch error: ', error);
             }
         }
     }
 
-    add(e, html) { 
+    add(e,html) { 
         console.log('Adding new dropdown')
         this.renderCard(html)
         this.position(e)
@@ -51,18 +51,29 @@ class Dropdown {
     }
 
     position(e) {
-        var touch = {
-            x: 0,
-            y: 0
-        };
-        touch.x = e.touches ? e.touches[0].clientX : e.clientX;
-        touch.y = e.touches ? e.touches[0].clientY : e.clientY;
-        console.log(touch)
+        // get dropdown dimensions
+        var link = e.target.closest('[open-dropdown]').getBoundingClientRect()
+        console.log(link)
+        var widget = this.card.querySelector('[data-dropdown]').getBoundingClientRect()
+        if(link.left + widget.width > window.innerWidth) {
+            this.card.querySelector('[data-dropdown]').style.right = window.innerWidth - link.left - link.width + 'px'
+            this.card.querySelector('[data-dropdown]').style.transformOrigin = "top right";
+        } else {
+            this.card.querySelector('[data-dropdown]').style.left = link.left + 'px' 
+        }
+        if(link.top + widget.height > window.innerHeight) {
+            this.card.querySelector('[data-dropdown]').style.bottom = window.innerHeight - link.top - link.height + 'px'
+            this.card.querySelector('[data-dropdown]').style.transformOrigin = "bottom right";
+        } else {
+            this.card.querySelector('[data-dropdown]').style.top = link.top + 'px'
+        }
+        
     }
 
     open() {
         if(!this.is_open) { 
             console.log('Opening dropdown')
+            this.card.querySelector('[data-dropdown]').toggleAttribute('open')
             document.documentElement.classList.add('no-scroll');
             document.documentElement.classList.add(this.openClass);
             this.is_open = true
@@ -74,26 +85,33 @@ class Dropdown {
 
     close() {
         if(this.is_open) { 
+            this.card.querySelector('[data-dropdown]').toggleAttribute('close')
             document.documentElement.classList.remove(this.openClass);
             document.documentElement.classList.remove('no-scroll');
             setTimeout( () => {
                 this.card.remove()
                 this.is_open = false
-            }, 0)
+            }, 200)
         }
     }
 
     initEvents() {
         var _this = this
-        document.querySelectorAll('[open-dropdown]').forEach(function(el) {
-            el.addEventListener("click", (e) => {
+        // document.querySelectorAll('[open-dropdown]').forEach(function(el) {
+            // el.addEventListener("click", e => {
+        document.addEventListener("click", e => {
+            e.stopPropagation()
+            var el = e.target.closest('[open-dropdown]')
+            // console.log(el)
+            if (el !== null) {
                 e.preventDefault()
                 _this.fetch(e)
-            })
+            }
         })
-        document.addEventListener('click', (e) => {
+        // })
+        document.addEventListener('click', e => {
             if(this.is_open) {
-                if (!this.card.contains(e.target)) this.close();
+                if (!this.card.querySelector('[data-dropdown]').contains(e.target)) this.close();
             }
         });
     }

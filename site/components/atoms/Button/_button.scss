@@ -14,7 +14,7 @@
 
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	text-align: center;
 	gap: 1rem;
 	flex-shrink: 0;
 
@@ -25,7 +25,10 @@
 	border-radius: var(--button-radius);
 	white-space: nowrap;
 /*	color: currentColor;*/
-
+	
+	icon, .icon {
+		
+	}
 	&.--left {
 		justify-content: start;
 		svg {
@@ -41,6 +44,7 @@
 		padding: 0;
 		width: var(--circle-size, var(--button-size));
 		height: var(--circle-size, var(--button-size));
+		justify-content: center;
 
 		&.--large {
 			--circle-size: calc(var(--button-size)*1.5);
@@ -50,8 +54,6 @@
 .progress {
 	@extend .button;
 	@extend .circle;
-
-	--progress: 360*0.2;
 	position: relative;
 	&:after {
 		content: '';
@@ -59,8 +61,8 @@
 		inset: 0;
 		border-radius: 50%;
 		background: conic-gradient(
-		  white calc(var(--progress)*1deg),
-		  rgba(white,.1) calc(var(--progress)*1deg),
+		  white calc(var(--progress, 0)*360deg),
+		  rgba(white,.1) calc(var(--progress, 0)*360deg),
 		);
 		aspect-ratio: 1;
 		mask: radial-gradient(calc(var(--circle-size)/2), #0000 calc(100% - var(--circle-size)*0.05), #000 calc(100% - var(--circle-size)*0.04));
@@ -88,14 +90,11 @@
 	width: var(--button-size);
 	height: var(--button-size);
 	border-radius: var(--checkbox-radius);
+	justify-content: center;
+
 }
 
 .button__group {
 	display: flex;
 	gap: calc(var(--spacing)*0.5);
-}
-
-.superset {
-	position: absolute;
-	top: calc(100% - (100% - var(--button-size) * 1.231) / 2);
 }

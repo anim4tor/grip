@@ -18,6 +18,7 @@ select {
     font-family: var(--f-body);
     font-size: var(--f-size-2);
   }
+
 }
 .select__widget {
   &.--half {
@@ -27,6 +28,11 @@ select {
 
   &.--line {
     --height: 2em;
+  }
+
+  &.--line.--workout {
+    --height: 1.5em;
+    --select-bg: var(--color-dark);
   }
 
   &:after {

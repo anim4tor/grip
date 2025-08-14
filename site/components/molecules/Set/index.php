@@ -21,6 +21,6 @@
 		<a open-dialog href="modal/dialog/select_reps" class="button border">0 reps</a>
 	</header>
 	<nav class="button__group">
-		<a open-dropdown href="modal/dropdown/index" class="button circle op__5"><icon><?= svg('public/assets/images/ui/ui_options.svg') ?></icon></a>
+		<a open-dropdown href="modal/dropdown/set_options" class="button circle op__5"><icon><?= svg('public/assets/images/ui/ui_options.svg') ?></icon></a>
 	</nav>
 </set>

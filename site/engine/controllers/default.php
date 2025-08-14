@@ -2,6 +2,4 @@
 
 return function ($page) {
 
-    
-
 };

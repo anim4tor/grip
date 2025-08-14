@@ -1,5 +1,5 @@
-<toolbar class="inner__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05">
-	<a modal-reveal modal-open="prev" href="modal/workout/1" class="button circle --left"><icon><?= svg('public/assets/images/ui/ui_arrow-left.svg') ?></icon></a>
+<toolbar class="inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05">
+	<a modal-reveal modal-open="prev" href="modal/workout/1" class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-left.svg') ?></icon></a>
 	<nav class="button__group">
 		<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
 	</nav>

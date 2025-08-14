@@ -8,8 +8,8 @@
 			<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_calendar.svg') ?></icon></a>
 		</div>
 		<div class="grid gap__1">
-			<a class="button bg__invert/10"><span>Discard session</span></a>
-			<a class="button bg__invert color__dark"><span>Log session</span></a>
+			<a class="button bg__invert/10 justify__center"><span>Discard session</span></a>
+			<a class="button bg__invert color__dark justify__center"><span>Log session</span></a>
 		</div>
 	</div>
 </div>

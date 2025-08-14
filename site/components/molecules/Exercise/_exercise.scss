@@ -12,4 +12,10 @@ exercise, .exercise {
 	&__figure {
 
 	}
+
+
+	.superset {
+		position: absolute;
+		top: calc(100% - (100% - var(--button-size) * 1.231) / 2.25);
+	}
 }
