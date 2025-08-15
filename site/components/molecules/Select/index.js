@@ -34,4 +34,5 @@ function initSelects(container = document) {
           DIALOG.fetch(e)
         })
     })
+    
 }

@@ -4,6 +4,14 @@
 	Defaults
 
 */
+@import "../../atoms/Media/media";
+@import "../../atoms/Animation/animation";
+@import "../../atoms/Theme/border";
+
+[data-tabs-progress] {
+	@include animation(width);
+	width: calc(var(--progress) * 100%);
+}
 [data-tabs] {
 	overflow: hidden;
 }
@@ -21,17 +29,7 @@
 		grid-row: 1;
 		visibility: hidden;
 		pointer-events: none;
-		position: relative;
-/*		display: none;*/
-
-/*		@include animation;*/
 		opacity: 0;
-
-		@include xs-screen {
-			display: grid;
-			opacity: 1;
-			visibility: visible;
-		}
 
 		&[data-active] {
 			z-index: 1;
@@ -45,16 +43,12 @@
 
 [data-tab] {
 	cursor: pointer;
+	@include border(bottom,0.8);
 	&[data-active] {
-
-		background: rgba(var(--col),1);
-		color: rgba(var(--background),1);
-		& * {
-			color: rgba(var(--background),1);
-		}
+		opacity: 1;
 	}
 	&:not([data-active]) {
-		
+		opacity: 0.5;
 	}
 }
 

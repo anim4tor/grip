@@ -170,9 +170,17 @@ html {
 		&__widget {
 			@include animation(transform);
 			transform: translateY(calc(1*100%));
-
 		}
 
+		&__content {
+			display: grid;
+			overflow: hidden;
+			height: calc(100vh - var(--modal-offset));
+			grid-template-rows: auto 1fr auto;
+		}
+		&__scroll {
+			overflow-y: scroll;
+		}
 		&__close {
 			opacity: 0;
 			transform: translateX(calc(1*var(--pad)));
@@ -296,4 +304,11 @@ html.no-scroll {
 	100% {
 		transform: none;
 	}
+}
+
+.rows__1-auto {
+	grid-template-rows: 1fr auto;
+}
+.rows__auto-1 {
+	grid-template-rows: auto 1fr;
 }

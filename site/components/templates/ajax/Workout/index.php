@@ -1,4 +1,4 @@
-<toolbar class="inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05">
+<toolbar class="sticky inset__top-stretch inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05 z__1 bg__inherit">
 	<a modal-reveal modal-close class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
 	<nav class="button__group">
 		<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
@@ -20,6 +20,12 @@
 </header>
 <section data-section>
 	<list class="grid inner-y__1">
+		<?= snippet('molecules/Exercise', [ 'completed' => false, 'progress' => 0.66, 'superset' => true ]) ?>
+		<?= snippet('molecules/Exercise', [ 'completed' => false, 'progress' => 0.5, 'superset' => false ]) ?>
+		<?= snippet('molecules/Exercise', [ 'completed' => true ]) ?>
+		<?= snippet('molecules/Exercise', [ 'completed' => false, 'progress' => 0.66, 'superset' => true ]) ?>
+		<?= snippet('molecules/Exercise', [ 'completed' => false, 'progress' => 0.5, 'superset' => false ]) ?>
+		<?= snippet('molecules/Exercise', [ 'completed' => true ]) ?>
 		<?= snippet('molecules/Exercise', [ 'completed' => false, 'progress' => 0.66, 'superset' => true ]) ?>
 		<?= snippet('molecules/Exercise', [ 'completed' => false, 'progress' => 0.5, 'superset' => false ]) ?>
 		<?= snippet('molecules/Exercise', [ 'completed' => true ]) ?>

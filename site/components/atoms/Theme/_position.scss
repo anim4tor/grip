@@ -132,6 +132,13 @@ $dirs: (
   }
 }
 
+@mixin z {
+  @for $i from 0 through 20 {
+    &#{$i} {
+      z-index: #{$i};
+    }
+  } 
+}
 
 @each $modifier , $breakpoint in $map-grid-props {
   @if($modifier == '') {
@@ -166,6 +173,9 @@ $dirs: (
     .z, [style*='--z:'] {
       z-index: var(--z);
     }
+    .z__ {
+      @include z;
+    }
   } @else {
     @include create-mq($breakpoint, 'max') {
       @include position(#{$modifier}\:);
@@ -199,6 +209,10 @@ $dirs: (
       .#{$modifier}\:z, .#{$modifier}\:[style*='--mobile-z:'] {
         z-index: var(--z);
       }
+      .#{$modifier}\:z__ {
+        @include z;
+      }
+
     }
   }
 }

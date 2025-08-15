@@ -144,7 +144,9 @@ class Modal {
     }
 
     after() {
-        
+        initTabs()
+        initNestedTabs()
+        initCarousels()
     }
 }
 // bind modal events

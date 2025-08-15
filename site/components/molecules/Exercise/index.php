@@ -5,7 +5,7 @@
 
 ?>
 <exercise class="grid relative" modal-reveal style="--progress: <?= $progress ?>">
-	<a modal-open="next" href="modal/exercise/1" class="flex justify__space-between align__start inner-y__1 inner-l__1">
+	<a modal-open="next" href="modal/exercise/index" class="flex justify__space-between align__start inner-y__1 inner-l__1">
 		<header class="flex gap__1 align__start">
 			<div class="exercise__figure grid__stack place__center-center ">
 				<?php if ($completed) : ?>

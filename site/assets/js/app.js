@@ -13,11 +13,16 @@ var isWindow = navigator.platform.indexOf('Win') > -1 ? true : false;
 
 //@prepros-append vendor/imagesloaded.pkgd.min.js
 //@prepros-append vendor/locomotive-scroll.min.js
+//@prepros-append vendor/gsap.min.js
+
+//@prepros-append polyfills/polyfill.min.js
+//@prepros-append polyfills/scrollsnap-polyfill.js
 
 //@prepros-append ../../components/atoms/Scroll/index.js
 //@prepros-append ../../components/molecules/Tabs/index.js
 //@prepros-append ../../components/molecules/Collapsible/index.js
 //@prepros-append ../../components/molecules/Dropdown/index.js
+//@prepros-append ../../components/molecules/Carousel/index.js
 //@prepros-append ../../components/organisms/Dialog/index.js
 //@prepros-append ../../components/organisms/Modal/index.js
 
@@ -26,7 +31,9 @@ function init() {
   initModals()
   initDialogs()
   initDropdowns()
+  initCarousels()
   initTabs()
+  initNestedTabs()
   initCollapsibles()
 }
 
@@ -37,6 +44,14 @@ window.addEventListener('load', (event) => {
     document.documentElement.classList.remove('loading'); // Remove loading state
     init()
   });
+  // document.addEventListener("click", e => {
+  //     var el = e.target.closest('[data-click-disabled]')
+  //     if (el !== null) {
+  //         e.stopPropagation()
+  //         e.preventDefault()
+  //         console.log('Do not propagate click')
+  //     }
+  // })
   
 });
 

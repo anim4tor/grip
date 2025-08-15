@@ -6,21 +6,8 @@
 
 class Tabs {
     constructor(el) {
-        console.log('Init Tabs controls ...')
-        this.DOM = {
-            widget: el,
-            container: el.querySelector('[data-pane-container]'),
-            // ( document.querySelectorAll('[data-tab]') )
-            tabs: el.querySelectorAll('[data-tab]'),
-            panes: el.querySelectorAll('[data-pane]'),
-            nav: {}
-            // loader: event.target.closest('[data-loader-control]')
-        };
-
-        this.DOM.nav = {
-            prev: typeof this.DOM.widget.querySelectorAll('[data-tab-prev]') !== undefined ? this.DOM.widget.querySelectorAll('[data-tab-prev]') : null,
-            next: typeof this.DOM.widget.querySelectorAll('[data-tab-next]') !== undefined ? this.DOM.widget.querySelectorAll('[data-tab-next]') : null,
-        }
+        
+        this.initDOM(el)
 
         this.data = {
             init: 0,
@@ -37,10 +24,29 @@ class Tabs {
         this.init()
         
     }
+    initDOM(el) {
+        console.log('Init Tabs controls ...')
 
+        this.DOM = {
+            widget: el,
+            container: el.querySelector('[data-pane-container]:not([nested])'),
+            // ( document.querySelectorAll('[data-tab]') )
+            tabs: el.querySelectorAll('[data-tab]:not([nested])'),
+            panes: el.querySelectorAll('[data-pane]:not([nested])'),
+            nav: {}
+            // loader: event.target.closest('[data-loader-control]')
+        };
+
+        this.DOM.nav = {
+            prev: typeof this.DOM.widget.querySelectorAll('[data-tab-prev]:not([nested])') !== undefined ? this.DOM.widget.querySelectorAll('[data-tab-prev]:not([nested])') : null,
+            next: typeof this.DOM.widget.querySelectorAll('[data-tab-next]:not([nested])') !== undefined ? this.DOM.widget.querySelectorAll('[data-tab-next]:not([nested])') : null,
+        }
+
+    }
     init() {
 
         // console.log('First index: ' + this.data.init)
+        
 
         this.DOM.widget.classList.add('--init')
         this.data.active = this.data.init
@@ -67,7 +73,7 @@ class Tabs {
 
         // if(!this.is_changing) {
             this.DOM.nav.next.forEach(function(el) { el.classList.add('--loading') })
-            this.data.next = this.data.active < (this.DOM.tabs.length - 1) ? this.data.active + 1 : 0 
+            this.data.next = this.data.active < (this.DOM.tabs.length - 1) ? this.data.active + 1 : this.data.active
             this.change()
         // }
 
@@ -77,7 +83,7 @@ class Tabs {
 
         // if(!this.is_changing) {
             this.DOM.nav.prev.forEach(function(el) { el.classList.add('--loading') })
-            this.data.next = this.data.active > 0 ? this.data.active - 1 : (this.DOM.tabs.length - 1)
+            this.data.next = this.data.active > 0 ? this.data.active - 1 : /*(this.DOM.tabs.length - 1) */this.data.active
             this.change()
         // }
 
@@ -88,14 +94,18 @@ class Tabs {
         this.is_changing = true
 
         // animate
-        this.DOM.tabs[this.data.active].removeAttribute('data-active')
+        if(this.DOM.tabs.length > 0) {
+            this.DOM.tabs[this.data.active].removeAttribute('data-active')
+        }
         if (this.DOM.panes.length > 0) {
             this.DOM.panes[this.data.active].removeAttribute('data-active')
         }
         // this.DOM.panes[this.data.active].classList.add('is-inactive')
 
         // this.DOM.panes[this.data.next].classList.remove('is-inactive')
-        this.DOM.tabs[this.data.next].setAttribute('data-active', true)
+        if(this.DOM.tabs.length > 0) {
+            this.DOM.tabs[this.data.next].setAttribute('data-active', true)
+        }
         if (this.DOM.panes.length > 0) {
             this.DOM.panes[this.data.next].setAttribute('data-active', true)
         }
@@ -108,8 +118,8 @@ class Tabs {
         //
         this.is_changing = false;
 
-        var h = this.DOM.panes[this.data.next].getBoundingClientRect().height + 'px'
-        this.DOM.container.style.height = h
+        // var h = this.DOM.panes[this.data.next].getBoundingClientRect().height + 'px'
+        // this.DOM.container.style.height = h
 
 
         // remove previous content after animation complete
@@ -141,17 +151,16 @@ class Tabs {
         var _this = this
 
         this.DOM.tabs.forEach(function(el) {
-                el.addEventListener("click", e => {
-                    if(!el.hasAttribute('data-scroll-tab')) {
-                        e.preventDefault()
-                    }
-                    var target = e.target.closest('[data-tab]');
-                    var parent = target.parentNode;
-                    var index = [].indexOf.call(parent.children, target);
-                    !_this.is_changing ? _this.setActive(index) : null
+            el.addEventListener("click", e => {
+                if(!el.hasAttribute('data-scroll-tab')) {
+                    e.preventDefault()
+                }
+                var target = e.target.closest('[data-tab]');
+                var parent = target.parentNode;
+                var index = [].indexOf.call(parent.children, target);
+                !_this.is_changing ? _this.setActive(index) : null
 
-                });
-
+            });
         })
         this.DOM.nav.prev.forEach(function(el) {
             el.addEventListener("click", e => {
@@ -193,14 +202,35 @@ class Tabs {
     }
 
     onTabChange() {
-
-        SCROLL.resize()
+        this.DOM.widget.style.setProperty("--progress", this.data.active / (this.DOM.panes.length - 1))
+        // SCROLL.resize()
         // console.log('Change active index: ' + this.data.next)
 
     }
   
 }
 
+class NestedTabs extends Tabs {
+    initDOM(el) {
+        console.log('Init Nested Tabs controls ...')
+
+        this.DOM = {
+            widget: el,
+            container: el.querySelector('[nested][data-pane-container]'),
+            // ( document.querySelectorAll('[data-tab]') )
+            tabs: el.querySelectorAll('[nested][data-tab]'),
+            panes: el.querySelectorAll('[nested][data-pane]'),
+            nav: {}
+            // loader: event.target.closest('[data-loader-control]')
+        };
+
+        this.DOM.nav = {
+            prev: typeof this.DOM.widget.querySelectorAll('[nested][data-tab-prev]') !== undefined ? this.DOM.widget.querySelectorAll('[nested][data-tab-prev]') : null,
+            next: typeof this.DOM.widget.querySelectorAll('[nested][data-tab-next]') !== undefined ? this.DOM.widget.querySelectorAll('[nested][data-tab-next]') : null,
+        }
+
+    }
+}
 class AsyncTabs extends Tabs {
    
     change() {
@@ -276,8 +306,13 @@ function initAsyncTabs(context) {
             var modalTabs = new AsyncTabs(el)
         })
     }) : null
-   
 
+}
+
+function initNestedTabs() {
+    document.querySelectorAll('[data-nested-tabs]').forEach(el => {
+        new NestedTabs(el)
+    })
 }
 
 function initTabs() {
