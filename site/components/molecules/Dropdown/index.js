@@ -117,7 +117,11 @@ class Dropdown {
     }
 
     after() {
-
+        this.card.querySelectorAll('a').forEach(el => { 
+            el.addEventListener('click', el => {
+                this.close();
+            });
+        });
     }
 }
 // bind modal events

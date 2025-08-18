@@ -122,7 +122,7 @@ class Modal {
             e.stopPropagation()
             var el = e.target.closest('[modal-close]')
             if (el !== null) {
-                e.preventDefault()
+                // e.preventDefault()
                 _this.close()
             }
         })
@@ -147,6 +147,7 @@ class Modal {
         initTabs()
         initNestedTabs()
         initCarousels()
+        initForms()
     }
 }
 // bind modal events

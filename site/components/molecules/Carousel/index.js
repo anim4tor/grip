@@ -108,6 +108,8 @@ class Carousel {
     } 
 
     this.carousel.style.setProperty('--active', this.active)
+
+    this.onChange(active)
   }
 
   handleClick(e) {
@@ -201,6 +203,10 @@ class Carousel {
         x: this.scroll,
         ease: Power3.easeOut,
     })
+  }
+
+  onChange(active) {
+    
   }
 
 }

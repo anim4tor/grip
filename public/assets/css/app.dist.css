@@ -30725,6 +30725,103 @@ html body hr {
     opacity: calc(10 / 10);
   }
 }
+/*
+
+	FORM INPUTS
+
+*/
+input, textarea, select {
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-default);
+  font-weight: var(--font-weight-body);
+  letter-spacing: 0.035em;
+  padding: calc(var(--spacing) * 1) 0;
+  color: currentColor;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid rgba(var(--col), 0.2);
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder, select::-webkit-input-placeholder {
+  color: rgba(var(--col), 0.4);
+}
+input::-moz-placeholder, textarea::-moz-placeholder, select::-moz-placeholder {
+  color: rgba(var(--col), 0.4);
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder, select:-ms-input-placeholder {
+  color: rgba(var(--col), 0.4);
+}
+input::-ms-input-placeholder, textarea::-ms-input-placeholder, select::-ms-input-placeholder {
+  color: rgba(var(--col), 0.4);
+}
+input::placeholder, textarea::placeholder, select::placeholder {
+  color: rgba(var(--col), 0.4);
+}
+input:focus, input:target, textarea:focus, textarea:target, select:focus, select:target {
+  border-bottom: 1px solid rgba(var(--col), 1);
+}
+input.invalid, textarea.invalid, select.invalid {
+  -webkit-animation: invalid 2s linear;
+          animation: invalid 2s linear;
+  /*		border-color: color(red);*/
+}
+
+.field {
+  position: relative;
+  width: 100%;
+}
+.field:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+[data-checkbox] {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: auto;
+}
+[data-checkbox] input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+[data-checkbox] input:checked + div.button {
+  background: rgba(var(--color-invert), 1);
+  color: rgba(var(--color-dark), 1);
+}
+
+@-webkit-keyframes invalid {
+  0% {
+    border-color: color(red);
+  }
+  100% {
+    border-color: rgba(var(--col), 0.5);
+  }
+}
+
+@keyframes invalid {
+  0% {
+    border-color: color(red);
+  }
+  100% {
+    border-color: rgba(var(--col), 0.5);
+  }
+}
+.honeypot {
+  position: absolute;
+  left: -9999px;
+}
+
+input[type=file] {
+  font-size: calc(var(--font-size-md) * 1);
+}
+
 /*defaults*/
 /*  
 
@@ -36065,15 +36162,28 @@ html body hr {
   grid-row: 1;
   visibility: hidden;
   pointer-events: none;
+  /*		opacity: 0;*/
+}
+[data-pane]:not([data-active]) card, [data-pane]:not([data-active]) button, [data-pane]:not([data-active]) a.button {
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+  -webkit-transition-duration: 600ms;
+          transition-duration: 600ms;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  -webkit-transform: scale(0.75);
+          transform: scale(0.75);
   opacity: 0;
 }
 [data-pane][data-active] {
   z-index: 1;
-  visibility: visible;
   pointer-events: all;
-  display: -ms-grid;
-  display: grid;
-  opacity: 1;
+  visibility: visible;
+  /*			opacity: 1;*/
+  /*			transform: none !important;*/
 }
 
 [data-tab] {
@@ -36087,10 +36197,99 @@ html body hr {
   opacity: 0.5;
 }
 
-[data-tab][data-active].title {
-  height: 100%;
+[data-pane] {
+  overflow-x: hidden;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 600ms;
+          transition-duration: 600ms;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+[data-pane][close-next] {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+[data-pane][close-prev] {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+[data-pane][close-prev] card, [data-pane][close-prev] button, [data-pane][close-prev] a.button, [data-pane][close-next] card, [data-pane][close-next] button, [data-pane][close-next] a.button {
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+  -webkit-transition-duration: 600ms;
+          transition-duration: 600ms;
+  -webkit-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  -webkit-transform: scale(0.75);
+          transform: scale(0.75);
+  opacity: 0;
+}
+[data-pane][open-next] {
+  z-index: 1;
+  visibility: visible;
+  -webkit-animation: nextPane 600ms cubic-bezier(0.16, 1, 0.3, 1);
+          animation: nextPane 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-pane][open-prev] {
+  z-index: 1;
+  visibility: visible;
+  -webkit-animation: prevPane 600ms cubic-bezier(0.16, 1, 0.3, 1);
+          animation: prevPane 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-pane][open-prev] card, [data-pane][open-prev] button, [data-pane][open-prev] a.button, [data-pane][open-next] card, [data-pane][open-next] button, [data-pane][open-next] a.button {
+  -webkit-transform: none;
+          transform: none;
+  opacity: 1;
 }
 
+@-webkit-keyframes nextPane {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes nextPane {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@-webkit-keyframes prevPane {
+  0% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes prevPane {
+  0% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
 /*
 	ORGANISMS
 	--------------------------------------------------

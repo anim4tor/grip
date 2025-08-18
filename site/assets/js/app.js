@@ -25,6 +25,7 @@ var isWindow = navigator.platform.indexOf('Win') > -1 ? true : false;
 //@prepros-append ../../components/molecules/Carousel/index.js
 //@prepros-append ../../components/organisms/Dialog/index.js
 //@prepros-append ../../components/organisms/Modal/index.js
+//@prepros-append ../../components/organisms/Form/index.js
 
 function init() {
   // initScroll()

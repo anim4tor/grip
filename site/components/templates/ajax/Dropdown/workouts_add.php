@@ -4,15 +4,15 @@
 			<icon><?= svg('public/assets/images/ui/ui_workout.svg') ?></icon>
 			<span class="font__size__5 inner-y__02">Add a workout</span>
 		</a>
-		<div class="flex justify__start align__center gap__1 inner-y__1 inner-r__3">
+		<a class="flex justify__start align__center gap__1 inner-y__1 inner-r__3">
 			<icon><?= svg('public/assets/images/ui/ui_metric.svg') ?></icon>
 			<span class="font__size__5 inner-y__02">Add a metric</span>
-		</div>
+		</a>
 	</div>
 	<div class="grid inner-x__1 bg__invert/5">
-		<div class="flex justify__start align__center gap__1 inner-y__1 inner-r__3 ">
+		<a class="flex justify__start align__center gap__1 inner-y__1 inner-r__3 ">
 			<icon><?= svg('public/assets/images/ui/ui_log.svg') ?></icon>
 			<span class="font__size__5 inner-y__02">Follow a rutine</span>
-		</div>
+		</a>
 	</div>
 </div>

@@ -29,14 +29,24 @@
 		grid-row: 1;
 		visibility: hidden;
 		pointer-events: none;
-		opacity: 0;
+
+		&:not([data-active]) {	
+			card, button, a.button {
+				@include animation((transform, opacity));
+				transform: scale(0.75);
+				opacity: 0;
+			}
+		}
+/*		opacity: 0;*/
 
 		&[data-active] {
 			z-index: 1;
-			visibility: visible;
 			pointer-events: all;
-			display: grid;
-			opacity: 1;
+			visibility: visible;
+
+
+/*			opacity: 1;*/
+/*			transform: none !important;*/
 		}
 	}
 
@@ -46,12 +56,59 @@
 	@include border(bottom,0.8);
 	&[data-active] {
 		opacity: 1;
+
 	}
 	&:not([data-active]) {
 		opacity: 0.5;
 	}
 }
 
-[data-tab][data-active].title {
-	height: 100%;
+[data-pane] {
+	overflow-x: hidden;
+	@include animation((transform));
+	&[close-next] {
+		transform: translateX(-100%);
+	}
+	&[close-prev] {
+		transform: translateX(100%);
+	}
+	&[close-prev],&[close-next] {
+		card, button, a.button {
+			@include animation((transform, opacity));
+			transform: scale(0.75);
+			opacity: 0;
+		}
+	}
+	&[open-next] {
+		z-index: 1;
+		visibility: visible;
+		animation: nextPane $defaultDuration $defaultEasing;
+	}
+	&[open-prev] {
+		z-index: 1;
+		visibility: visible;
+		animation: prevPane $defaultDuration $defaultEasing;
+	}
+	&[open-prev],&[open-next] {
+		card, button, a.button {
+			transform: none;
+			opacity: 1;
+		}
+	}
+}
+@keyframes nextPane {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: none;
+	}
+}
+@keyframes prevPane {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: none;
+	}
 }

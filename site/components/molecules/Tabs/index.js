@@ -56,7 +56,8 @@ class Tabs {
 
         this.initEvents()
 
-        this.change()
+        this.DOM.tabs[this.data.init].toggleAttribute('data-active')
+        this.DOM.panes[this.data.init].toggleAttribute('data-active')
 
     }
 
@@ -92,45 +93,25 @@ class Tabs {
     change() {
 
         this.is_changing = true
+        var dir = this.data.active < this.data.next ? 'next' : 'prev'
+        // dir = 'next'
 
         // animate
         if(this.DOM.tabs.length > 0) {
             this.DOM.tabs[this.data.active].removeAttribute('data-active')
         }
         if (this.DOM.panes.length > 0) {
-            this.DOM.panes[this.data.active].removeAttribute('data-active')
+            this.DOM.panes[this.data.active].toggleAttribute('close-'+dir)
         }
-        // this.DOM.panes[this.data.active].classList.add('is-inactive')
 
-        // this.DOM.panes[this.data.next].classList.remove('is-inactive')
         if(this.DOM.tabs.length > 0) {
             this.DOM.tabs[this.data.next].setAttribute('data-active', true)
         }
         if (this.DOM.panes.length > 0) {
-            this.DOM.panes[this.data.next].setAttribute('data-active', true)
+            var dir = 
+            this.DOM.panes[this.data.next].toggleAttribute('open-'+dir)
         }
 
-
-        // hide loading
-        // this.DOM.nav.prev.forEach(function(el) { el.classList.remove('--loading') })
-        // this.DOM.nav.next.forEach(function(el) { el.classList.remove('--loading') }) 
-
-        //
-        this.is_changing = false;
-
-        // var h = this.DOM.panes[this.data.next].getBoundingClientRect().height + 'px'
-        // this.DOM.container.style.height = h
-
-
-        // remove previous content after animation complete
-        let prev = this.data.active;
-
-        // reindex data
-        this.data.active = this.data.next
-
-        // Locomotion.update()
-
-        //
         this.onTabChange()
     }
 
@@ -202,7 +183,24 @@ class Tabs {
     }
 
     onTabChange() {
-        this.DOM.widget.style.setProperty("--progress", this.data.active / (this.DOM.panes.length - 1))
+        this.DOM.widget.style.setProperty("--progress", this.data.next / (this.DOM.panes.length - 1))
+        setTimeout(() => {
+
+            this.DOM.panes.forEach(el => {
+                el.removeAttribute('open-prev')
+                el.removeAttribute('open-next')
+                el.removeAttribute('close-prev')
+                el.removeAttribute('close-next')
+            })
+
+            this.DOM.panes[this.data.active].removeAttribute('data-active')
+            this.DOM.panes[this.data.next].setAttribute('data-active', true)
+
+            // reindex data
+            this.data.active = this.data.next
+            this.is_changing = false;
+
+        }, 600)
         // SCROLL.resize()
         // console.log('Change active index: ' + this.data.next)
 

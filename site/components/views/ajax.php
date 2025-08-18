@@ -1,3 +1,3 @@
 <!-- modal -->
 
-<?php go('workouts') ?>
+<?php go('home') ?>
