@@ -34,8 +34,8 @@
 		</toolbar>
 		<div data-pane-container class="relative inset__stretch">
 			<pane data-pane theme class="absolute inset__stretch grid rows__1-auto">
-				
-				<div class="select__widget --full relative">
+				<input type="hidden" name="workout" data-select-bind=workout value="">
+				<div class="select__widget --full relative" data-select=workout>
 					<div class="selector absolute inset__stretch z__1">
 						<div class="bg__dark/80" data-click-disabled></div>
 						<div class="flex justify__end align__center inner__1 h__6 border__bottom border__top ">
@@ -43,11 +43,11 @@
 						</div>
 						<div class="bg__dark/80" data-click-disabled></div>
 					</div>
-					<div class="select grid inner-y__20 inner-b__20">
+					<div class="select grid inner-y__20 inner-b__20" data-select-scroller>
 						<?php
 							//var_dump($POST['selected'])
 							foreach ($bodyparts as $bodypart) { ?>
-								<a href="" data-tab-next class="option flex align__center inner__1 inner-y__2 h__6" data-select-option=<?php echo $bodypart ?>>
+								<a href="" data-tab-next class="option flex align__center inner__1 inner-y__2 h__6" data-select-option data-value=<?php echo $bodypart ?>>
 									<h1 class=""><?php echo $bodypart ?></h1>
 								</a>
 							<?php }
@@ -121,6 +121,7 @@
 								</button-list>
 							</div>
 							<div data-pane nested class="absolute inset__stretch grid align__space-between ">
+								<input type="hidden" name="frequency" data-select-bind=frequency value="">
 								<p class="font__size__md inner__1"><span class="op__6">How many </span> days between workouts <span class="op__6">do you need to recover?</span></p>
 								<!-- <button-list class="flex align__start gap__1 inner__1 wrap">
 									<a modal-reveal class="button bg__invert/10">Daily</a>

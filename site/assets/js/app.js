@@ -19,10 +19,13 @@ var isWindow = navigator.platform.indexOf('Win') > -1 ? true : false;
 //@prepros-append polyfills/scrollsnap-polyfill.js
 
 //@prepros-append ../../components/atoms/Scroll/index.js
+
 //@prepros-append ../../components/molecules/Tabs/index.js
 //@prepros-append ../../components/molecules/Collapsible/index.js
 //@prepros-append ../../components/molecules/Dropdown/index.js
 //@prepros-append ../../components/molecules/Carousel/index.js
+//@prepros-append ../../components/molecules/Select/index.js
+
 //@prepros-append ../../components/organisms/Dialog/index.js
 //@prepros-append ../../components/organisms/Modal/index.js
 //@prepros-append ../../components/organisms/Form/index.js
@@ -33,6 +36,7 @@ function init() {
   initDialogs()
   initDropdowns()
   initCarousels()
+  initSelects()
   initTabs()
   initNestedTabs()
   initCollapsibles()

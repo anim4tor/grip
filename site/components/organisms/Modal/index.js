@@ -148,6 +148,7 @@ class Modal {
         initNestedTabs()
         initCarousels()
         initForms()
+        initSelects(this.DOM.widget)
     }
 }
 // bind modal events

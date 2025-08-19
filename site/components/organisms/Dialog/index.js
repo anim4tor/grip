@@ -14,6 +14,7 @@ class Dialog {
 
         this.is_open = false
         this.url = null
+        this.parent = null
         this.openClass = 'has-dialog'
     }
 
@@ -25,7 +26,9 @@ class Dialog {
     // async fetch(template = 'default', id = '') {
     async fetch(e) {
         // let url = `${window.location.protocol}//${window.location.host}${lang}/modals.json/template${eq}${template}/id${eq}${id}`;
+        this.parent = e.target.closest('[data-dialog-parent]')
         if(!this.is_open) { 
+            this.context = e.target
             this.url = e.target.closest('[open-dialog]').getAttribute('href')
             console.log('Fetching dialog url:', this.url)
             try {
@@ -97,7 +100,8 @@ class Dialog {
     }
 
     after() {
-
+        console.log('After dialog:')
+        initSelects(this.DOM.widget, this.parent)
     }
 }
 // bind modal events
