@@ -1,11 +1,18 @@
 <?php
 
-$html = '';
-$html = snippet('templates/ajax/'. ucfirst($template) .'/'. $id , [ 'data' => $data ], true);
+$data ??= null;
+if($data) {
+	parse_str($data, $data);	
+	$keys = array_keys($data);
+	extract($data);
+}
 
-$json['id'] = $id;
-$json['template'] = $template;
-$json['data'] = $data;
+$html = '';
+$html = $data ? snippet('templates/ajax/'. ucfirst($template) .'/'. $id , compact($keys), true) : snippet('templates/ajax/'. ucfirst($template) .'/'. $id, [ 'data' => $data ], true);
+
 $json['html'] = $html;
+$json['template'] = $template;
+$json['id'] = $id;
+$json['data'] = $data;
 
 echo json_encode($json);

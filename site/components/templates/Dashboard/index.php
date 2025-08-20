@@ -1,3 +1,6 @@
+<?php
+	// var_dump(collection('Workouts'));
+?>
 <header class="fixed inset__top-stretch z__1 bg__inherit">
 	<div class="inner__1 inner-t__3 inner-b__1 flex align__center justify__space-between gap__05 ">
 		<div class="flex gap__1 align__center ">
@@ -17,11 +20,15 @@
 <section data-section>
 	<div class="grid grid__2 gap-x__07 gap-y__1 inner__1">
 
+		<?php foreach (collection('Workouts') as $workout) : /*var_dump($workout);*/ ?>
+			<?= snippet('molecules/Workout', compact('workout')) ?>
+		<?php endforeach; ?>
+
 		<card class="grid bg__white/10 relative border" style="--progress: 0.3">
 			<header class="absolute inset__top-stretch flex justify__end inner__05 op__4">
 				<a class="button circle"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
 			</header>
-			<a modal-open href="modal/workout/index" class="grid gap__2 place__end-start inner__1 inner-y__2">	
+			<a modal-open href="modal/workout/index/workout=2" class="grid gap__2 place__end-start inner__1 inner-y__2">	
 				<figure class="progress --large">
 					<h3 class="font__size__1">2</h3>
 				</figure>

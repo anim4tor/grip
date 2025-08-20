@@ -17,14 +17,26 @@ class Select {
         this.bind = this.widget.getAttribute('data-select')
         this.items = Array.from(this.DOM.options).map(el => ({el}))
         this.current = {}
+        this.output = {
+            value: this.context.querySelector('input[data-select-bind='+this.bind+']'),
+            label: this.context.querySelector('[data-select-output='+this.bind+']'),
+        }
         this.init()
     }
 
     init() {
         console.log('Init Select controls ...')
-        console.log(this.DOM)
-        this.initEvents()
         this.storeBounds()
+        this.preselect()
+        setTimeout(() => {
+            this.initEvents()
+        }, 300)
+    }
+
+    preselect() {
+        this.current = this.DOM.select.querySelector('[data-value="'+this.output.value.value+'"]') ?? this.DOM.options[0]
+        console.log('Preselect:', this.current)
+        this.current ? this.DOM.select.scrollTop = this.current.offsetTop - (this.bounds.height / 2) + (this.height / 2) : null
     }
 
     storeBounds() {
@@ -49,10 +61,10 @@ class Select {
 
         // Do stuff with currentItem
         this.current = currentItem
-        this.output()
+        this.renderOutput()
     }
 
-    output() {
+    renderOutput() {
         let value = this.current.el.getAttribute('data-value')
         let label = this.current.el.getAttribute('data-label')
         this.updateContext(value, label)
@@ -61,10 +73,8 @@ class Select {
     updateContext(value, label) {
         label ??= value
         console.log('Update context: ', this.context, value, label)
-        let outputValue = this.context.querySelector('input[data-select-bind='+this.bind+']')
-        let outputLabel = this.context.querySelector('[data-select-output='+this.bind+']')
-        outputValue ? outputValue.value = value : null;
-        outputLabel ? outputLabel.innerHTML = label : null;
+        this.output.value ? this.output.value.value = value : null;
+        this.output.label ? this.output.label.innerHTML = label : null;
     }
 
     initEvents() {

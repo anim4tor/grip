@@ -37,8 +37,8 @@ class Form {
         this.load('form.json', this.data)
 
             .then((response) => {
-              console.log(response)
               var response = JSON.parse(response);
+              console.log(response)
               this.returndata = response
               return response.error
             // })

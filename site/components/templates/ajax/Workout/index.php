@@ -1,3 +1,9 @@
+<?php
+	$workout ??= null;
+	$workout = $kirby->controller('workout', [ 'id' => $workout ]);
+	// var_dump($workout);
+	extract($workout);
+?>
 <toolbar class="sticky inset__top-stretch inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05 z__1 bg__inherit">
 	<a modal-reveal modal-close class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
 	<nav class="button__group">
@@ -11,8 +17,8 @@
 		<div class="flex gap__1 align__center">
 
 			<div class="grid gap__05 align__center inner-t__04">
-				<h1>Upper body</h1>
-				<p class="font__size__lg">Upper body <span class="op__5">workout</span></p>
+				<h1><?= $title ?></h1>
+				<p class="font__size__lg"><?= $workout ?> <span class="op__5">workout</span></p>
 			</div>
 		</div>
 
@@ -21,7 +27,7 @@
 <section data-section>
 	<list class="grid inner-y__1">
 		<?= snippet('molecules/Exercise', [ 'completed' => false, 'progress' => 0.66, 'superset' => true ]) ?>
-		<?= snippet('molecules/Exercise', [ 'completed' => false, 'progress' => 0.5, 'superset' => false ]) ?>
+		<?= snippet('molecules/Exercise', [ 'title' => 'Australian pull ups (weighted)', 'completed' => false, 'progress' => 0.5, 'superset' => true ]) ?>
 		<?= snippet('molecules/Exercise', [ 'completed' => true ]) ?>
 		<?= snippet('molecules/Exercise', [ 'completed' => false, 'progress' => 0.66, 'superset' => true ]) ?>
 		<?= snippet('molecules/Exercise', [ 'completed' => false, 'progress' => 0.5, 'superset' => false ]) ?>
@@ -31,7 +37,7 @@
 		<?= snippet('molecules/Exercise', [ 'completed' => true ]) ?>
 	</list>
 	<div class="flex justify__start align__center gap__1 inner__1">
-		<a class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_add.svg') ?></icon></a>
+		<a modal-open="next" href="modal/exercise/add/workout=<?= $id ?>" class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_add.svg') ?></icon></a>
 		<span class="font__size__lg">Add exercise</span>
 	</div>
 </section>

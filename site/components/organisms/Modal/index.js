@@ -41,7 +41,7 @@ class Modal {
         try {
           const response = await fetch(this.url);
           const json = await response.json();
-          // console.log(json)
+          console.log(json)
           this.add(json.html)  
         } catch (error) {
           console.log('Fetch error: ', error);
@@ -104,7 +104,9 @@ class Modal {
         document.documentElement.classList.add('no-scroll');
         document.documentElement.classList.add(this.openClass);
         this.is_open = true
-        this.after()
+        setTimeout(() => {
+            this.after()
+        }, 300)
     }
 
     close() {
@@ -127,10 +129,10 @@ class Modal {
             }
         })
         document.addEventListener("click", e => {
-            e.stopPropagation()
+            // e.stopPropagation()
             var el = e.target.closest('[modal-open]')
             if (el !== null) {
-                e.preventDefault()
+                // e.preventDefault()
                 _this.fetch(e)
             }
         })

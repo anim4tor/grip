@@ -14,8 +14,17 @@ exercise, .exercise {
 	}
 
 
-	.superset {
-		position: absolute;
-		top: calc(100% - (100% - var(--button-size) * 1.231) / 2.25);
+}
+[data-checkbox] {
+	input:checked + [superset] {
+		opacity: 1;
+	}
+	input:checked + [checkbox] div.button.checkbox {
+		background: rgba(var(--color-invert),1);
+		color: rgba(var(--color-dark),1);
+
+		icon {
+			opacity: 1;
+		}
 	}
 }

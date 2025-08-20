@@ -206,7 +206,9 @@ class Carousel {
   }
 
   onChange(active) {
-    
+    let output = this.items[this.active].getAttribute('data-slide')
+    // this.carousel.setAttribute('data-value',output)
+    this.carousel.querySelector('input').value = output
   }
 
 }

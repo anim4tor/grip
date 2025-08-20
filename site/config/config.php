@@ -7,12 +7,21 @@ return [
     'routes' => function ($kirby) {
       return [
           [
-              'pattern' => ['/modal/(:any)/(:any)','/dialog/(:any)/(:any)'],
+              'pattern' => ['/modal/(:any)/(:any)'],
               'action' => function ($template, $id) {
                 $host = explode('.',$_SERVER['HTTP_HOST']);
                 $test = array_pop($host) == 'test' ? true : false;
                 $eq = $test ? ';' : ':';
                 return go("ajax.json/template{$eq}{$template}/id{$eq}{$id}");
+              }
+          ],
+          [
+              'pattern' => ['/modal/(:any)/(:any)/(:all)'],
+              'action' => function ($template, $id, $data) {
+                $host = explode('.',$_SERVER['HTTP_HOST']);
+                $test = array_pop($host) == 'test' ? true : false;
+                $eq = $test ? ';' : ':';
+                return go("ajax.json/template{$eq}{$template}/id{$eq}{$id}/data{$eq}{$data}");
               }
           ],
           // [

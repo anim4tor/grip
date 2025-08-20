@@ -62,9 +62,9 @@ class Dialog {
             document.documentElement.classList.add('no-scroll');
             document.documentElement.classList.add(this.openClass);
             this.is_open = true
-            setTimeout( () => {
+            setTimeout(() => {
                 this.after()
-            }, 300)
+            }, 1)
         }
     }
 

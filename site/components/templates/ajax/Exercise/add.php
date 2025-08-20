@@ -1,0 +1,62 @@
+<?php
+	$workout ??= null;
+	$workout = $kirby->controller('workout', [ 'id' => $workout ]);
+	extract($workout);
+	
+	$library = [
+		'Push',
+		'Pull',
+		'Full body',
+		'Upper body',
+		'Legs',
+		'Glutes',
+		'Back',
+		'Chest',
+		'Shoulders',
+		'Arms',
+		'Biceps',
+		'Triceps',
+		'Forearms',
+		'Quads',
+		'Hamstrings',
+		'Calves',
+	]
+?>
+<form action="form/update_workout" method="post" >
+	<input type="hidden" name="id" value="<?= $id ?>">
+	<toolbar class="sticky inset__top-stretch inner-t__2 inner-b__1 inner-r__1 flex align__center justify__space-between gap__2 z__2 bg__inherit">
+		<a modal-reveal modal-open="prev" href="modal/workout/index/workout=<?= $workout ?>" class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-left.svg') ?></icon></a>
+		<nav class="button__group">
+			<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_add.svg') ?></icon></a>
+			<button type="submit" modal-reveal class="button bg__invert color__dark">Done</button>
+		</nav>
+	</toolbar>
+	<header class="">
+		<div class="inner-x__1 inner-b__2 flex align__center justify__space-between gap__05">
+			<div class="flex gap__1 align__center">
+
+				<div class="grid gap__05 align__center inner-t__04">
+					<h1>Library</h1>
+					<p class="font__size__lg"><span class="op__6">1112 exercises related to</span> Upper body</p>
+				</div>
+			</div>
+
+		</div>
+	</header>
+	<section>
+		<list class="grid inner-y__1">
+			<?php foreach ($library as $exercise) : ?>
+				<?php $checked = in_array($exercise, $exercises) ? true : false ?> 
+				<?= snippet('molecules/Exercise/toggle', compact('exercise','checked')) ?>
+			<?php endforeach ?>
+		</list>
+	</section>
+</form>
+	<!-- <footer class="sticky inset__bottom-stretch z__1 bg__inherit relative">
+		<div class="grid inner-y__2 inner-x__1 border__top shadow">
+			<div class="grid gap__05 inner-t__02">
+				<p class="font__size__5 "><span class="op__6">Add</span> <span>Full body </span><span class="op__6">to your workouts</span></p>
+				<p class="op__5">Exercises for all major muscles</p>
+			</div>
+		</div>
+	</footer> -->

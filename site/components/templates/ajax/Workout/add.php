@@ -19,7 +19,7 @@
 	]
 ?>
 <form action="form/add_workout" method="post" >
-	<!-- <input type="hidden" name="form" value="add_workout"> -->
+	<input type="hidden" name="id" value="<?= time() ?>">
 	<tabs data-tabs class="grid modal__content rows__auto-1 ">
 		<toolbar class="inset__top-stretch inner-t__2 inner-b__1 flex align__center justify__space-between gap__2 z__2 bg__inherit">
 			<a modal-reveal modal-close class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
@@ -34,7 +34,7 @@
 		</toolbar>
 		<div data-pane-container class="relative inset__stretch">
 			<pane data-pane theme class="absolute inset__stretch grid rows__1-auto">
-				<input type="hidden" name="workout" data-select-bind=workout value="">
+				<input type="hidden" name="workout" data-select-bind=workout value="Full body">
 				<div class="select__widget --full relative" data-select=workout>
 					<div class="selector absolute inset__stretch z__1">
 						<div class="bg__dark/80" data-click-disabled></div>
@@ -47,7 +47,7 @@
 						<?php
 							//var_dump($POST['selected'])
 							foreach ($bodyparts as $bodypart) { ?>
-								<a href="" data-tab-next class="option flex align__center inner__1 inner-y__2 h__6" data-select-option data-value=<?php echo $bodypart ?>>
+								<a href="" data-tab-next class="option flex align__center inner__1 inner-y__2 h__6" data-select-option data-value='<?php echo $bodypart ?>'>
 									<h1 class=""><?php echo $bodypart ?></h1>
 								</a>
 							<?php }
@@ -77,7 +77,7 @@
 					</header>
 					<div class="grid">
 						<div class="inner__1">
-							<?= snippet('atoms/Input/text', [ 'placeholder' => 'My workout', 'value' => '', 'name' => 'text' ]) ?>
+							<?= snippet('atoms/Input/text', [ 'placeholder' => 'My workout', 'value' => '', 'name' => 'title' ]) ?>
 						</div>
 					</div>
 				</div>
@@ -93,10 +93,10 @@
 			<pane data-pane theme class="absolute inset__stretch grid rows__1-auto">
 				<div class="grid rows__auto-1">
 					<header class="">
-						<div class="inner-x__1 inner-b__2 flex align__center justify__space-between gap__05 op__0">
+						<div class="inner-x__1 inner-b__2 flex align__center justify__space-between gap__05">
 							<div class="flex gap__1 align__center">
 								<div class="grid gap__05 align__center inner-t__04">
-									<h1>Frequency</h1>
+									<h1>Schedule</h1>
 									<p class="font__size__md op__6"><span class="">How often do you plan to do upper body workouts?</span></p>
 								</div>
 							</div>
@@ -121,7 +121,7 @@
 								</button-list>
 							</div>
 							<div data-pane nested class="absolute inset__stretch grid align__space-between ">
-								<input type="hidden" name="frequency" data-select-bind=frequency value="">
+								<input type="hidden" name="frequency" data-select-bind=frequency value="1">
 								<p class="font__size__md inner__1"><span class="op__6">How many </span> days between workouts <span class="op__6">do you need to recover?</span></p>
 								<!-- <button-list class="flex align__start gap__1 inner__1 wrap">
 									<a modal-reveal class="button bg__invert/10">Daily</a>
@@ -161,9 +161,10 @@
 							</div>
 						</div>
 					</header>
-					<carousel class="carousel" data-carousel dynamic class="inner-x__1 ">
+					<carousel class="carousel" data-carousel data-init data-value dynamic class="inner-x__1 ">
+						<input type="hidden" name="layout" data-carousel-input value="square">
 						<div class="carousel__list gap__1" data-carousel-slides>
-							<slide data-slide class="w__60 grid align__start">
+							<slide data-slide="square" class="w__60 grid align__start">
 								<card class="grid h__15 inner__1 inner-y__2 bg__card relative border">
 									<header class="absolute inset__top-stretch flex justify__end inner__05 op__4">
 										<a class="button circle"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
@@ -186,7 +187,7 @@
 									</div>
 								</div>
 							</slide>
-							<slide data-slide class="w__80 grid align__start">
+							<slide data-slide="large" class="w__80 grid align__start">
 								<card class="grid h__15 inner__1 inner-y__2 inner-b__1 bg__card relative border" style="--progress: 0.7">
 									<div class="grid gap__2 place__center-stretch align__space-between">	
 										<calendar class="grid__3 gap__1">
@@ -379,7 +380,7 @@
 									</div>
 								</div>
 							</slide>
-							<slide data-slide class="w__80 grid align__start">
+							<slide data-slide="slim" class="w__80 grid align__start">
 								<div class="grid h__15 place__end-stretch align__bottom">
 									<card class="grid inner__1 inner-y__1 bg__card relative border" style="--progress: 0.66">
 										<div class="flex justify__space-between align__center">

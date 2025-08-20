@@ -1,0 +1,1 @@
+<?= snippet('molecules/Workout/'.$workout['layout'], compact('workout')) ?>
