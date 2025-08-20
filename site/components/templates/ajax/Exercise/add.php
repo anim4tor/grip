@@ -1,31 +1,14 @@
 <?php
+	$library = collection('Exercises');
 	$workout ??= null;
 	$workout = $kirby->controller('workout', [ 'id' => $workout ]);
 	extract($workout);
-	
-	$library = [
-		'Push',
-		'Pull',
-		'Full body',
-		'Upper body',
-		'Legs',
-		'Glutes',
-		'Back',
-		'Chest',
-		'Shoulders',
-		'Arms',
-		'Biceps',
-		'Triceps',
-		'Forearms',
-		'Quads',
-		'Hamstrings',
-		'Calves',
-	]
+	$exercises ??= [];
 ?>
 <form action="form/update_workout" method="post" >
 	<input type="hidden" name="id" value="<?= $id ?>">
 	<toolbar class="sticky inset__top-stretch inner-t__2 inner-b__1 inner-r__1 flex align__center justify__space-between gap__2 z__2 bg__inherit">
-		<a modal-reveal modal-open="prev" href="modal/workout/index/workout=<?= $workout ?>" class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-left.svg') ?></icon></a>
+		<a modal-reveal modal-open="prev" href="modal/workout/index/workout=<?= $workout['id'] ?>" class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-left.svg') ?></icon></a>
 		<nav class="button__group">
 			<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_add.svg') ?></icon></a>
 			<button type="submit" modal-reveal class="button bg__invert color__dark">Done</button>
@@ -45,9 +28,9 @@
 	</header>
 	<section>
 		<list class="grid inner-y__1">
-			<?php foreach ($library as $exercise) : ?>
-				<?php $checked = in_array($exercise, $exercises) ? true : false ?> 
-				<?= snippet('molecules/Exercise/toggle', compact('exercise','checked')) ?>
+			<?php foreach ($library as $key => $exercise) : ?>
+				<?php $checked = in_array($key, array_column($exercises, 'id')) ? true : false ?> 
+				<?= snippet('molecules/Exercise/input', compact('exercise','checked')) ?>
 			<?php endforeach ?>
 		</list>
 	</section>

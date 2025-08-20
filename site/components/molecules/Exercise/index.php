@@ -4,9 +4,16 @@
 	$progress ??= 0.0;
 	$superset ??= false;
 	$completed ??= false;
+
+	$workout ??= null;
+	$exercise ??= null;
+	$exercise = collection('Exercises')[array_search($exercise, array_column(collection('Exercises'), 'id'))];
+	// var_dump($workout);
+	extract($exercise);
+	// extract($exercise);
 ?>
 <exercise class="grid relative" modal-reveal style="--progress: <?= $progress ?>">
-	<a modal-open="next" href="modal/exercise/index/workout=2&exercise=4" class="flex justify__space-between align__start inner-y__0 inner-l__1">
+	<a modal-open="next" href="modal/exercise/index/workout=<?= $workout['id'] ?>&exercise=<?= $id ?>" class="flex justify__space-between align__start inner-y__0 inner-l__1">
 		<header class="flex gap__1 align__start">
 			<div class="exercise__figure grid__stack place__center-center ">
 				<?php if ($completed) : ?>
@@ -18,7 +25,7 @@
 				<?php endif ?>
 			</div>
 			<div class="grid gap__02 align__center wrap-t__08">
-				<h2 class="inner-r__8"><?= $title ?></h2>
+				<h2 class="inner-r__8"><?= $name ?></h2>
 				<p class="font__size__md"><span class="op__5"><?= $desc ?></span></p>
 			</div>
 		</header>

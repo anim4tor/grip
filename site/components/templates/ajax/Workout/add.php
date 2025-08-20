@@ -34,8 +34,8 @@
 		</toolbar>
 		<div data-pane-container class="relative inset__stretch">
 			<pane data-pane theme class="absolute inset__stretch grid rows__1-auto">
-				<input type="hidden" name="workout" data-select-bind=workout value="Full body">
-				<div class="select__widget --full relative" data-select=workout>
+				<input type="hidden" name="bodypart" data-select-bind=bodypart value="Full body">
+				<div class="select__widget --full relative" data-select=bodypart>
 					<div class="selector absolute inset__stretch z__1">
 						<div class="bg__dark/80" data-click-disabled></div>
 						<div class="flex justify__end align__center inner__1 h__6 border__bottom border__top ">

@@ -7,13 +7,15 @@
 	$weight ??= 0.0;
 	$reps ??= 0;
 	$rpe ??= 0;
+
+	$exercise ??= null;
 ?>
 
 <set class="flex justify__space-between align__start relative" modal-reveal data-dialog-parent>
-	<input type="hidden" name="set[id][]" value="<?= $id ?>">
-	<input type="hidden" name="set[reps][]" data-select-bind=reps value="<?= $reps ?>">
-	<input type="hidden" name="set[weight][]" data-select-bind=weight value="<?= $weight ?>">
-	<input type="hidden" name="set[rpe][]" data-select-bind=rpe value="<?= $rpe ?>">
+	<input type="hidden" name="sets[<?= $exercise['id'] ?>][id][]" value="<?= $exercise['id'] ?>">
+	<input type="hidden" name="sets[<?= $exercise['id'] ?>][reps][]" data-select-bind=reps value="<?= $reps ?>">
+	<input type="hidden" name="sets[<?= $exercise['id'] ?>][weight][]" data-select-bind=weight value="<?= $weight ?>">
+	<input type="hidden" name="sets[<?= $exercise['id'] ?>][rpe][]" data-select-bind=rpe value="<?= $rpe ?>">
 
 	<header class="flex gap__05 align__start">
 		<?php if($status): ?>

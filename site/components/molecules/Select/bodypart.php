@@ -18,7 +18,7 @@
 		'Calves',
 	]
 ?>
-<div class="select__widget --line --workout font__size__1 xl  grid relative grow" data-select=workout>
+<div class="select__widget --line --workout font__size__1 xl  grid relative grow" data-select=bodypart>
 	
 	<div class="select grid gap__1 grow" data-select-scroller>
 		<div class="inner-t__20">&nbsp;</div>
