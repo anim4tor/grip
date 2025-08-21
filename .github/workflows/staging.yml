@@ -17,11 +17,11 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: 358038.w38.wedos.net
-          username: w358038
-          password: i_Maiden_37
+          server: 62.109.154.228
+          username: grip.endora.site
+          password: EeQeknsn2
           protocol: ftp
-          server-dir: www/projects/grip/
+          server-dir: public_html/
           exclude: |
             **/.git*
             **/.git*/**
