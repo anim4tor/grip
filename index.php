@@ -4,6 +4,7 @@ require 'kirby/bootstrap.php';
 function formatNum($num) {
     return str_pad($num, 2, '0', STR_PAD_LEFT);
 }
+$_SERVER['SCRIPT_NAME'] = preg_replace('/\/domains\/' . $_SERVER['HTTP_HOST'] . '/', '', $_SERVER['SCRIPT_NAME']);
 $kirby = new Kirby([
     'roots' => [
         // 'index'   => __DIR__,
