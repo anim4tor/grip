@@ -1,4 +1,4 @@
 <?php
 	// echo $id;
-	snippet('molecules/Dropdown/'.$id, [ 'data' => '' ]);
+	snippet('molecules/Dropdown/'.$id, [ 'data' => $data ]);
 ?>

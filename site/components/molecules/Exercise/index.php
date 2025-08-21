@@ -5,6 +5,7 @@
 	$superset ??= false;
 	$completed ??= false;
 
+	$index ??= null;
 	$workout ??= null;
 	$exercise ??= null;
 	$exercise = collection('Exercises')[array_search($exercise, array_column(collection('Exercises'), 'id'))];
@@ -31,8 +32,7 @@
 		</header>
 	</a>
 	<nav class="absolute inset__top-right button__group inner-t__05">
-		<button open-dropdown href="modal/dropdown/exercise_options" class="button circle op__5"><icon><?= svg('public/assets/images/ui/ui_options.svg') ?></icon></button>
+		<button open-dropdown href="modal/dropdown/exercise_options/workout=<?= $workout['id'] ?>&exercise=<?= $id ?>&key=<?= $key ?>" class="button circle op__5"><icon><?= svg('public/assets/images/ui/ui_options.svg') ?></icon></button>
 		<button class="button circle op__5"><icon><?= svg('public/assets/images/ui/ui_chevron-right.svg') ?></icon></button>
 	</nav>
 </exercise>
-<?= snippet('atoms/Input/superset', [ 'label' => 'Superset', 'value' => 'Superset', 'id' => 'superset-'.rand(0,1000), 'name' => 'superset[]', 'checked' => $superset ]) ?>

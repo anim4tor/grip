@@ -70,6 +70,16 @@ class Form {
         // dispatch form event
         var event = new CustomEvent('formSubmit', { detail: { context: this.DOM.id, valid: !this.returndata.error, data: this.returndata } });
         window.dispatchEvent(event);
+
+        // reload modal
+        this.DOM.form.getAttribute('modal-reload') ? MODAL.force(this.DOM.form.getAttribute('modal-reload')) : null
+
+        // reload back
+        this.DOM.form.getAttribute('modal-back') ? MODAL.fetch(this.DOM.form.getAttribute('modal-back'), 'prev') : null
+
+        // close dropdowns
+        DROPDOWN.close()
+
     }
 
 }
@@ -77,7 +87,7 @@ class Form {
 // // bind modal events
 // var MODAL = new Modal()
 
-function initForms() {
+function initForms(container = document) {
    console.log('Init Form controls ...')
 
    var forms = document.querySelectorAll('form')

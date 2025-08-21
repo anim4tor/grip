@@ -1,15 +1,21 @@
 <?php 
-return function ($page, $params) {
-  $success = false;
+return function ($params, $updateFunc = null) {
   $update = null;
-  $file = 'public/content/workouts/'.$params['id'].'/workout.json';
+  $success = false;
+  $id = $params['workout'];
+  $file = 'public/content/workouts/'.$id.'/workout.json';
 
   if (file_exists($file)) {
     $json = file_get_contents($file);
     $data = json_decode($json, true);
     if (json_last_error() === JSON_ERROR_NONE) {
+
       // update json
-      $update = array_merge($data, $params);
+      if ($updateFunc) {
+        $update = $updateFunc($data, $params);
+      } else {
+        $update = array_merge($data, $params);
+      }
       $success = true;
 
     } else {

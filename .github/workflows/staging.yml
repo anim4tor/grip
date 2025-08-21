@@ -21,7 +21,7 @@ jobs:
           username: grip.endora.site
           password: EeQeknsn2
           protocol: ftp
-          server-dir: /
+          server-dir: public_html/
           exclude: |
             **/.git*
             **/.git*/**

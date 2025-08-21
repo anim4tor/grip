@@ -8,7 +8,7 @@
 		<header class="flex gap__1 align__center">
 			<div class="grid" data-checkbox>
 				<label for="<?= $id ?>" class="grid">
-					<input type="checkbox" id="<?= $id ?>" name="exercises[<?= $id ?>][id]" value="<?= $id ?>" <?= e($checked, 'checked') ?>/>
+					<input type="checkbox" id="<?= $id ?>" name="exercises[]" value="<?= $id ?>" <?= e($checked, 'checked') ?>/>
 					<div class="exercise__figure grid__stack place__center-center" checkbox>
 						<div class="button checkbox border bg__invert/10" ><icon class="op__0"><?= svg('public/assets/images/ui/ui_checkmark.svg') ?></icon></div>
 					</div>

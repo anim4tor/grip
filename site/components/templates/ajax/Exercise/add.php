@@ -5,8 +5,8 @@
 	extract($workout);
 	$exercises ??= [];
 ?>
-<form action="form/update_workout" method="post" >
-	<input type="hidden" name="id" value="<?= $id ?>">
+<form action="form/add_exercise" method="post" modal-back="modal/workout/index/workout=<?= $workout['id'] ?>">
+	<input type="hidden" name="workout" value="<?= $id ?>">
 	<toolbar class="sticky inset__top-stretch inner-t__2 inner-b__1 inner-r__1 flex align__center justify__space-between gap__2 z__2 bg__inherit">
 		<a modal-reveal modal-open="prev" href="modal/workout/index/workout=<?= $workout['id'] ?>" class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-left.svg') ?></icon></a>
 		<nav class="button__group">
@@ -29,7 +29,7 @@
 	<section>
 		<list class="grid inner-y__1">
 			<?php foreach ($library as $key => $exercise) : ?>
-				<?php $checked = in_array($key, array_column($exercises, 'id')) ? true : false ?> 
+				<?php $checked = in_array($key, $exercises) ? true : false ?> 
 				<?= snippet('molecules/Exercise/input', compact('exercise','checked')) ?>
 			<?php endforeach ?>
 		</list>

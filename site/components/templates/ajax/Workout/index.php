@@ -28,8 +28,9 @@
 	<section data-section>
 		<list class="grid inner-y__1">
 			<?php if (isset($exercises)) : ?>
-				<?php foreach ($exercises as $exercise) : ?>
-					<?= snippet('molecules/Exercise', compact('exercise', 'workout')) ?>
+				<?php foreach ($exercises as $key => $exercise) : ?>
+					<?= snippet('molecules/Exercise', compact('exercise', 'workout', 'key')) ?>
+					<?= snippet('atoms/Input/superset', [ 'label' => 'Superset', 'value' => 'true', 'id' => 'superset-'.rand(0,1000), 'name' => 'superset[]', 'checked' => false ]) ?>
 				<?php endforeach ?>
 			<?php endif ?>
 		</list>

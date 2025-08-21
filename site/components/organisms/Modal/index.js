@@ -17,7 +17,9 @@ class Modal {
         this.prev = 0
         this.current = 0
         
+        this.card = {}
         this.is_open = false
+        this.dir = null
         this.next = false
         this.back = false
         this.url = null
@@ -29,20 +31,29 @@ class Modal {
         this.initEvents()
     }
 
+    async force(url, dir = false) {
+        this.url = url
+        this.back = dir
+        console.log('Forcing modal url:', this.url, this.dir)
+        this.response(true)
+    }
 
-    // async fetch(template = 'default', id = '') {
-    async fetch(e) {
-        // let url = `${window.location.protocol}//${window.location.host}${lang}/modals.json/template${eq}${template}/id${eq}${id}`;
+    async fetch(url, dir = null) {
+        this.url = url
+        this.dir = dir
+        // this.url = e.target.closest('[modal-open]').getAttribute('href')
+        // this.next = e.target.closest('[modal-open]').getAttribute('modal-open') == 'next' ?? false
+        // this.back = e.target.closest('[modal-open]').getAttribute('modal-open') == 'prev' ?? false
+        console.log('Fetching modal url:', this.url, this.dir)
+        this.response()
+    }
 
-        this.url = e.target.closest('[modal-open]').getAttribute('href')
-        this.next = e.target.closest('[modal-open]').getAttribute('modal-open') == 'next' ?? false
-        this.back = e.target.closest('[modal-open]').getAttribute('modal-open') == 'prev' ?? false
-        console.log('Fetching modal url:', this.url)
+    async response(reload = false) {
         try {
           const response = await fetch(this.url);
           const json = await response.json();
           console.log(json)
-          this.add(json.html)  
+          reload ? this.reload(json.html) : this.add(json.html)  
         } catch (error) {
           console.log('Fetch error: ', error);
         }
@@ -50,35 +61,50 @@ class Modal {
 
     add(html) { 
         // console.log(this.next, this.back)
-        if (this.next) {
+        if (this.dir == 'next') {
             this.openNext(html)
-        } else if(this.back) {
+        } else if(this.dir == 'prev') {
             this.openPrev(html)
         } else {
             console.log('Adding new modal')
             this.renderCard(html)
-            // this.initEvents()
             this.open()
         }
         
+    }
+
+    reload(html, dir) {
+        console.log('Reloading modal')
+        this.back ? this.openPrev(html) :
+            this.renderCard(html)
+            this.DOM.load.appendChild(this.card)
+            this.DOM.load.removeChild(this.DOM.load.firstElementChild)
+            this.is_open = true
+            setTimeout(() => {
+                this.after()
+            }, 300)
     }
 
     renderCard(html) {
         var card = document.createElement("div")
         card.classList.add('modal')
         card.toggleAttribute('modal')
-        if(this.is_open) {
-            this.back ? card.toggleAttribute('open-prev') : card.toggleAttribute('open-next')
-        }
         card.innerHTML = html
-        // this.items.push(card)
+        this.card = card        
+    }
+
+    change() {
+        if(this.is_open) {
+            this.dir == 'prev' ? this.card.toggleAttribute('open-prev') : this.card.toggleAttribute('open-next')
+        }
         this.prev = this.current > 0 ? this.current - 1 : 0
         this.current++;
-        this.DOM.load.appendChild(card)
+        this.DOM.load.appendChild(this.card)
     }
 
     openNext(html) {
         this.renderCard(html)
+        this.change()
         console.log('Opening as next modal')
         this.DOM.load.firstElementChild.toggleAttribute('close-next')
         this.after()
@@ -90,6 +116,7 @@ class Modal {
 
     openPrev(html) {
         this.renderCard(html)
+        this.change()
         console.log('Opening as previous modal')
         this.DOM.load.firstElementChild.toggleAttribute('close-prev')
         this.after()
@@ -100,6 +127,7 @@ class Modal {
     }
 
     open() {
+        this.change()
         console.log('Opening modal')
         document.documentElement.classList.add('no-scroll');
         document.documentElement.classList.add(this.openClass);
@@ -124,16 +152,16 @@ class Modal {
             e.stopPropagation()
             var el = e.target.closest('[modal-close]')
             if (el !== null) {
-                // e.preventDefault()
+                e.preventDefault()
                 _this.close()
             }
         })
         document.addEventListener("click", e => {
-            // e.stopPropagation()
+            e.stopPropagation()
             var el = e.target.closest('[modal-open]')
             if (el !== null) {
-                // e.preventDefault()
-                _this.fetch(e)
+                e.preventDefault()
+                _this.fetch(el.getAttribute('href'), el.getAttribute('modal-open'))
             }
         })
         // this.DOM.widget.querySelectorAll('[modal-open]').forEach(function(el) {

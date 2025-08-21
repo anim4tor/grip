@@ -117,6 +117,9 @@ class Dropdown {
     }
 
     after() {
+        console.log('After dialog:')
+        initForms(this.card)
+        
         this.card.querySelectorAll('a').forEach(el => { 
             el.addEventListener('click', el => {
                 this.close();
