@@ -28,7 +28,7 @@ class Form {
         return response
     }
 
-    submit(event) {
+    submit() {
 
         this.data = new FormData(this.DOM.form);
         this.data.append("form", this.form);
@@ -63,6 +63,12 @@ class Form {
             e.preventDefault()
             _this.submit()
         });
+        this.DOM.form.querySelectorAll('input[submit]').forEach(el => {
+            el.addEventListener("click", e => {
+                console.log('Input submit')
+                _this.submit()
+            });
+        });
 
     }
 
@@ -85,7 +91,7 @@ class Form {
 }
 
 // // bind modal events
-// var MODAL = new Modal()
+var FORMS = {}
 
 function initForms(container = document) {
    console.log('Init Form controls ...')
@@ -93,7 +99,7 @@ function initForms(container = document) {
    var forms = document.querySelectorAll('form')
 
    forms ? forms.forEach(el => {
-       new Form(el)
+       el.getAttribute('id') ? FORMS[el.getAttribute('id')] = new Form(el) : new Form(el)
    }) : null
 
 }

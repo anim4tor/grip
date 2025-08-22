@@ -1,8 +1,9 @@
 <?php 
 return function ($kirby, $params) {
+  $params['id'] = $params['workout'];
   $updateFunc = function($data, $params) {
     // update json
-    $data['exercises'] ??= [];   
+    $data['exercises'] ??= [];
     function moveExercise(array $array, $key, $dir) {
         $keys = array_keys($array);
         $values = array_values($array);

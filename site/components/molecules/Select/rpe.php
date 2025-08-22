@@ -1,4 +1,4 @@
-<div class="select__widget --half font__size__1 xxl grid relative " data-select=rpe>
+<div class="select__widget --half font__size__1 xxl grid relative " data-select=rpe data-form="update_exercise">
 	<div class="select grid grow inner-x__1" data-select-scroller>
 		<div class="">&nbsp;</div>
 		<?php

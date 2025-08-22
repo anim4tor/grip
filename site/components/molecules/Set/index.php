@@ -12,10 +12,10 @@
 ?>
 
 <set class="flex justify__space-between align__start relative" modal-reveal data-dialog-parent>
-	<input type="hidden" name="sets[<?= $exercise['id'] ?>][id][]" value="<?= $exercise['id'] ?>">
-	<input type="hidden" name="sets[<?= $exercise['id'] ?>][reps][]" data-select-bind=reps value="<?= $reps ?>">
-	<input type="hidden" name="sets[<?= $exercise['id'] ?>][weight][]" data-select-bind=weight value="<?= $weight ?>">
-	<input type="hidden" name="sets[<?= $exercise['id'] ?>][rpe][]" data-select-bind=rpe value="<?= $rpe ?>">
+	<input type="hidden" name="sets[<?= $key ?>][exercise]" value="<?= $exercise['id'] ?>">
+	<input type="hidden" name="sets[<?= $key ?>][reps]" data-select-bind=reps value="<?= $reps ?>">
+	<input type="hidden" name="sets[<?= $key ?>][weight]" data-select-bind=weight value="<?= $weight ?>">
+	<input type="hidden" name="sets[<?= $key ?>][rpe]" data-select-bind=rpe value="<?= $rpe ?>">
 
 	<header class="flex gap__05 align__start">
 		<?php if($status): ?>

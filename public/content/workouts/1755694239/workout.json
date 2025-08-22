@@ -1,1 +1,1 @@
-{"id":"1755694239","bodypart":"Full body","title":"Full Body Rings","weekdays":["Sunday","Thursday"],"frequency":"1","layout":"square","form":"update_workout","exercises":["4","1","0","3","13"]}
+{"id":"1755694239","bodypart":"Full body","title":"Full Body Rings","weekdays":["Sunday","Thursday"],"frequency":"1","layout":"square","form":"update_exercise","exercises":["13","1","3","0","4"],"superset":["1","13"],"exercise":"1","sets":[{"exercise":"13","reps":"10","weight":"0","rpe":"5"},{"exercise":"13","reps":"0","weight":"0","rpe":"0"}]}

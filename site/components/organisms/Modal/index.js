@@ -34,7 +34,7 @@ class Modal {
     async force(url, dir = false) {
         this.url = url
         this.back = dir
-        console.log('Forcing modal url:', this.url, this.dir)
+        console.log('Fetching modal url:', this.url, this.dir)
         this.response(true)
     }
 

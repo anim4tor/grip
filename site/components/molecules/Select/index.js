@@ -15,6 +15,7 @@ class Select {
         this.widget = el
         this.context = parent
         this.bind = this.widget.getAttribute('data-select')
+        this.form = this.widget.getAttribute('data-form') ? document.getElementById(this.widget.getAttribute('data-form')).getAttribute('id') : null
         this.items = Array.from(this.DOM.options).map(el => ({el}))
         this.current = {}
         this.output = {
@@ -26,6 +27,7 @@ class Select {
 
     init() {
         console.log('Init Select controls ...')
+        console.log(this)
         this.storeBounds()
         this.preselect()
         setTimeout(() => {
@@ -75,6 +77,8 @@ class Select {
         console.log('Update context: ', this.context, value, label)
         this.output.value ? this.output.value.value = value : null;
         this.output.label ? this.output.label.innerHTML = label : null;
+        console.log(FORMS[this.form])
+        FORMS[this.form].submit()
     }
 
     initEvents() {

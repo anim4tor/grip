@@ -28,16 +28,16 @@ $dirs: (
 		    	@if($i < 0) {
 		    		$neg: -1;
 		    	} 
-			    &__#{$i} {
+			    &__#{$neg*$i} {
 					@each $prop in $props {
-						#{$prop}: calc(#{$neg*$i} * var(--#{$var}));
+						#{$prop}: calc(#{$i} * var(--#{$var}));
 					}
 			    }
 			} 
-			@for $i from 1 through 9 {
-			    &__0#{$i} {
+			@for $j from 1 through 9 {
+			    &__0#{$j} {
 					@each $prop in $props {
-						#{$prop}: calc(#{$neg*$i/10} * var(--#{$var}));
+						#{$prop}: calc(#{$neg*$j/10} * var(--#{$var}));
 					}
 			    }
 			} 
@@ -53,10 +53,10 @@ $dirs: (
 				  	}
 			    }
 			} 
-			@for $i from 1 through 9 {
-			     &-#{$label}__0#{$i} {
+			@for $j from 1 through 9 {
+			     &-#{$label}__0#{$j} {
 					@each $prop in $props {
-						#{$prop}-#{$dir}: calc(#{$i/10} * var(--#{$var}));
+						#{$prop}-#{$dir}: calc(#{$j/10} * var(--#{$var}));
 					}
 			    }
 			} 
@@ -73,10 +73,10 @@ $dirs: (
 			@include spacing_scale( ( padding ), spacing, 0, 20 );
 		}
 		.-wrap {
-			@include spacing_scale( ( margin ), spacing, -10, 0 );
+			@include spacing_scale( ( margin ), spacing, -10, -1 );
 		}
 		.-inner {
-			@include spacing_scale( ( padding ), spacing, -10, 0 );
+			@include spacing_scale( ( padding ), spacing, -10, -1 );
 		}
 	} @else {
 		@include create-mq($breakpoint, 'max') {
@@ -87,10 +87,10 @@ $dirs: (
 				@include spacing_scale( ( padding ), spacing, 0, 20 );
 			}
 			.#{$modifier}\:-wrap {
-				@include spacing_scale( ( margin ), spacing, -10, 0 );
+				@include spacing_scale( ( margin ), spacing, -10, -1 );
 			}
 			.#{$modifier}\:-inner {
-				@include spacing_scale( ( padding ), spacing, -10, 0 );
+				@include spacing_scale( ( padding ), spacing, -10, -1 );
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-<div class="select__widget --line font__size__1 xl flex align__center grow" data-select=weight>
+<div class="select__widget --line font__size__1 xl flex align__center grow" data-select=weight data-form="update_exercise">
 	<div class="select grid gap__1 grow" data-select-scroller>
 		<div class="">&nbsp;</div>
 		<?php for ($i=-30; $i <= 0 ; $i+=5) { ?>

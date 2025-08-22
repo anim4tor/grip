@@ -14,7 +14,7 @@
 	// extract($exercise);
 ?>
 <exercise class="grid relative" modal-reveal style="--progress: <?= $progress ?>">
-	<a modal-open="next" href="modal/exercise/index/workout=<?= $workout['id'] ?>&exercise=<?= $id ?>" class="flex justify__space-between align__start inner-y__0 inner-l__1">
+	<a modal-open="next" href="modal/exercise/index/workout=<?= $workout['id'] ?>&exercise=<?= $id ?>" class="flex justify__space-between align__start inner-y__1 inner-l__1">
 		<header class="flex gap__1 align__start">
 			<div class="exercise__figure grid__stack place__center-center ">
 				<?php if ($completed) : ?>
@@ -31,8 +31,9 @@
 			</div>
 		</header>
 	</a>
-	<nav class="absolute inset__top-right button__group inner-t__05">
+	<nav class="absolute inset__top-right button__group wrap-t__05 inner-t__1">
 		<button open-dropdown href="modal/dropdown/exercise_options/workout=<?= $workout['id'] ?>&exercise=<?= $id ?>&key=<?= $key ?>" class="button circle op__5"><icon><?= svg('public/assets/images/ui/ui_options.svg') ?></icon></button>
 		<button class="button circle op__5"><icon><?= svg('public/assets/images/ui/ui_chevron-right.svg') ?></icon></button>
 	</nav>
+	<?= snippet('atoms/Input/superset', [ 'label' => 'Superset', 'value' => $id, 'id' => 'superset-'.rand(0,1000), 'name' => 'superset[]', 'checked' => in_array($id, $workout['superset']) ? true : false ]) ?>
 </exercise>

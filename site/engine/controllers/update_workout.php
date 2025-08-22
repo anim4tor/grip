@@ -2,7 +2,7 @@
 return function ($params, $updateFunc = null) {
   $update = null;
   $success = false;
-  $id = $params['workout'];
+  $id = $params['id'];
   $file = 'public/content/workouts/'.$id.'/workout.json';
 
   if (file_exists($file)) {

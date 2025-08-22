@@ -5,6 +5,7 @@
 	extract($workout);
 ?>
 <form action="form/update_workout" method="post" >
+	<input type="hidden" name="id" value="<?= $id ?>">
 	<toolbar class="sticky inset__top-stretch inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05 z__1 bg__inherit">
 		<a modal-reveal modal-close class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
 		<nav class="button__group">
@@ -30,13 +31,12 @@
 			<?php if (isset($exercises)) : ?>
 				<?php foreach ($exercises as $key => $exercise) : ?>
 					<?= snippet('molecules/Exercise', compact('exercise', 'workout', 'key')) ?>
-					<?= snippet('atoms/Input/superset', [ 'label' => 'Superset', 'value' => 'true', 'id' => 'superset-'.rand(0,1000), 'name' => 'superset[]', 'checked' => false ]) ?>
 				<?php endforeach ?>
 			<?php endif ?>
 		</list>
-		<div class="flex justify__start align__center gap__1 inner__1">
-			<a modal-open="next" href="modal/exercise/add/workout=<?= $id ?>" class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_add.svg') ?></icon></a>
+		<a modal-open="next" href="modal/exercise/add/workout=<?= $id ?>" class="flex justify__start align__center gap__1 inner__1">
+			<button class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_add.svg') ?></icon></button>
 			<span class="font__size__lg">Add exercise</span>
-		</div>
+		</a>
 	</section>
 </form>

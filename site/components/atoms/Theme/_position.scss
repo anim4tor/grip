@@ -61,28 +61,28 @@ $dirs: (
 @mixin inset_scale($props, $var: spacing, $min: 1, $max: $limit) {
   @each $label, $dir in $dirs {
     @if($label == '') {
+      $neg: 1;
       @for $i from $min through $max {
-        $j: $i;
-          @if($i < 0) {
-            $j: -$i;
-          } 
-          &__#{$j} {
+        @if($i < 0) {
+          $neg: -1;
+        } 
+        &__#{$neg*$i} {
           @each $prop in $props {
             #{$prop}: calc(#{$i} * var(--#{$var}));
           }
-          }
+        }
       } 
     } @else {
+      $neg: 1;
       @for $i from $min through $max {
-        $j: $i;
-          @if($i < 0) {
-            $j: -$i;
-          } 
-          &-#{$label}__#{$j} {
-            @each $prop in $props {
-                #{$prop}-#{$dir}: calc(#{$i} * var(--#{$var}));
-            }
+        @if($i < 0) {
+          $neg: -1;
+        } 
+        &-#{$label}__#{$neg*$i} {
+          @each $prop in $props {
+              #{$prop}-#{$dir}: calc(#{$i} * var(--#{$var}));
           }
+        }
       } 
     }
   }
@@ -91,42 +91,42 @@ $dirs: (
 @mixin spacing_scale($props, $var: spacing, $min: 0, $max: $limit) {
   @each $label, $dir in $dirs {
     @if($label == '') {
+      $neg: 1;
       @for $i from $min through $max {
-        $j: $i;
-          @if($i < 0) {
-            $j: -$i;
-          } 
-          &__#{$j} {
+        @if($i < 0) {
+          $neg: -1;
+        } 
+        &__#{$neg*$i} {
           @each $prop in $props {
             #{$prop}: calc(#{$i} * var(--#{$var}));
           }
-          }
+        }
       } 
-      @for $i from 1 through 9 {
-          &__0#{$i} {
+      @for $j from 1 through 9 {
+        &__0#{$j} {
           @each $prop in $props {
-            #{$prop}: calc(#{$i/10} * var(--#{$var}));
+            #{$prop}: calc(#{$neg*$j/10} * var(--#{$var}));
           }
-          }
+        }
       } 
     } @else {
+      $neg: 1;
       @for $i from $min through $max {
-        $j: $i;
-          @if($i < 0) {
-            $j: -$i;
-          } 
-          &-#{$label}__#{$j} {
-            @each $prop in $props {
-                #{$prop}-#{$dir}: calc(#{$i} * var(--#{$var}));
-            }
-          }
-      } 
-      @for $i from 1 through 9 {
-           &-#{$label}__0#{$i} {
+        @if($i < 0) {
+          $neg: -1;
+        } 
+        &-#{$label}__#{$neg*$i} {
           @each $prop in $props {
-            #{$prop}-#{$dir}: calc(#{$i/10} * var(--#{$var}));
+              #{$prop}-#{$dir}: calc(#{$i} * var(--#{$var}));
           }
+        }
+      } 
+      @for $j from 1 through 9 {
+        &-#{$label}__0#{$j} {
+          @each $prop in $props {
+            #{$prop}-#{$dir}: calc(#{$neg*$j/10} * var(--#{$var}));
           }
+        }
       } 
     }
   }
@@ -150,25 +150,25 @@ $dirs: (
       @include spacing_scale( ( top ), spacing, 0, 20 );
     }
     .-top {
-      @include spacing_scale( ( top ), spacing, -10, 0 );
+      @include spacing_scale( ( top ), spacing, -10, -1 );
     }
     .left {
       @include spacing_scale( ( left ), spacing, 0, 10 );
     }
     .-left {
-      @include spacing_scale( ( left ), spacing, -10, 0 );
+      @include spacing_scale( ( left ), spacing, -10, -1 );
     }
     .bottom {
       @include spacing_scale( ( bottom ), spacing, 0, 20 );
     }
     .-bottom {
-      @include spacing_scale( ( bottom ), spacing, -10, 0 );
+      @include spacing_scale( ( bottom ), spacing, -10, -1 );
     }
     .right {
       @include spacing_scale( ( right ), spacing, 0, 10 );
     }
     .-right {
-      @include spacing_scale( ( right ), spacing, -10, 0 );
+      @include spacing_scale( ( right ), spacing, -10, -1 );
     }
     .z, [style*='--z:'] {
       z-index: var(--z);
@@ -186,25 +186,25 @@ $dirs: (
         @include spacing_scale( ( top ), spacing, 0, 20 );
       }
       .#{$modifier}\:-top {
-        @include spacing_scale( ( top ), spacing, -10, 0 );
+        @include spacing_scale( ( top ), spacing, -10, -1 );
       }
       .#{$modifier}\:left {
         @include spacing_scale( ( left ), spacing, 0, 10 );
       }
       .#{$modifier}\:-left {
-        @include spacing_scale( ( left ), spacing, -10, 0 );
+        @include spacing_scale( ( left ), spacing, -10, -1 );
       }
       .#{$modifier}\:bottom {
         @include spacing_scale( ( bottom ), spacing, 0, 20 );
       }
       .#{$modifier}\:-bottom {
-        @include spacing_scale( ( bottom ), spacing, -10, 0 );
+        @include spacing_scale( ( bottom ), spacing, -10, -1 );
       }
       .#{$modifier}\:right {
         @include spacing_scale( ( right ), spacing, 0, 10 );
       }
       .#{$modifier}\:-right {
-        @include spacing_scale( ( right ), spacing, -10, 0 );
+        @include spacing_scale( ( right ), spacing, -10, -1 );
       }
       .#{$modifier}\:z, .#{$modifier}\:[style*='--mobile-z:'] {
         z-index: var(--z);
