@@ -102,6 +102,7 @@ class Dialog {
     after() {
         console.log('After dialog:')
         initSelects(this.DOM.widget, this.parent)
+        initForms() 
     }
 }
 // bind modal events

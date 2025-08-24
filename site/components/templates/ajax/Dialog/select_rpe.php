@@ -14,8 +14,26 @@
 	</div>
 	<div class="grid gap__1 inner-y__2 inner-x__1 border__top">
 		<div class="grid__2 gap__05">
-			<a class="button justify__center bg__invert/20 op__2"><span>Unset</span></a>
-			<a class="button justify__center bg__invert color__dark"><span>Set</span></a>
+			<?php if ($status) : ?>
+				<div></div>
+				<form action="form/update_set" method="post" class="grid" modal-reload="modal/exercise/index/workout=<?= $workout ?>&exercise=<?= $exercise ?>">
+					<input type="hidden" name="workout" value="<?= $workout ?>">
+					<input type="hidden" name="exercise" value="<?= $exercise ?>">
+					<input type="hidden" name="index" value="<?= $index ?>">
+					<input type="hidden" name="status" value="0">
+					<button type="submit" class="button justify__center bg__invert/20"><span>Unset</span></button>
+				</form>
+			<?php else: ?>
+				<div></div>
+				<form action="form/update_set" method="post" class="grid" modal-reload="modal/exercise/index/workout=<?= $workout ?>&exercise=<?= $exercise ?>">
+					<input type="hidden" name="workout" value="<?= $workout ?>">
+					<input type="hidden" name="exercise" value="<?= $exercise ?>">
+					<input type="hidden" name="index" value="<?= $index ?>">
+					<input type="hidden" name="status" value="1">
+					<button type="submit" class="button justify__center bg__invert color__dark"><span>Finish</span></button>
+				</form>
+			<?php endif ?>
+			
 		</div>
 	</div>
 </div>

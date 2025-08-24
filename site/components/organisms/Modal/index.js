@@ -75,6 +75,7 @@ class Modal {
 
     reload(html, dir) {
         console.log('Reloading modal')
+        DIALOG.close()
         this.back ? this.openPrev(html) :
             this.renderCard(html)
             this.DOM.load.appendChild(this.card)
