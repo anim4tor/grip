@@ -30575,6 +30575,14 @@ icon svg path, .icon svg path {
   gap: calc(var(--spacing) * 0.5);
 }
 
+.tag {
+  font-size: calc(var(--font-size-md) * 0.9);
+  text-transform: uppercase;
+  font-weight: 500;
+  height: auto;
+  padding: 0.25em 0.75em;
+}
+
 /*
 	MOLECULES
 	--------------------------------------------------

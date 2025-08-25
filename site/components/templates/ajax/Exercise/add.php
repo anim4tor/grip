@@ -1,7 +1,7 @@
 <?php
 	$library = collection('Exercises');
 	$workout ??= null;
-	$workout = $kirby->controller('workout', [ 'id' => $workout ]);
+	$workout = $kirby->controller('get_workout', [ 'id' => $workout ]);
 	extract($workout);
 	$exercises ??= [];
 ?>

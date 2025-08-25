@@ -9,7 +9,10 @@
 		</div>
 		<div class="grid gap__1">
 			<a class="button bg__invert/10 justify__center"><span>Discard session</span></a>
-			<a class="button bg__invert color__dark justify__center"><span>Log session</span></a>
+			<form action="form/log_workout" method="post" class="grid" modal-reload="modal/workout/index/workout=<?= $workout ?>">
+				<input type="hidden" name="workout" value="<?= $workout ?>">
+				<button type="submit" class="button bg__invert color__dark justify__center"><span>Log session</span></button>
+			</form>
 		</div>
 	</div>
 </div>

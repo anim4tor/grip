@@ -7,12 +7,12 @@
 ?>
 
 <set class="flex justify__space-between align__start relative" modal-reveal data-dialog-parent>
-	<input type="hidden" name="sets[<?= $key ?>][index]" value="<?= $key ?? 0 ?>">
-	<input type="hidden" name="sets[<?= $key ?>][status]" value="<?= $status ?? 0 ?>">
-	<input type="hidden" name="sets[<?= $key ?>][exercise]" value="<?= $exercise ?? 0 ?>">
-	<input type="hidden" name="sets[<?= $key ?>][reps]" data-select-bind=reps value="<?= $reps ?? 0 ?>">
-	<input type="hidden" name="sets[<?= $key ?>][weight]" data-select-bind=weight value="<?= $weight ?? 0.0 ?>">
-	<input type="hidden" name="sets[<?= $key ?>][rpe]" data-select-bind=rpe value="<?= $rpe ?? 0 ?>">
+	<input type="hidden" name="sets[<?= $exercise ?>][<?= $index ?>][index]" value="<?= $index ?? 0 ?>">
+	<input type="hidden" name="sets[<?= $exercise ?>][<?= $index ?>][status]" value="<?= $status ?? 0 ?>">
+	<input type="hidden" name="sets[<?= $exercise ?>][<?= $index ?>][exercise]" value="<?= $exercise ?? 0 ?>">
+	<input type="hidden" name="sets[<?= $exercise ?>][<?= $index ?>][reps]" data-select-bind=reps value="<?= $reps ?? 0 ?>">
+	<input type="hidden" name="sets[<?= $exercise ?>][<?= $index ?>][weight]" data-select-bind=weight value="<?= $weight ?? 0.0 ?>">
+	<input type="hidden" name="sets[<?= $exercise ?>][<?= $index ?>][rpe]" data-select-bind=rpe value="<?= $rpe ?? 0 ?>">
 
 	<header class="flex gap__05 align__start">
 		<?php if($status ?? 0): ?>

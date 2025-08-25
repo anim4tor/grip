@@ -8,16 +8,16 @@
 	$index ??= null;
 	$workout ??= null;
 	$exercise ??= null;
-	$exercise = collection('Exercises')[array_search($exercise, array_column(collection('Exercises'), 'id'))];
-	// var_dump($workout);
-	extract($exercise);
+	$exercise['head'] = collection('Exercises')[array_search($exercise['id'], array_column(collection('Exercises'), 'id'))];
+	// var_dump($exercise);
 	// extract($exercise);
+	extract($exercise);
 ?>
-<exercise class="grid relative" modal-reveal style="--progress: <?= $progress ?>">
+<exercise class="grid relative" modal-reveal style="--progress: <?= $progress ? $progress : 0 ?>">
 	<a modal-open="next" href="modal/exercise/index/workout=<?= $workout['id'] ?>&exercise=<?= $id ?>" class="flex justify__space-between align__start inner-y__1 inner-l__1">
 		<header class="flex gap__1 align__start">
 			<div class="exercise__figure grid__stack place__center-center ">
-				<?php if ($completed) : ?>
+				<?php if ($progress == 1) : ?>
 					<button class="button circle bg__invert color__dark"><icon><?= svg('public/assets/images/ui/ui_checkmark.svg') ?></icon></button>
 					<figure class="progress --exercise op__0"></figure>
 				<?php else: ?>
@@ -26,8 +26,8 @@
 				<?php endif ?>
 			</div>
 			<div class="grid gap__02 align__center wrap-t__08">
-				<h2 class="inner-r__8"><?= $name ?></h2>
-				<p class="font__size__md"><span class="op__5"><?= $desc ?></span></p>
+				<h2 class="inner-r__8"><?= $head['name'] ?></h2>
+				<p class="font__size__md"><span class="op__5"><?= sizeof($sets) ?> sets</span></p>
 			</div>
 		</header>
 	</a>
