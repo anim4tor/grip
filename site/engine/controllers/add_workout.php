@@ -9,8 +9,10 @@ return function ($page, $params) {
   $params['weekdays'] ??= [];
   $frequency = $params['frequency'] > 1 ? 'Every ' . $params['frequency'] . ' days' : 'Every day';
   $frequency = $params['frequency'] == 7 ? 'Every week' : $frequency;
+  $frequency = $params['weekdays'][0] ? 7 : $frequency;
   $params['schedule'] = empty($params['weekdays']) ? $frequency : implode(', ', $params['weekdays']);
   $params['start'] ??= false;
+  // $params['counter'] ??= false;
 
   // Check if the directory exists and create it if it doesn't
   if (!is_dir($directory)) {
