@@ -8,16 +8,24 @@
 	// extract($workout);
 	
 ?>
-<form action="form/update_workout" method="post" >
+<toolbar class="sticky inset__top-stretch inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05 z__1 bg__inherit">
+	<a modal-reveal modal-close class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
+	<nav class="button__group">
+		<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
+		<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_calendar.svg') ?></icon></a>
+		<?php if (!$workout['start']) : ?>
+			<form action="form/start_workout" method="post" class="grid" modal-reload="modal/workout/index/workout=<?= $workout['id'] ?>">
+				<input type="hidden" name="workout" value="<?= $workout['id'] ?>">
+				<button type="submit" modal-reveal class="button bg__invert color__dark">Start</button>
+			</form>
+		<?php else: ?>
+			<a open-dialog href="modal/dialog/finish_session/workout=<?= $workout['id'] ?>" modal-reveal class="button bg__invert color__dark">Finish</a>
+		<?php endif ?>
+
+	</nav>
+</toolbar>
+<form id="update_workout" action="form/update_workout" method="post" >
 	<input type="hidden" name="id" value="<?= $workout['id'] ?>">
-	<toolbar class="sticky inset__top-stretch inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05 z__1 bg__inherit">
-		<a modal-reveal modal-close class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
-		<nav class="button__group">
-			<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
-			<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_calendar.svg') ?></icon></a>
-			<a open-dialog href="modal/dialog/finish_session/workout=<?= $workout['id'] ?>" modal-reveal class="button bg__invert color__dark">Start</a>
-		</nav>
-	</toolbar>
 	<header class="">
 		<div class="inner-x__1 inner-b__1 flex align__center justify__space-between gap__05">
 			<div class="flex gap__1 align__center">
@@ -34,15 +42,7 @@
 		<list class="grid inner-y__1">
 			<?php if (isset($exercises)) : ?>
 				<?php foreach ($exercises as $key => $exercise) : ?>
-					<?php
-						$progress = 0;
-						// $test = ['status' => 1];
-						// $progress = sizeof(array_filter($exercise['sets'], function ($set) use ($test) {
-						//     return count(array_intersect_assoc($test, $set)) == count($test);
-						// }));
-					?>
 					<?= snippet('molecules/Exercise', compact('exercise', 'workout', 'key')) ?>
-
 				<?php endforeach ?>
 			<?php endif ?>
 		</list>

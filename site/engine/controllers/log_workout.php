@@ -13,7 +13,7 @@ return function ($kirby, $page, $params) {
   $log['date'] = $dt->format('Y-m-d');
   $log['workout'] = $params['id'];
   $log['duration'] = 0;
-  $params['log'] = $log['date'];
+  $params['log'] = $log['id'];
   unset($log['logs']);
 
   // create log file
@@ -29,6 +29,7 @@ return function ($kirby, $page, $params) {
   // update workout
   $updateFunc = function($data, $params) {
     // add log
+    $data['start'] = false;
     $data['logs'] ??= [];
     $data['logs'][] = $params['log'];
 
