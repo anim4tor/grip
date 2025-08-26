@@ -8,7 +8,10 @@
 			<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_calendar.svg') ?></icon></a>
 		</div>
 		<div class="grid gap__1">
-			<a class="button bg__invert/10 justify__center"><span>Discard session</span></a>
+			<form action="form/discard_workout" method="post" class="grid" modal-reload="modal/workout/index/workout=<?= $workout ?>">
+				<input type="hidden" name="workout" value="<?= $workout ?>">
+				<button type="submit" class="button bg__invert/10 justify__center"><span>Discard session</span></button>
+			</form>
 			<form action="form/log_workout" method="post" class="grid" modal-reload="modal/workout/index/workout=<?= $workout ?>">
 				<input type="hidden" name="workout" value="<?= $workout ?>">
 				<button type="submit" class="button bg__invert color__dark justify__center"><span>Log session</span></button>

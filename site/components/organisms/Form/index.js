@@ -78,10 +78,16 @@ class Form {
         window.dispatchEvent(event);
 
         // reload modal
+        this.DOM.form.hasAttribute('modal-close') ? MODAL.close() : null
+
+        // reload modal
         this.DOM.form.getAttribute('modal-reload') ? MODAL.force(this.DOM.form.getAttribute('modal-reload')) : null
 
         // reload back
         this.DOM.form.getAttribute('modal-back') ? MODAL.fetch(this.DOM.form.getAttribute('modal-back'), 'prev') : null
+
+        // reload page
+        this.DOM.form.getAttribute('reload') ? window.location.reload() : null
 
         // close dropdowns
         DROPDOWN.close()

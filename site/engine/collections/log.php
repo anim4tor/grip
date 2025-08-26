@@ -13,7 +13,7 @@ return function () {
 	    // Loop through the iterator
 	    foreach ($iterator as $file) {
 	        // Check if the current item is a file with a .json extension
-	        if ($file->isFile() && $file->getFilename() === 'workout.json') {
+	        if ($file->isFile() && $file->getFilename() === 'log.json') {
 	            $filePath = $file->getRealPath();
 
 	            // Read the JSON file content

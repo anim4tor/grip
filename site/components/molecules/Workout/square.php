@@ -11,7 +11,7 @@
 		</figure>
 		<div class="grid gap__02">
 			<h2><?= $title ?></h2>
-			<p class="op__5"><?= implode(', ',$weekdays) ?></p>
+			<p class="op__5"><?= $schedule ?></p>
 		</div>
 	</a>
 </card>

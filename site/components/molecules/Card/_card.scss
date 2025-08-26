@@ -31,6 +31,9 @@ card, .card {
 .shadow {
 	box-shadow: 0 0 calc(var(--spacing)*2) calc(var(--spacing)*0.5) rgba(var(--color-dark),1);
 }
+.shadow__small {
+	box-shadow: 0 0 calc(var(--spacing)*10) calc(var(--spacing)*0.5) rgba(var(--color-dark),1);
+}
 
 .bg__card {
 	background: rgba(var(--card-bg),1);

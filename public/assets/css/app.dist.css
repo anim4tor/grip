@@ -30483,6 +30483,227 @@ icon svg path, .icon svg path {
 	BUTTONS 
 
 */
+/* 
+
+  BORDERS 
+
+*/
+/*
+
+    MEDIA
+
+*/
+:root {
+  --border-width: 1.5px;
+  --radius: calc(var(--spacing)*1.5);
+}
+
+.border__left__1 {
+  border-left: var(--border-width) solid rgba(var(--col), 0.1);
+}
+
+.border__left__2 {
+  border-left: var(--border-width) solid rgba(var(--col), 0.2);
+}
+
+.border__left__3 {
+  border-left: var(--border-width) solid rgba(var(--col), 0.3);
+}
+
+.border__left__4 {
+  border-left: var(--border-width) solid rgba(var(--col), 0.4);
+}
+
+.border__left__5 {
+  border-left: var(--border-width) solid rgba(var(--col), 0.5);
+}
+
+.border__left__6 {
+  border-left: var(--border-width) solid rgba(var(--col), 0.6);
+}
+
+.border__left__7 {
+  border-left: var(--border-width) solid rgba(var(--col), 0.7);
+}
+
+.border__left__8 {
+  border-left: var(--border-width) solid rgba(var(--col), 0.8);
+}
+
+.border__left__9 {
+  border-left: var(--border-width) solid rgba(var(--col), 0.9);
+}
+
+.border__left__10 {
+  border-left: var(--border-width) solid rgba(var(--col), 1);
+}
+
+.border__right__1 {
+  border-right: var(--border-width) solid rgba(var(--col), 0.1);
+}
+
+.border__right__2 {
+  border-right: var(--border-width) solid rgba(var(--col), 0.2);
+}
+
+.border__right__3 {
+  border-right: var(--border-width) solid rgba(var(--col), 0.3);
+}
+
+.border__right__4 {
+  border-right: var(--border-width) solid rgba(var(--col), 0.4);
+}
+
+.border__right__5 {
+  border-right: var(--border-width) solid rgba(var(--col), 0.5);
+}
+
+.border__right__6 {
+  border-right: var(--border-width) solid rgba(var(--col), 0.6);
+}
+
+.border__right__7 {
+  border-right: var(--border-width) solid rgba(var(--col), 0.7);
+}
+
+.border__right__8 {
+  border-right: var(--border-width) solid rgba(var(--col), 0.8);
+}
+
+.border__right__9 {
+  border-right: var(--border-width) solid rgba(var(--col), 0.9);
+}
+
+.border__right__10 {
+  border-right: var(--border-width) solid rgba(var(--col), 1);
+}
+
+.border__top__1 {
+  border-top: var(--border-width) solid rgba(var(--col), 0.1);
+}
+
+.border__top__2 {
+  border-top: var(--border-width) solid rgba(var(--col), 0.2);
+}
+
+.border__top__3 {
+  border-top: var(--border-width) solid rgba(var(--col), 0.3);
+}
+
+.border__top__4 {
+  border-top: var(--border-width) solid rgba(var(--col), 0.4);
+}
+
+.border__top__5 {
+  border-top: var(--border-width) solid rgba(var(--col), 0.5);
+}
+
+.border__top__6 {
+  border-top: var(--border-width) solid rgba(var(--col), 0.6);
+}
+
+.border__top__7 {
+  border-top: var(--border-width) solid rgba(var(--col), 0.7);
+}
+
+.border__top__8 {
+  border-top: var(--border-width) solid rgba(var(--col), 0.8);
+}
+
+.border__top__9 {
+  border-top: var(--border-width) solid rgba(var(--col), 0.9);
+}
+
+.border__top__10 {
+  border-top: var(--border-width) solid rgba(var(--col), 1);
+}
+
+.border__bottom__1 {
+  border-bottom: var(--border-width) solid rgba(var(--col), 0.1);
+}
+
+.border__bottom__2 {
+  border-bottom: var(--border-width) solid rgba(var(--col), 0.2);
+}
+
+.border__bottom__3 {
+  border-bottom: var(--border-width) solid rgba(var(--col), 0.3);
+}
+
+.border__bottom__4 {
+  border-bottom: var(--border-width) solid rgba(var(--col), 0.4);
+}
+
+.border__bottom__5 {
+  border-bottom: var(--border-width) solid rgba(var(--col), 0.5);
+}
+
+.border__bottom__6 {
+  border-bottom: var(--border-width) solid rgba(var(--col), 0.6);
+}
+
+.border__bottom__7 {
+  border-bottom: var(--border-width) solid rgba(var(--col), 0.7);
+}
+
+.border__bottom__8 {
+  border-bottom: var(--border-width) solid rgba(var(--col), 0.8);
+}
+
+.border__bottom__9 {
+  border-bottom: var(--border-width) solid rgba(var(--col), 0.9);
+}
+
+.border__bottom__10 {
+  border-bottom: var(--border-width) solid rgba(var(--col), 1);
+}
+
+.border {
+  border: var(--border-width) solid rgba(var(--col), 0.1);
+}
+.border__all {
+  border: var(--border-width) solid rgba(var(--col), 0.1);
+}
+.border__top {
+  border-top: var(--border-width) solid rgba(var(--col), 0.1);
+}
+.border__bottom {
+  border-bottom: var(--border-width) solid rgba(var(--col), 0.1);
+}
+.border__left {
+  border-left: var(--border-width) solid rgba(var(--col), 0.1);
+}
+.border__right {
+  border-right: var(--border-width) solid rgba(var(--col), 0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .sm__border__none {
+    border: none;
+  }
+}
+
+html body hr {
+  border: none;
+  border-bottom: var(--border-width) solid rgba(var(--col), 0.1);
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+.dashed {
+  border-style: dashed;
+}
+
+.dotted {
+  border-style: dotted;
+}
+
+.radius {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
 :root {
   --button-size: 52px;
   --button-radius: 2rem;
@@ -30509,6 +30730,9 @@ icon svg path, .icon svg path {
   border-radius: var(--button-radius);
   white-space: nowrap;
   /*	color: currentColor;*/
+}
+.button.border, .border.progress {
+  border: var(--border-width) solid rgba(var(--col), 0.3);
 }
 .button.--left, .--left.progress {
   -webkit-box-pack: start;
@@ -30845,6 +31069,11 @@ card, .card {
 .shadow {
   -webkit-box-shadow: 0 0 calc(var(--spacing) * 2) calc(var(--spacing) * 0.5) rgba(var(--color-dark), 1);
           box-shadow: 0 0 calc(var(--spacing) * 2) calc(var(--spacing) * 0.5) rgba(var(--color-dark), 1);
+}
+
+.shadow__small {
+  -webkit-box-shadow: 0 0 calc(var(--spacing) * 10) calc(var(--spacing) * 0.5) rgba(var(--color-dark), 1);
+          box-shadow: 0 0 calc(var(--spacing) * 10) calc(var(--spacing) * 0.5) rgba(var(--color-dark), 1);
 }
 
 .bg__card {
@@ -35285,6 +35514,11 @@ card, .dropdown [data-dropdown], .card {
           box-shadow: 0 0 calc(var(--spacing) * 2) calc(var(--spacing) * 0.5) rgba(var(--color-dark), 1);
 }
 
+.shadow__small {
+  -webkit-box-shadow: 0 0 calc(var(--spacing) * 10) calc(var(--spacing) * 0.5) rgba(var(--color-dark), 1);
+          box-shadow: 0 0 calc(var(--spacing) * 10) calc(var(--spacing) * 0.5) rgba(var(--color-dark), 1);
+}
+
 .bg__card {
   background: rgba(var(--card-bg), 1);
 }
@@ -36056,6 +36290,16 @@ footer,
   -ms-grid-column: 1;
 }
 .modal__widget:before {
+  z-index: 1;
+  content: "";
+  position: absolute;
+  inset: calc(var(--spacing) * 0.5) 40% auto;
+  width: 20%;
+  height: 3px;
+  border-radius: 3px;
+  background-color: currentColor;
+}
+.modal__notification:before {
   z-index: 1;
   content: "";
   position: absolute;

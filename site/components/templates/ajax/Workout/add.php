@@ -18,11 +18,11 @@
 		'Calves',
 	]
 ?>
-<form action="form/add_workout" method="post" >
+<form action="form/add_workout" method="post" modal-close>
 	<input type="hidden" name="id" value="<?= time() ?>">
 	<tabs data-tabs class="grid modal__content rows__auto-1 ">
 		<toolbar class="inset__top-stretch inner-t__2 inner-b__1 flex align__center justify__space-between gap__2 z__2 bg__inherit">
-			<a modal-reveal modal-close class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
+			<a modal-reveal close-modal class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
 			<div class="tabs__progress bg__white/10 h__04 grow radius" >
 				<div class="progress__bar bg__invert radius h__04" data-tabs-progress></div>
 				<span data-tab ></span>
@@ -84,7 +84,7 @@
 				<footer class="inset__bottom-stretch z__1 bg__inherit relative">
 					<div class="grid inner-y__2 inner-x__1 border__top shadow">
 						<div class="flex justify__end gap__05">
-							<a modal-reveal modal-close class="button circle border"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
+							<a modal-reveal close-modal class="button circle border"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
 							<a modal-reveal data-tab-next class="button bg__invert color__dark">Continue <icon><?= svg('public/assets/images/ui/ui_arrow-right.svg') ?></icon></a>
 						</div>
 					</div>

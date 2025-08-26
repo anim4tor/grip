@@ -5,6 +5,12 @@ return function ($page, $params) {
   $id = $params['id'];
   $file_path = 'public/content/workouts/'.$id.'/workout.json';
   $directory = dirname($file_path);
+  $params['title'] = empty($params['title']) ? $params['bodypart'] : $params['title'];
+  $params['weekdays'] ??= [];
+  $frequency = $params['frequency'] > 1 ? 'Every ' . $params['frequency'] . ' days' : 'Every day';
+  $frequency = $params['frequency'] == 7 ? 'Every week' : $frequency;
+  $params['schedule'] = empty($params['weekdays']) ? $frequency : implode(', ', $params['weekdays']);
+  $params['start'] ??= false;
 
   // Check if the directory exists and create it if it doesn't
   if (!is_dir($directory)) {

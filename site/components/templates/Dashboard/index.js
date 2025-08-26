@@ -1,47 +1,26 @@
-
-var imgs = document.images,
-    len = imgs ? imgs.length : 0,
-    counter = 0;
-
-if ( imgs.length == 0 ) {
-  init()
-} else {
-  [].forEach.call( imgs, function( img ) {
-      if(img.complete)
-        setTimeout(function() {
-          incrementCounter();
-        },100)
-      else
-        img.addEventListener( 'load', incrementCounter, false );
-  } );
-
-}
-
-function incrementCounter() {
-    counter++;
-    percentImg = counter / len * 100
-    progress = percentImg/100
-    console.log( 'Loaded percentage: ', percentImg.toFixed(0) );
-    // document.querySelector('[data-counter]') ? document.querySelector('[data-counter]').innerHTML = percentImg.toFixed(0).padStart(1, '0') + '%'/* + '%'*/ : null
-    // document.querySelector('[data-preloader]') ? document.querySelector('[data-preloader]').style.setProperty('--progress', progress ) : null
-
-    if ( counter === len ) {
-        init()
-    }
-}
-
-function init() {
-  console.log( 'All images loaded!' );
-
-  setTimeout(function() {
-    document.documentElement.setAttribute('data-init',true)
-    initScroll()
-  }, 100)
-  
-}
-
 window.addEventListener('load', (event) => {
 
+
+  var timer = document.querySelector('[data-duration]');
+  var phpstart = timer ? timer.getAttribute('data-duration') : null
+
+  function tick(){
+    var start = new Date(parseInt(phpstart) * 1000),
+        now = new Date(),
+        duration = new Date(Math.abs(start - now)),
+        h = duration.getHours() - 1 > 0 ? + duration.getHours() - 1 + ':' : '',
+        m = duration.getMinutes() < 10 ? '0'+duration.getMinutes() : duration.getMinutes(),
+        s = duration.getSeconds()  < 10 ? '0'+duration.getSeconds() : duration.getSeconds(),
+        now_formated = h + m + ':' + s
+    document.querySelectorAll('[data-duration]').forEach(el => { el.innerHTML = now_formated });
+  }
+  // console.log(t)
+  //the runner
+  if(timer) {
+      t = setInterval( tick, 1000);
+  } else {
+      clearInterval(t)
+  }
 
 });
 

@@ -108,9 +108,9 @@ class Modal {
         this.change()
         console.log('Opening as next modal')
         this.DOM.load.firstElementChild.toggleAttribute('close-next')
-        this.after()
         setTimeout(() => {
             this.DOM.load.removeChild(this.DOM.load.firstElementChild)
+            this.after()
         }, 600)
 
     }
@@ -120,9 +120,9 @@ class Modal {
         this.change()
         console.log('Opening as previous modal')
         this.DOM.load.firstElementChild.toggleAttribute('close-prev')
-        this.after()
         setTimeout(() => {
             this.DOM.load.removeChild(this.DOM.load.firstElementChild)
+            this.after()
         }, 600)
 
     }
@@ -151,7 +151,7 @@ class Modal {
         var _this = this
         document.addEventListener("click", e => {
             e.stopPropagation()
-            var el = e.target.closest('[modal-close]')
+            var el = e.target.closest('[close-modal]')
             if (el !== null) {
                 e.preventDefault()
                 _this.close()
@@ -180,10 +180,34 @@ class Modal {
         initCarousels()
         initForms()
         initSelects(this.DOM.widget)
+
+        setTimeout(() => {
+            var timer = document.querySelector('[data-duration]');
+            var phpstart = timer ? timer.getAttribute('data-duration') : null
+
+            function tick(){
+              var start = new Date(parseInt(phpstart) * 1000),
+                  now = new Date(),
+                  duration = new Date(Math.abs(start - now)),
+                  h = duration.getHours() - 1 > 0 ? + duration.getHours() - 1 + ':' : '',
+                  m = duration.getMinutes() < 10 ? '0'+duration.getMinutes() : duration.getMinutes(),
+                  s = duration.getSeconds()  < 10 ? '0'+duration.getSeconds() : duration.getSeconds(),
+                  now_formated = h + m + ':' + s
+              document.querySelector('[data-duration]') ? document.querySelector('[data-duration]').innerHTML = now_formated : null;
+            }
+            // console.log(t)
+            //the runner
+            if(timer) {
+                t = setInterval( tick, 1000);
+            } else {
+                clearInterval(t)
+            }
+        },1)
     }
 }
 // bind modal events
 var MODAL = new Modal()
+var t = null
 
 function initModals(container = document) {
     MODAL.init()

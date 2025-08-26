@@ -15,7 +15,7 @@
 	extract($exercise);
 ?>
 <exercise class="grid relative" modal-reveal style="--progress: <?= $progress ? $progress : 0 ?>">
-	<a modal-open="next" href="modal/exercise/index/workout=<?= $workout['id'] ?>&exercise=<?= $id ?>" class="flex justify__space-between align__start inner-y__1 inner-l__1">
+	<a modal-open="next" href="modal/exercise/log/workout=<?= $workout['id'] ?>&exercise=<?= $id ?>" class="flex justify__space-between align__start inner-y__1 inner-l__1">
 		<header class="flex gap__1 align__start">
 			<div class="exercise__figure grid__stack place__center-center ">
 				<?php if ($progress == 1) : ?>
@@ -37,7 +37,13 @@
 		<button class="button circle op__5"><icon><?= svg('public/assets/images/ui/ui_chevron-right.svg') ?></icon></button>
 	</nav>
 	<?php if (!$last) : ?>
-		<?= snippet('atoms/Input/superset', [ 'label' => 'Superset', 'value' => $id, 'id' => 'superset-'.rand(0,1000), 'name' => 'superset[]', 'checked' => in_array($id, $workout['superset']) ? true : false ]) ?>
+	<div class="absolute -bottom__02 superset -wrap-b__1 wrap-l__1 inner-l__07 inner-y__03 z__10" data-checkbox>
+		<label >
+			<input type="checkbox" <?= in_array($exercise['id'], $workout['superset']) ? 'checked' : null ?> disabled/>
+			<div superset class="op__2">
+				<icon><?= svg('public/assets/images/ui/ui_superset.svg') ?></icon>
+			</div>
+		</label>
+	</div>
 	<?php endif ?>
-	
 </exercise>

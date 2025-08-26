@@ -78,6 +78,19 @@
 
 		}
 
+		&__notification {
+			&:before {
+				z-index: 1;
+				content: '';
+				position: absolute;
+				inset: calc(var(--spacing)*0.5) 40% auto;
+				width: 20%;
+				height: 3px;
+				border-radius: 3px;
+				background-color: currentColor;
+			}
+		}
+
 	
 			& {
 				overflow-y: scroll;

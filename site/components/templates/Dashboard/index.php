@@ -1,6 +1,4 @@
-<?php
-	// var_dump(collection('Workouts'));
-?>
+
 <header class="fixed inset__top-stretch z__1 bg__inherit">
 	<div class="inner__1 inner-t__3 inner-b__1 flex align__center justify__space-between gap__05 ">
 		<div class="flex gap__1 align__center ">
@@ -311,3 +309,10 @@
 		
 	</div>
 </section>
+<?php foreach (collection('Workouts') as $workout) : /*var_dump($workout);*/ ?>
+	<?php if ($workout['start']): ?>
+		<div modal-open href="modal/workout/index/workout=<?= $workout['id'] ?>" class="fixed inset__bottom-stretch left__05 right__05 inner-x__1 inner-b__7">
+			<?= snippet('molecules/Workout/current', compact('workout')) ?>
+		</div>
+	<?php endif ?>
+<?php endforeach; ?>

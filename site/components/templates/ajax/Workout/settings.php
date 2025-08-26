@@ -10,8 +10,7 @@
 	<toolbar class="sticky inset__top-stretch inner-t__2 inner-b__1 inner-r__1 flex align__center justify__space-between gap__2 z__2 bg__inherit">
 		<a modal-reveal modal-open="prev" href="modal/workout/index/workout=<?= $id ?>" class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-left.svg') ?></icon></a>
 		<nav class="button__group">
-			<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_add.svg') ?></icon></a>
-			<button type="submit" modal-reveal class="button bg__invert color__dark">Done</button>
+			<a open-dialog href="modal/dialog/delete_workout/workout=<?= $id ?>" modal-reveal class="button circle bg__red color__invert"><icon><?= svg('public/assets/images/ui/ui_delete.svg') ?></icon></a>
 		</nav>
 	</toolbar>
 	<header class="">
@@ -19,8 +18,8 @@
 			<div class="flex gap__1 align__center">
 
 				<div class="grid gap__05 align__center inner-t__04">
-					<h1>Library</h1>
-					<p class="font__size__lg"><span class="op__6">1112 exercises related to</span> Upper body</p>
+					<h1>Settings</h1>
+					<p class="font__size__md"><span class="op__6">Schedule and tracking settings for</span> <?= $title ?></p>
 				</div>
 			</div>
 
@@ -28,10 +27,7 @@
 	</header>
 	<section>
 		<list class="grid inner-y__1">
-			<?php foreach ($library as $key => $exercise) : ?>
-				<?php $checked = in_array($key, $exercises) ? true : false ?> 
-				<?= snippet('molecules/Exercise/input', compact('exercise','checked')) ?>
-			<?php endforeach ?>
+			
 		</list>
 	</section>
 </form>

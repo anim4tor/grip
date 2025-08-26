@@ -7,17 +7,18 @@ return function ($kirby, $page, $params) {
 
   // render log array
   $log = $kirby->controller('get_workout', [ 'id' => $params['id'] ]);
+  $log['end'] = time();
   $log['id'] = time();
   $dt = new DateTime();
   $dt->setTimestamp($log['id']);
   $log['date'] = $dt->format('Y-m-d');
   $log['workout'] = $params['id'];
-  $log['duration'] = 0;
+  $log['duration'] = gmdate("i:s", $log['end'] - $log['start']);
   $params['log'] = $log['id'];
   unset($log['logs']);
 
   // create log file
-  $file_path = 'public/content/log/'.$log['id'].'/workout.json';
+  $file_path = 'public/content/log/'.$log['id'].'/log.json';
   $directory = dirname($file_path);
   if (!is_dir($directory)) {
       if (!mkdir($directory, 0755, true)) {

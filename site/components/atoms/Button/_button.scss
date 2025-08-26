@@ -3,6 +3,8 @@
 	BUTTONS 
 
 */
+@import "../Theme/border";
+
 :root {
 	--button-size: 52px;
 	--button-radius: 2rem;
@@ -25,7 +27,9 @@
 	border-radius: var(--button-radius);
 	white-space: nowrap;
 /*	color: currentColor;*/
-	
+	&.border {
+  		@include border('',0.3);
+	}
 	icon, .icon {
 		
 	}
