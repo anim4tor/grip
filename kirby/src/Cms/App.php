@@ -387,7 +387,7 @@ class App
 	 * @internal
 	 */
 	public function component(string $name): mixed
-	{
+	{	
 		return $this->extensions['components'][$name] ?? null;
 	}
 
@@ -1568,7 +1568,6 @@ class App
 		if (is_object($data) === true) {
 			$data = ['item' => $data];
 		}
-
 		$snippet = ($this->component('snippet'))(
 			$this,
 			$name,

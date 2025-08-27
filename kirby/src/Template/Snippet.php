@@ -201,7 +201,7 @@ class Snippet extends Tpl
 				break;
 			}
 		}
-
+		// echo $root;
 		return $file;
 	}
 
@@ -259,7 +259,7 @@ class Snippet extends Tpl
 	 * snippet templates
 	 */
 	public static function root(): string
-	{
+	{	
 		return App::instance()->root('snippets');
 	}
 

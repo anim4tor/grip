@@ -7,8 +7,8 @@ function formatNum($num) {
 $_SERVER['SCRIPT_NAME'] = preg_replace('/\/domains\/' . $_SERVER['HTTP_HOST'] . '/', '', $_SERVER['SCRIPT_NAME']);
 $kirby = new Kirby([
     'roots' => [
-        // 'index'   => __DIR__,
-        // 'kirby'    => __DIR__ . '/vendor/kirby',
+        'index'   => __DIR__,
+        'kirby'    => __DIR__ . '/kirby',
 
         // src
         'site'      => __DIR__ . '/site',
