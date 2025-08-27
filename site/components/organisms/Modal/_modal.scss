@@ -13,6 +13,7 @@
 :root {
 	--modal-width: 60vw;
 	--modal-offset: calc(var(--spacing)*2);
+	--modal-height: calc(100dvh - var(--modal-offset));
 	@include xs-screen {
 		--modal-width: 100vw;
 	}
@@ -43,7 +44,7 @@
 			right: 0;
 			bottom: 0;
 			width: 100vw;
-			height: 100vh;
+			height: 100dvh;
 /*			background-color: rgba(var(--color-dark),.4);*/
 			@include animation;
 			opacity: 0;
@@ -59,7 +60,7 @@
 			grid-template-columns: 1fr;
 			grid-template-rows: 1fr;
 
-			height: calc(100vh - var(--modal-offset));
+			height: var(--modal-height);
 			border-radius: var(--card-radius) var(--card-radius) 0 0;
 			overflow: hidden;
 
@@ -188,7 +189,7 @@ html {
 		&__content {
 			display: grid;
 			overflow: hidden;
-			height: calc(100vh - var(--modal-offset));
+			height: calc(100dvh - var(--modal-offset));
 			grid-template-rows: auto 1fr auto;
 		}
 		&__scroll {
@@ -245,7 +246,7 @@ html.has-modal {
 
 html.no-scroll {
 	body {
-		height: 100vh;
+		height: 100dvh;
 		overflow: hidden;
 	}
 }

@@ -1,7 +1,7 @@
 <form action="form/add_workout" method="post" modal-close>
 	<input type="hidden" name="id" value="<?= time() ?>">
 	<tabs data-tabs class="grid modal__content rows__auto-1 ">
-		<toolbar class="inset__top-stretch inner-t__2 inner-b__1 flex align__center justify__space-between gap__2 z__2 bg__inherit">
+		<toolbar class="inset__top-stretch h__6 inner-t__2 inner-b__1 flex align__center justify__space-between gap__2 z__2 bg__inherit">
 			<a modal-reveal close-modal class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
 			<div class="tabs__progress bg__white/10 h__04 grow radius" >
 				<div class="progress__bar bg__invert radius h__04" data-tabs-progress></div>
@@ -23,7 +23,7 @@
 						</div>
 						<div class="bg__dark/80" data-click-disabled></div>
 					</div>
-					<div class="select grid inner-y__20 inner-b__20" data-select-scroller>
+					<div class="select absolute inset__stretch grid" data-select-scroller>
 						<?php
 							//var_dump($POST['selected'])
 							foreach (collection('Bodyparts') as $bodypart) { ?>
@@ -34,7 +34,7 @@
 						?>
 					</div>
 				</div>
-				<footer class="inset__bottom-stretch z__1 bg__inherit relative">
+				<footer class="inset__bottom-stretch z__1 h__8 bg__inherit relative">
 					<div class="grid inner-y__2 inner-x__1 border__top shadow">
 						<div class="grid gap__05 inner-t__02">
 							<p class="font__size__5 "><span class="op__6">Add</span> <span>Full body </span><span class="op__6">to your workouts</span></p>

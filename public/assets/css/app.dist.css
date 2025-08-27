@@ -3774,6 +3774,10 @@ button:focus {
   background: linear-gradient(to bottom, transparent 20%, color(acc) 50%, transparent 180%);
 }
 
+.endora-panel {
+  display: none !important;
+}
+
 /*
 	ATOMS 
 	--------------------------------------------------
@@ -27578,91 +27582,91 @@ button:focus {
 }
 
 .vh__1 {
-  height: calc(1 * 5vh);
+  height: calc(1 * 5dvh);
 }
 .vh__2 {
-  height: calc(2 * 5vh);
+  height: calc(2 * 5dvh);
 }
 .vh__3 {
-  height: calc(3 * 5vh);
+  height: calc(3 * 5dvh);
 }
 .vh__4 {
-  height: calc(4 * 5vh);
+  height: calc(4 * 5dvh);
 }
 .vh__5 {
-  height: calc(5 * 5vh);
+  height: calc(5 * 5dvh);
 }
 .vh__6 {
-  height: calc(6 * 5vh);
+  height: calc(6 * 5dvh);
 }
 .vh__7 {
-  height: calc(7 * 5vh);
+  height: calc(7 * 5dvh);
 }
 .vh__8 {
-  height: calc(8 * 5vh);
+  height: calc(8 * 5dvh);
 }
 .vh__9 {
-  height: calc(9 * 5vh);
+  height: calc(9 * 5dvh);
 }
 .vh__10 {
-  height: calc(10 * 5vh);
+  height: calc(10 * 5dvh);
 }
 .vh__11 {
-  height: calc(11 * 5vh);
+  height: calc(11 * 5dvh);
 }
 .vh__12 {
-  height: calc(12 * 5vh);
+  height: calc(12 * 5dvh);
 }
 .vh__13 {
-  height: calc(13 * 5vh);
+  height: calc(13 * 5dvh);
 }
 .vh__14 {
-  height: calc(14 * 5vh);
+  height: calc(14 * 5dvh);
 }
 .vh__15 {
-  height: calc(15 * 5vh);
+  height: calc(15 * 5dvh);
 }
 .vh__16 {
-  height: calc(16 * 5vh);
+  height: calc(16 * 5dvh);
 }
 .vh__17 {
-  height: calc(17 * 5vh);
+  height: calc(17 * 5dvh);
 }
 .vh__18 {
-  height: calc(18 * 5vh);
+  height: calc(18 * 5dvh);
 }
 .vh__19 {
-  height: calc(19 * 5vh);
+  height: calc(19 * 5dvh);
 }
 .vh__20 {
-  height: calc(20 * 5vh);
+  height: calc(20 * 5dvh);
 }
 .vh__01 {
-  height: calc(0.1 * 5vh);
+  height: calc(0.1 * 5dvh);
 }
 .vh__02 {
-  height: calc(0.2 * 5vh);
+  height: calc(0.2 * 5dvh);
 }
 .vh__03 {
-  height: calc(0.3 * 5vh);
+  height: calc(0.3 * 5dvh);
 }
 .vh__04 {
-  height: calc(0.4 * 5vh);
+  height: calc(0.4 * 5dvh);
 }
 .vh__05 {
-  height: calc(0.5 * 5vh);
+  height: calc(0.5 * 5dvh);
 }
 .vh__06 {
-  height: calc(0.6 * 5vh);
+  height: calc(0.6 * 5dvh);
 }
 .vh__07 {
-  height: calc(0.7 * 5vh);
+  height: calc(0.7 * 5dvh);
 }
 .vh__08 {
-  height: calc(0.8 * 5vh);
+  height: calc(0.8 * 5dvh);
 }
 .vh__09 {
-  height: calc(0.9 * 5vh);
+  height: calc(0.9 * 5dvh);
 }
 
 .min-w__1 {
@@ -28296,91 +28300,91 @@ button:focus {
     width: calc(0.9 * 5vw);
   }
   .tablet\:vh__1 {
-    height: calc(1 * 5vh);
+    height: calc(1 * 5dvh);
   }
   .tablet\:vh__2 {
-    height: calc(2 * 5vh);
+    height: calc(2 * 5dvh);
   }
   .tablet\:vh__3 {
-    height: calc(3 * 5vh);
+    height: calc(3 * 5dvh);
   }
   .tablet\:vh__4 {
-    height: calc(4 * 5vh);
+    height: calc(4 * 5dvh);
   }
   .tablet\:vh__5 {
-    height: calc(5 * 5vh);
+    height: calc(5 * 5dvh);
   }
   .tablet\:vh__6 {
-    height: calc(6 * 5vh);
+    height: calc(6 * 5dvh);
   }
   .tablet\:vh__7 {
-    height: calc(7 * 5vh);
+    height: calc(7 * 5dvh);
   }
   .tablet\:vh__8 {
-    height: calc(8 * 5vh);
+    height: calc(8 * 5dvh);
   }
   .tablet\:vh__9 {
-    height: calc(9 * 5vh);
+    height: calc(9 * 5dvh);
   }
   .tablet\:vh__10 {
-    height: calc(10 * 5vh);
+    height: calc(10 * 5dvh);
   }
   .tablet\:vh__11 {
-    height: calc(11 * 5vh);
+    height: calc(11 * 5dvh);
   }
   .tablet\:vh__12 {
-    height: calc(12 * 5vh);
+    height: calc(12 * 5dvh);
   }
   .tablet\:vh__13 {
-    height: calc(13 * 5vh);
+    height: calc(13 * 5dvh);
   }
   .tablet\:vh__14 {
-    height: calc(14 * 5vh);
+    height: calc(14 * 5dvh);
   }
   .tablet\:vh__15 {
-    height: calc(15 * 5vh);
+    height: calc(15 * 5dvh);
   }
   .tablet\:vh__16 {
-    height: calc(16 * 5vh);
+    height: calc(16 * 5dvh);
   }
   .tablet\:vh__17 {
-    height: calc(17 * 5vh);
+    height: calc(17 * 5dvh);
   }
   .tablet\:vh__18 {
-    height: calc(18 * 5vh);
+    height: calc(18 * 5dvh);
   }
   .tablet\:vh__19 {
-    height: calc(19 * 5vh);
+    height: calc(19 * 5dvh);
   }
   .tablet\:vh__20 {
-    height: calc(20 * 5vh);
+    height: calc(20 * 5dvh);
   }
   .tablet\:vh__01 {
-    height: calc(0.1 * 5vh);
+    height: calc(0.1 * 5dvh);
   }
   .tablet\:vh__02 {
-    height: calc(0.2 * 5vh);
+    height: calc(0.2 * 5dvh);
   }
   .tablet\:vh__03 {
-    height: calc(0.3 * 5vh);
+    height: calc(0.3 * 5dvh);
   }
   .tablet\:vh__04 {
-    height: calc(0.4 * 5vh);
+    height: calc(0.4 * 5dvh);
   }
   .tablet\:vh__05 {
-    height: calc(0.5 * 5vh);
+    height: calc(0.5 * 5dvh);
   }
   .tablet\:vh__06 {
-    height: calc(0.6 * 5vh);
+    height: calc(0.6 * 5dvh);
   }
   .tablet\:vh__07 {
-    height: calc(0.7 * 5vh);
+    height: calc(0.7 * 5dvh);
   }
   .tablet\:vh__08 {
-    height: calc(0.8 * 5vh);
+    height: calc(0.8 * 5dvh);
   }
   .tablet\:vh__09 {
-    height: calc(0.9 * 5vh);
+    height: calc(0.9 * 5dvh);
   }
   .tablet\:min-w__1 {
     min-width: calc(1 * var(--spacing));
@@ -29009,91 +29013,91 @@ button:focus {
     width: calc(0.9 * 5vw);
   }
   .mobile\:vh__1 {
-    height: calc(1 * 5vh);
+    height: calc(1 * 5dvh);
   }
   .mobile\:vh__2 {
-    height: calc(2 * 5vh);
+    height: calc(2 * 5dvh);
   }
   .mobile\:vh__3 {
-    height: calc(3 * 5vh);
+    height: calc(3 * 5dvh);
   }
   .mobile\:vh__4 {
-    height: calc(4 * 5vh);
+    height: calc(4 * 5dvh);
   }
   .mobile\:vh__5 {
-    height: calc(5 * 5vh);
+    height: calc(5 * 5dvh);
   }
   .mobile\:vh__6 {
-    height: calc(6 * 5vh);
+    height: calc(6 * 5dvh);
   }
   .mobile\:vh__7 {
-    height: calc(7 * 5vh);
+    height: calc(7 * 5dvh);
   }
   .mobile\:vh__8 {
-    height: calc(8 * 5vh);
+    height: calc(8 * 5dvh);
   }
   .mobile\:vh__9 {
-    height: calc(9 * 5vh);
+    height: calc(9 * 5dvh);
   }
   .mobile\:vh__10 {
-    height: calc(10 * 5vh);
+    height: calc(10 * 5dvh);
   }
   .mobile\:vh__11 {
-    height: calc(11 * 5vh);
+    height: calc(11 * 5dvh);
   }
   .mobile\:vh__12 {
-    height: calc(12 * 5vh);
+    height: calc(12 * 5dvh);
   }
   .mobile\:vh__13 {
-    height: calc(13 * 5vh);
+    height: calc(13 * 5dvh);
   }
   .mobile\:vh__14 {
-    height: calc(14 * 5vh);
+    height: calc(14 * 5dvh);
   }
   .mobile\:vh__15 {
-    height: calc(15 * 5vh);
+    height: calc(15 * 5dvh);
   }
   .mobile\:vh__16 {
-    height: calc(16 * 5vh);
+    height: calc(16 * 5dvh);
   }
   .mobile\:vh__17 {
-    height: calc(17 * 5vh);
+    height: calc(17 * 5dvh);
   }
   .mobile\:vh__18 {
-    height: calc(18 * 5vh);
+    height: calc(18 * 5dvh);
   }
   .mobile\:vh__19 {
-    height: calc(19 * 5vh);
+    height: calc(19 * 5dvh);
   }
   .mobile\:vh__20 {
-    height: calc(20 * 5vh);
+    height: calc(20 * 5dvh);
   }
   .mobile\:vh__01 {
-    height: calc(0.1 * 5vh);
+    height: calc(0.1 * 5dvh);
   }
   .mobile\:vh__02 {
-    height: calc(0.2 * 5vh);
+    height: calc(0.2 * 5dvh);
   }
   .mobile\:vh__03 {
-    height: calc(0.3 * 5vh);
+    height: calc(0.3 * 5dvh);
   }
   .mobile\:vh__04 {
-    height: calc(0.4 * 5vh);
+    height: calc(0.4 * 5dvh);
   }
   .mobile\:vh__05 {
-    height: calc(0.5 * 5vh);
+    height: calc(0.5 * 5dvh);
   }
   .mobile\:vh__06 {
-    height: calc(0.6 * 5vh);
+    height: calc(0.6 * 5dvh);
   }
   .mobile\:vh__07 {
-    height: calc(0.7 * 5vh);
+    height: calc(0.7 * 5dvh);
   }
   .mobile\:vh__08 {
-    height: calc(0.8 * 5vh);
+    height: calc(0.8 * 5dvh);
   }
   .mobile\:vh__09 {
-    height: calc(0.9 * 5vh);
+    height: calc(0.9 * 5dvh);
   }
   .mobile\:min-w__1 {
     min-width: calc(1 * var(--spacing));
@@ -31595,6 +31599,7 @@ select option {
   overflow: hidden;
 }
 .select__widget.--full {
+  --height: calc(var(--modal-height) - 14*var(--spacing));
   height: auto;
   display: -ms-grid;
   display: grid;
@@ -31603,6 +31608,7 @@ select option {
   /*    --height: 100%;*/
 }
 .select__widget.--full .select {
+  padding: calc(var(--height) / 2 - 3 * var(--spacing)) 0;
   -ms-scroll-snap-points-y: repeat(calc(var(--spacing) * 6));
       scroll-snap-points-y: repeat(calc(var(--spacing) * 6));
   -ms-scroll-snap-type: y mandatory;
@@ -36181,17 +36187,17 @@ html {
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100dvh;
   overflow-x: hidden;
 }
 
 [data-app] {
   position: relative;
-  height: 100vh;
+  height: 100dvh;
 }
 
 main {
-  height: 100vh;
+  height: 100dvh;
   overflow-y: scroll;
 }
 
@@ -36229,6 +36235,7 @@ footer,
 :root {
   --modal-width: 60vw;
   --modal-offset: calc(var(--spacing)*2);
+  --modal-height: calc(100dvh - var(--modal-offset));
 }
 @media screen and (max-width: 480px) {
   :root {
@@ -36257,7 +36264,7 @@ footer,
   right: 0;
   bottom: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   /*			background-color: rgba(var(--color-dark),.4);*/
   -webkit-transition-property: all;
   transition-property: all;
@@ -36280,7 +36287,7 @@ footer,
   grid-template-columns: 1fr;
   -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
-  height: calc(100vh - var(--modal-offset));
+  height: var(--modal-height);
   border-radius: var(--card-radius) var(--card-radius) 0 0;
   overflow: hidden;
   position: relative;
@@ -36435,7 +36442,7 @@ html .modal__content {
   display: -ms-grid;
   display: grid;
   overflow: hidden;
-  height: calc(100vh - var(--modal-offset));
+  height: calc(100dvh - var(--modal-offset));
   -ms-grid-rows: auto 1fr auto;
   grid-template-rows: auto 1fr auto;
 }
@@ -36486,7 +36493,7 @@ html.has-modal .modal__close {
 }
 
 html.no-scroll body {
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 

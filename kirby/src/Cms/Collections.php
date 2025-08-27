@@ -106,7 +106,7 @@ class Collections
 		$kirby = App::instance();
 
 		// first check for collection file
-		$file = $kirby->root('collections') . '/' . $name . '.php';
+		$file = $kirby->root('collections') . '/' . lcfirst($name) . '.php';
 
 		if (is_file($file) === true) {
 			$collection = F::load($file, allowOutput: false);

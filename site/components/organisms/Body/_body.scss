@@ -13,16 +13,16 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	height: 100vh;
+	height: 100dvh;
 	overflow-x: hidden;
 }
 
 [data-app] {
 	position: relative;
-	height: 100vh;
+	height: 100dvh;
 }
 
 main {
-	height: 100vh;
+	height: 100dvh;
 	overflow-y: scroll;
 }

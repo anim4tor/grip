@@ -62,7 +62,7 @@ $aspect: (
       @include size_scale(width, 20, calc(100/20)+'vw');
     }
     .vh {
-      @include size_scale(height, 20, calc(100/20)+'vh');
+      @include size_scale(height, 20, calc(100/20)+'dvh');
     }
 
     .min-w {
@@ -94,7 +94,7 @@ $aspect: (
         @include size_scale(width, 20, calc(100/20)+'vw');
       }
       .#{$modifier}\:vh {
-        @include size_scale(height, 20, calc(100/20)+'vh');
+        @include size_scale(height, 20, calc(100/20)+'dvh');
       }
 
       .#{$modifier}\:min-w {

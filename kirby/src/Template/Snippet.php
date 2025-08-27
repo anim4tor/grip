@@ -188,7 +188,7 @@ class Snippet extends Tpl
 			$file = $root . '/' . $name . '.php';
 
 			// if component exists
-			$component = $root . '/' . ucwords($name) . '/' . 'index.php';
+			$component = $root . '/' . $name . '/' . 'index.php';
 			if (file_exists($component)) {
 				$file = $component;
 			}

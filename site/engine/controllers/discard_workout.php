@@ -9,6 +9,7 @@ return function ($kirby, $page, $params) {
   $updateFunc = function($data, $params) {
     // clear log
     $data['start'] = false;
+    $data['sets'] ??= [];
 
     // clear workout set status
     foreach ($data['sets'] as $i => $exercise) {

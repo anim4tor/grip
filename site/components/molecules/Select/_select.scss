@@ -40,6 +40,7 @@ select {
     overflow: hidden;
   }
   &.--full {
+    --height: calc(var(--modal-height) - 14*var(--spacing));
     height: auto;
     display: grid;
     overflow: hidden;
@@ -47,6 +48,7 @@ select {
 
 /*    --height: 100%;*/
     .select {
+      padding: calc(var(--height)/2 - 3*var(--spacing)) 0 ;
       scroll-snap-points-y: repeat(calc(var(--spacing)*6));
       scroll-snap-type: y mandatory;
     }

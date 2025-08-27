@@ -141,3 +141,7 @@ button {
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(to bottom, transparent 20%, color(acc) 50%, transparent 180%);
 }
+
+.endora-panel {
+    display: none !important;
+}
