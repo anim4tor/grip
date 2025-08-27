@@ -1,23 +1,3 @@
-<?php
-	$bodyparts = [
-		'Push',
-		'Pull',
-		'Full body',
-		'Upper body',
-		'Legs',
-		'Glutes',
-		'Back',
-		'Chest',
-		'Shoulders',
-		'Arms',
-		'Biceps',
-		'Triceps',
-		'Forearms',
-		'Quads',
-		'Hamstrings',
-		'Calves',
-	]
-?>
 <form action="form/add_workout" method="post" modal-close>
 	<input type="hidden" name="id" value="<?= time() ?>">
 	<tabs data-tabs class="grid modal__content rows__auto-1 ">
@@ -34,7 +14,7 @@
 		</toolbar>
 		<div data-pane-container class="relative inset__stretch">
 			<pane data-pane theme class="absolute inset__stretch grid rows__1-auto">
-				<input type="hidden" name="bodypart" data-select-bind=bodypart value="Full body">
+				<input type="hidden" name="bodyparts[]" data-select-bind=bodypart value="Full body">
 				<div class="select__widget --full relative" data-select=bodypart>
 					<div class="selector absolute inset__stretch z__1">
 						<div class="bg__dark/80" data-click-disabled></div>
@@ -46,9 +26,9 @@
 					<div class="select grid inner-y__20 inner-b__20" data-select-scroller>
 						<?php
 							//var_dump($POST['selected'])
-							foreach ($bodyparts as $bodypart) { ?>
-								<a href="" data-tab-next class="option flex align__center inner__1 inner-y__2 h__6" data-select-option data-value='<?php echo $bodypart ?>'>
-									<h1 class=""><?php echo $bodypart ?></h1>
+							foreach (collection('Bodyparts') as $bodypart) { ?>
+								<a href="" data-tab-next class="option flex align__center inner__1 inner-y__2 h__6" data-select-option data-value='<?php echo $bodypart['name'] ?>'>
+									<h1 class=""><?php echo $bodypart['name'] ?></h1>
 								</a>
 							<?php }
 						?>
@@ -105,7 +85,7 @@
 					<tabs data-nested-tabs class="grid rows__auto-1 relative ">
 						<nav class="flex flex__start gap__1 inner__1">
 							<a data-tab nested class="font__size__lg inner-y__05" data-label="Weekdays"><span>Weekdays</span></a>
-							<a data-tab nested class="font__size__lg inner-y__05" data-label="Frequency"><span>Recovery</span></a>
+							<a data-tab nested class="font__size__lg inner-y__05" data-label="Frequency"><span>Frequency</span></a>
 						</nav>
 						<div data-pane-container nested class="relative">
 							<div data-pane nested class="absolute inset__stretch grid align__space-between">
@@ -121,7 +101,8 @@
 								</button-list>
 							</div>
 							<div data-pane nested class="absolute inset__stretch grid align__space-between ">
-								<input type="hidden" name="frequency" data-select-bind=frequency value="1">
+								<input type="hidden" name="frequency" data-select-bind=frequency value="7">
+								<input type="hidden" name="rest" data-select-bind=rest value="120">
 								<p class="font__size__md inner__1"><span class="op__6">How many </span> days between workouts <span class="op__6">do you need to recover?</span></p>
 								<!-- <button-list class="flex align__start gap__1 inner__1 wrap">
 									<a modal-reveal class="button bg__invert/10">Daily</a>

@@ -5,13 +5,30 @@ return function ($page, $params) {
   $id = $params['id'];
   $file_path = 'public/content/workouts/'.$id.'/workout.json';
   $directory = dirname($file_path);
-  $params['title'] = empty($params['title']) ? $params['bodypart'] : $params['title'];
+  $params['bodyparts'] ??= [];
+  $params['title'] = empty($params['title']) ? $params['bodyparts'][0] : $params['title'];
   $params['weekdays'] ??= [];
-  $frequency = $params['frequency'] > 1 ? 'Every ' . $params['frequency'] . ' days' : 'Every day';
-  $frequency = $params['frequency'] == 7 ? 'Every week' : $frequency;
-  $frequency = $params['weekdays'][0] ? 7 : $frequency;
-  $params['schedule'] = empty($params['weekdays']) ? $frequency : implode(', ', $params['weekdays']);
+  $params['superset'] ??= [];
+  $params['frequency'] = $params['weekdays'][0] ?? 0 ? 7 : $params['frequency'];
   $params['start'] ??= false;
+  $params['logs'] ??= [];
+
+  $params['schedule'] = '';
+  $today = new DateTime();
+  if ($params['weekdays'][0] ?? 0) {
+    $current = new DateTime($workout['weekdays'][0] . ' this week');
+    if ($today->format('Y-m-d') == $current->format('Y-m-d')) {
+      $params['schedule'] = $today->format('Y-m-d');
+    } else {
+      $next = new DateTime('next '.$params['weekdays'][0]);
+      $params['schedule'] = $next->format('Y-m-d');
+    }
+  } else {
+    $params['schedule'] = $today->format('Y-m-d');
+  }
+
+  // $today = new DateTime();
+  // $params['schedule']
   // $params['counter'] ??= false;
 
   // Check if the directory exists and create it if it doesn't

@@ -30732,7 +30732,7 @@ html body hr {
   /*	color: currentColor;*/
 }
 .button.border, .border.progress {
-  border: var(--border-width) solid rgba(var(--col), 0.3);
+  border: var(--border-width) solid rgba(var(--col), 0.2);
 }
 .button.--left, .--left.progress {
   -webkit-box-pack: start;

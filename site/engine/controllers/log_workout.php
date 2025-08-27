@@ -32,7 +32,17 @@ return function ($kirby, $page, $params) {
     // add log
     $data['start'] = false;
     $data['logs'] ??= [];
+    $data['sets'] ??= [];
+    $data['exercises'] ??= [];
     $data['logs'][] = $params['log'];
+
+    $data['schedule'] = '';
+    $today = new DateTime();
+    if ($data['weekdays'][0] ?? 0) {
+      $data['schedule'] = $today->modify($data['weekdays'][0] .' next week')->format('Y-m-d');
+    } else {
+      $data['schedule'] = $today->modify('+'.$data['frequency'].' days')->format('Y-m-d');
+    }
 
     // clear workout set status
     foreach ($data['sets'] as $i => $exercise) {

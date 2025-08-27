@@ -14,8 +14,8 @@
 <toolbar class="sticky inset__top-stretch inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05 z__1 bg__inherit">
 	<a modal-reveal close-modal class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
 	<nav class="button__group">
-		<a modal-reveal modal-open="next" href="modal/workout/settings/workout=<?= $workout['id'] ?>"class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
-		<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_calendar.svg') ?></icon></a>
+		<a modal-reveal modal-open="next" href="modal/workout/settings/workout=<?= $workout['id'] ?>" class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
+		<a modal-reveal modal-open="next" href="modal/workout/log/workout=<?= $workout['id'] ?>" class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_calendar.svg') ?></icon></a>
 		<?php if (!$workout['start']) : ?>
 			<form action="form/start_workout" method="post" class="grid" modal-reload="modal/workout/index/workout=<?= $workout['id'] ?>">
 				<input type="hidden" name="workout" value="<?= $workout['id'] ?>">
@@ -33,7 +33,7 @@
 
 			<div class="grid gap__05 align__center inner-t__04">
 				<h1><?= $workout['title'] ?></h1>
-				<p class="font__size__lg"><?= $workout['bodypart'] ?> <span class="op__5">workout</span></p>
+				<p class="font__size__lg"><?= implode(', ',$workout['bodyparts']) ?> <span class="op__5">workout</span></p>
 			</div>
 		</div>
 
@@ -57,7 +57,7 @@
 	</section>
 </form>
 <?php if ($workout['start']) : ?>
-	<footer class="sticky inset__bottom-stretch z__1 bg__inherit relative">
+	<footer class="fixed inset__bottom-stretch z__1 bg__inherit relative">
 		<div class="grid inner-y__1 inner-x__1 bg__invert/5 border__top shadow">
 			<div class="flex inner-y__05 justify__space-between align__center">
 				<div class="flex align__center gap__1">

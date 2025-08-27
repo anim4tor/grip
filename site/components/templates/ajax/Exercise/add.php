@@ -20,7 +20,7 @@
 
 				<div class="grid gap__05 align__center inner-t__04">
 					<h1>Library</h1>
-					<p class="font__size__lg"><span class="op__6">1112 exercises related to</span> Upper body</p>
+					<p class="font__size__lg"><span class="op__6"><?= count($library) ?> exercises related to</span> Upper body</p>
 				</div>
 			</div>
 

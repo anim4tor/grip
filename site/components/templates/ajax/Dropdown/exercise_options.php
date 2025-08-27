@@ -36,6 +36,5 @@
 				<span class="font__size__5 inner-y__02">Delete</span>
 			</button>
 		</form>
-		
 	</div>
 </div>

@@ -28,7 +28,7 @@
 	white-space: nowrap;
 /*	color: currentColor;*/
 	&.border {
-  		@include border('',0.3);
+  		@include border('',0.2);
 	}
 	icon, .icon {
 		

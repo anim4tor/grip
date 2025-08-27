@@ -5,7 +5,7 @@
 	$sets_scheduled = 0;
 	$sets_completed = 0;
 	$weight_lifted = 0;
-	foreach ($sets as $exercise) {
+	foreach ($sets ?? [] as $exercise) {
 		$sets_completed += count(array_filter($exercise, function ($set) use ($test) {
 	        return count(array_intersect_assoc($test, $set)) == count($test);
 	    }));

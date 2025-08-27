@@ -6,12 +6,12 @@
 		<a class="button circle"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
 	</header>
 	<a modal-open href="modal/workout/index/workout=<?= $id ?>" class="grid gap__2 place__end-start inner__1 inner-y__2">	
-		<figure class="progress --large">
-			<h3 class="font__size__1"><?= $rest ?></h3>
+		<figure class="progress --large <?= $rest > 0 ? $rest : 'button bg__invert color__dark' ?>">
+			<h3 class="font__size__1"><?= $rest > 0 ? $rest : '+' ?></h3>
 		</figure>
 		<div class="grid gap__02">
 			<h2><?= $title ?></h2>
-			<p class="op__5"><?= $schedule ?></p>
+			<p class="op__5">Every <?= $frequency != 7 && empty($weekdays) ? $frequency . ' days' : implode(', ',$weekdays) ?></p>
 		</div>
 	</a>
 </card>

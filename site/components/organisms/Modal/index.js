@@ -101,6 +101,7 @@ class Modal {
         this.prev = this.current > 0 ? this.current - 1 : 0
         this.current++;
         this.DOM.load.appendChild(this.card)
+        // this.back = this.url
     }
 
     openNext(html) {
@@ -126,6 +127,7 @@ class Modal {
         }, 600)
 
     }
+
 
     open() {
         this.change()
@@ -165,6 +167,7 @@ class Modal {
                 _this.fetch(el.getAttribute('href'), el.getAttribute('modal-open'))
             }
         })
+  
         // this.DOM.widget.querySelectorAll('[modal-open]').forEach(function(el) {
         //     el.addEventListener("click", e => {
         //         // console.log(e.target)
