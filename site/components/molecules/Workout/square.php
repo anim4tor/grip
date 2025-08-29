@@ -1,5 +1,6 @@
 <?php
 	$workout ? extract($workout) : null;
+
 ?>
 <card class="grid bg__white/10 relative border" style="--progress: <?= $rest / $frequency ?>">
 	<header class="absolute inset__top-stretch flex justify__end inner__05 op__4">
@@ -11,7 +12,11 @@
 		</figure>
 		<div class="grid gap__02">
 			<h2><?= $title ?></h2>
-			<p class="op__5">Every <?= $frequency != 7 && empty($weekdays) ? $frequency . ' days' : implode(', ',$weekdays) ?></p>
+			<?php if ($ago) : ?>
+				<p class="op__5"><?= $ago ?></p>
+			<?php else: ?>
+				<p class="op__5">Every <?= $frequency != 7 && empty($weekdays) ? $frequency . ' days' : implode(', ',$weekdays) ?></p>
+			<?php endif ?>
 		</div>
 	</a>
 </card>

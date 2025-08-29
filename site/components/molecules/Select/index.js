@@ -54,7 +54,7 @@ class Select {
 
     detectCurrent() {
         const scrollY = this.DOM.select.scrollTop // Container scroll position
-        const goal = this.bounds.height / 2 - this.height // Where we want the current item to be, 0 = top of the container
+        const goal = this.bounds.height / 2 - this.height/2 // Where we want the current item to be, 0 = top of the container
 
         // Find item closest to the goal
         let currentItem = this.items.reduce((prev, curr) => {
@@ -77,8 +77,9 @@ class Select {
         console.log('Update context: ', this.context, value, label)
         this.output.value ? this.output.value.value = value : null;
         this.output.label ? this.output.label.innerHTML = label : null;
-        console.log(FORMS[this.form])
-        FORMS[this.form].submit()
+        this.output.value.dispatchEvent(new Event("input", { bubbles: true }));
+        // console.log(FORMS[this.form])
+        this.form ? FORMS[this.form].submit() : null
     }
 
     initEvents() {

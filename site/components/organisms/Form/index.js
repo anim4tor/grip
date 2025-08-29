@@ -70,6 +70,18 @@ class Form {
             });
         });
 
+        this.DOM.form.querySelectorAll('input[data-update]').forEach(el => {
+            el.addEventListener("input", e => {
+                var bind = el.getAttribute('data-update'),
+                    value = el.value
+                console.log('Bind input update: ', bind, value)
+                document.querySelectorAll('[data-bind='+bind+']').forEach(el => {
+                    el.innerHTML = value;
+                    el.value = value;
+                })
+            });
+        });
+
     }
 
     after() {

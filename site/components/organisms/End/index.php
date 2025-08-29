@@ -7,4 +7,4 @@
 <?= js('public/assets/js/app.dist.js') ?>
 
 <!-- Local js -->
-<?= js('site/components/templates/'.ucwords($page).'/index.js'); ?>
+<?= js('site/components/templates/'.ucfirst($page).'/index.js', ['type' => "text/javascript"]); ?>

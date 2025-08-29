@@ -16,7 +16,7 @@ return function ($page, $params) {
   $params['schedule'] = '';
   $today = new DateTime();
   if ($params['weekdays'][0] ?? 0) {
-    $current = new DateTime($workout['weekdays'][0] . ' this week');
+    $current = new DateTime($params['weekdays'][0] . ' this week');
     if ($today->format('Y-m-d') == $current->format('Y-m-d')) {
       $params['schedule'] = $today->format('Y-m-d');
     } else {

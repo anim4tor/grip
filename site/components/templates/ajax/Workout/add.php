@@ -14,7 +14,7 @@
 		</toolbar>
 		<div data-pane-container class="relative inset__stretch">
 			<pane data-pane theme class="absolute inset__stretch grid rows__1-auto">
-				<input type="hidden" name="bodyparts[]" data-select-bind=bodypart value="Full body">
+				<input type="hidden" name="bodyparts[]" data-select-bind=bodypart data-update="title" value="Full body">
 				<div class="select__widget --full relative" data-select=bodypart>
 					<div class="selector absolute inset__stretch z__1">
 						<div class="bg__dark/80" data-click-disabled></div>
@@ -49,7 +49,7 @@
 						<div class="inner-x__1 inner-b__2 flex align__center justify__space-between gap__05">
 							<div class="flex gap__1 align__center">
 								<div class="grid gap__05 align__center inner-t__04">
-									<h1>Name</h1>
+									<h1><span data-bind="title">Full body</span></h1>
 									<p class="font__size__md op__6">Customize the name if you like</p>
 								</div>
 							</div>
@@ -57,7 +57,7 @@
 					</header>
 					<div class="grid">
 						<div class="inner__1">
-							<?= snippet('atoms/Input/text', [ 'placeholder' => 'My workout', 'value' => '', 'name' => 'title' ]) ?>
+							<?= snippet('atoms/Input/text', [ 'placeholder' => 'My workout', 'value' => 'Full body', 'name' => 'title', 'bind' => 'title', 'update' => 'title' ]) ?>
 						</div>
 					</div>
 				</div>
@@ -77,7 +77,7 @@
 							<div class="flex gap__1 align__center">
 								<div class="grid gap__05 align__center inner-t__04">
 									<h1>Schedule</h1>
-									<p class="font__size__md op__6"><span class="">How often do you plan to do upper body workouts?</span></p>
+									<p class="font__size__md "><span class="op__6">How often do you plan to do </span><span data-bind="title">upper body</span> <span class="op__6"> workout?</span></p>
 								</div>
 							</div>
 						</div>
@@ -146,18 +146,17 @@
 						<input type="hidden" name="layout" data-carousel-input value="square">
 						<div class="carousel__list gap__1" data-carousel-slides>
 							<slide data-slide="square" class="w__60 grid align__start">
-								<card class="grid h__15 inner__1 inner-y__2 bg__card relative border">
+								<card class="grid h__15 inner__1 inner-y__2 bg__card relative border" style="--progress: 0.0">
 									<header class="absolute inset__top-stretch flex justify__end inner__05 op__4">
 										<a class="button circle"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
 									</header>
 									<div class="grid gap__2 place__end-start">	
-										<figure class="font__size__1">
-											<span class="l">86</span>
-											<span class="s op__5 light">%</span>
+										<figure class="progress --large">
+											<h3 class="font__size__1">0</h3>
 										</figure>
 										<div class="grid gap__02">
-											<h2>Body weight</h2>
-											<p class="op__5">31 min ago</p>
+											<h2><span data-bind="title">Full body</span></h2>
+											<p class="op__5">Every week</p>
 										</div>
 									</div>
 								</card>
@@ -169,7 +168,7 @@
 								</div>
 							</slide>
 							<slide data-slide="large" class="w__80 grid align__start">
-								<card class="grid h__15 inner__1 inner-y__2 inner-b__1 bg__card relative border" style="--progress: 0.7">
+								<card class="grid h__15 inner__1 inner-y__2 inner-b__1 bg__card relative border" style="--progress: 0.0">
 									<div class="grid gap__2 place__center-stretch align__space-between">	
 										<calendar class="grid__3 gap__1">
 											<month class="grid gap__1 justify__center">
@@ -341,11 +340,11 @@
 										<div class="flex justify__space-between align__center">
 											<div class="flex gap__1 align__center">	
 												<figure class="progress">
-													<h3 class="font__size__2">2</h3>
+													<h3 class="font__size__2">0</h3>
 												</figure>
-												<div class="grid gap__02">
-													<h2>Body weight</h2>
-													<p class="op__5">31 min ago</p>
+												<div class="grid gap__02 inner-t__02">
+													<h2><span data-bind="title">Full body</span></h2>
+													<p class="op__5">Every week</p>
 												</div>
 											</div>
 											<div class="op__4">
@@ -363,15 +362,15 @@
 							</slide>
 							<slide data-slide="slim" class="w__80 grid align__start">
 								<div class="grid h__15 place__end-stretch align__bottom">
-									<card class="grid inner__1 inner-y__1 bg__card relative border" style="--progress: 0.66">
+									<card class="grid inner__1 inner-y__1 bg__card relative border" style="--progress: 0.0">
 										<div class="flex justify__space-between align__center">
 											<div class="flex gap__1 align__center">	
 												<figure class="progress">
-													<h3 class="font__size__2">2</h3>
+													<h3 class="font__size__2">0</h3>
 												</figure>
-												<div class="grid gap__02">
-													<h2>Body weight</h2>
-													<p class="op__5">31 min ago</p>
+												<div class="grid gap__02 inner-t__02">
+													<h2><span data-bind="title">Full body</span></h2>
+													<p class="op__5">Every week</p>
 												</div>
 											</div>
 											<div class="op__4">
