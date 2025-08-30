@@ -10,7 +10,7 @@
 	        return count(array_intersect_assoc($test, $set)) == count($test);
 	    });
 	    foreach ($sets_completed as $set) {
-	    	$weight_lifted += $set['weight'];
+	    	$weight_lifted += (int) $set['weight'];
 	    }
 	}
 	
