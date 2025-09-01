@@ -29,7 +29,7 @@
 	<section>
 		<list class="grid inner-y__1">
 			<?php foreach ($library as $key => $exercise) : ?>
-				<?php $checked = in_array($key, $exercises) ? true : false ?> 
+				<?php $checked = in_array($exercise['id'], $exercises) ? true : false ?> 
 				<?= snippet('molecules/Exercise/input', compact('exercise','checked')) ?>
 			<?php endforeach ?>
 		</list>
