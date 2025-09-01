@@ -54,7 +54,7 @@ class Select {
 
     detectCurrent() {
         const scrollY = this.DOM.select.scrollTop // Container scroll position
-        const goal = this.bounds.height / 2 - this.height/2 // Where we want the current item to be, 0 = top of the container
+        const goal = this.bounds.height / 2 - this.height/1.5 // Where we want the current item to be, 0 = top of the container
 
         // Find item closest to the goal
         let currentItem = this.items.reduce((prev, curr) => {
