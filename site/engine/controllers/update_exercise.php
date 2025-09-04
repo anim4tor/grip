@@ -5,7 +5,7 @@ return function ($kirby, $params) {
   $updateFunc = function($data, $params) {
 
     // update sets
-    $data['mods'][$params['exercise']] = $params['mods'][$params['exercise']];
+    $data['sets'][$params['exercise']] = $params['sets'][$params['exercise']];
    
     // return updated data
     return $data;
