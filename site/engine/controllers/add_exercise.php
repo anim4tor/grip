@@ -1,14 +1,34 @@
 <?php 
 return function ($kirby, $params) {
-  $params['id'] = $params['workout'];
-  $updateFunc = function($data, $params) {
-    // update json
-    $data['exercises'] ??= [];
-    foreach (array_diff($params['exercises'], $data['exercises']) as $e) {
-      array_push($data['exercises'], $e);
-    }
-    return $data;
-  };
-  return $kirby->controller('update_workout', [ 'params' => $params, 'updateFunc' => $updateFunc ]);  
+
+  $success = false;
+
+  // load
+  $file = 'public/content/exercises/data.json';
+  $json = file_get_contents($file);
+  $exercises = json_decode($json, true);
+
+  // change
+  $add = $params;
+  $id = end($exercises)['id'];
+  do {
+    $id++;
+  } while (in_array($id, array_column($exercises, 'id')));
+  $add['id'] = $id;
+  $exercises[] = $add;
+
+  // save
+  if (file_put_contents($file, json_encode($exercises)) !== false) {
+    $success = true;
+  } else {
+    $success = false;
+  }
+
+  return [
+    'success' => $success,
+    'params' => $params,
+    'add' => $add,
+    'path' => $file,
+  ];
 
 };

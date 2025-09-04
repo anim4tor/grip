@@ -178,7 +178,7 @@ class Modal {
         // })
     }
 
-    after(forms = false) {
+    after(forms = true) {
         initTabs()
         initNestedTabs()
         initCarousels()

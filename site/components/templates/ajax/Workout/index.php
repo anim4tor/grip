@@ -50,7 +50,7 @@
 				<?php endforeach ?>
 			<?php endif ?>
 		</list>
-		<a modal-open="next" href="modal/exercise/add/workout=<?= $workout['id'] ?>" class="flex justify__start align__center gap__1 inner__1">
+		<a modal-open="next" href="modal/library/index/workout=<?= $workout['id'] ?>" class="flex justify__start align__center gap__1 inner__1">
 			<button class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_add.svg') ?></icon></button>
 			<span class="font__size__lg">Add exercise</span>
 		</a>

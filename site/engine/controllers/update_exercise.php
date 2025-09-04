@@ -6,7 +6,7 @@ return function ($kirby, $params) {
 
     // update sets
     $data['sets'][$params['exercise']] = $params['sets'][$params['exercise']];
-   
+    
     // return updated data
     return $data;
   };

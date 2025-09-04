@@ -4,17 +4,15 @@ return function ($kirby, $params) {
   $updateFunc = function($data, $params) {
     // update json
     $data['exercises'] ??= [];
-    foreach (array_intersect($params['exercises'], $data['exercises']) as $e) {
-      unset($data['exercises'][array_search($e, $data['exercises'])]);
+    foreach (array_diff($params['exercises'], $data['exercises']) as $e) {
+      array_push($data['exercises'], $e);
     }
-    $data['exercises'] = array_values($data['exercises']);
-
+    
     // update library
     unset($data['library']);
     foreach ($data['exercises'] as $e) {
       $data['library'][] = collection('Exercises')[array_search($e, array_column(collection('Exercises'), 'id'))];
     }
-    
     return $data;
   };
   return $kirby->controller('update_workout', [ 'params' => $params, 'updateFunc' => $updateFunc ]);  

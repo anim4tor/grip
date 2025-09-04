@@ -6,7 +6,7 @@
 				<div class=""><?= number_format($i,1) ?></div>
 			</div>
 		<?php } ?>
-		<div class="option flex justify__end" data-select-option data-value=BW data-label=BW>
+		<div class="option flex justify__end" data-select-option data-value=85.0 data-label=BW>
 			<div class="">BW</div>
 		</div>
 		<?php for ($i=2.0; $i <= 100 ; $i+=0.5) { ?>

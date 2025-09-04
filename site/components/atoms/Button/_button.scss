@@ -89,13 +89,16 @@
 	}
 }
 
-.checkbox {
+.checkbox, .radio {
 	padding: 0;
 	width: var(--button-size);
 	height: var(--button-size);
 	border-radius: var(--checkbox-radius);
 	justify-content: center;
+}
 
+.radio {
+	border-radius: 50%;
 }
 
 .button__group {

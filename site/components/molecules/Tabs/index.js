@@ -130,7 +130,8 @@ class Tabs {
 
     initEvents() {
         var _this = this
-
+        this.DOM.widget.style.setProperty("--progress", this.data.next / (this.DOM.panes.length - 1))
+        
         this.DOM.tabs.forEach(function(el) {
             el.addEventListener("click", e => {
                 if(!el.hasAttribute('data-scroll-tab')) {

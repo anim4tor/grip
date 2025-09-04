@@ -16,6 +16,7 @@ return function ($params, $updateFunc = null) {
       } else {
         $update = array_merge($data, $params);
       }
+
       $success = true;
 
     } else {

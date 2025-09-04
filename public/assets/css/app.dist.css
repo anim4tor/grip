@@ -30791,7 +30791,7 @@ html body hr {
   content: none;
 }
 
-.checkbox {
+.checkbox, .radio {
   padding: 0;
   width: var(--button-size);
   height: var(--button-size);
@@ -30799,6 +30799,10 @@ html body hr {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.radio {
+  border-radius: 50%;
 }
 
 .button__group {
@@ -30811,7 +30815,7 @@ html body hr {
 .tag {
   font-size: calc(var(--font-size-md) * 0.85);
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
   height: auto;
   padding: 0.4em 0.75em 0.25em;
 }
@@ -31313,11 +31317,17 @@ html body hr {
 [data-checkbox] input:checked + [superset] {
   opacity: 1;
 }
-[data-checkbox] input:checked + [checkbox] div.button.checkbox {
+[data-checkbox] input:checked + [checkbox] div.button.checkbox,
+[data-checkbox] input:checked + [checkbox] div.button.radio {
   background: rgba(var(--color-invert), 1);
   color: rgba(var(--color-dark), 1);
 }
-[data-checkbox] input:checked + [checkbox] div.button.checkbox icon {
+[data-checkbox] input:checked + [checkbox] div.button.checkbox icon:first-child,
+[data-checkbox] input:checked + [checkbox] div.button.radio icon:first-child {
+  opacity: 0;
+}
+[data-checkbox] input:checked + [checkbox] div.button.checkbox icon:last-child,
+[data-checkbox] input:checked + [checkbox] div.button.radio icon:last-child {
   opacity: 1;
 }
 

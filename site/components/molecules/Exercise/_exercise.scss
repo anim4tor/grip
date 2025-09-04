@@ -19,11 +19,15 @@ exercise, .exercise {
 	input:checked + [superset] {
 		opacity: 1;
 	}
-	input:checked + [checkbox] div.button.checkbox {
+	input:checked + [checkbox] div.button.checkbox,
+	input:checked + [checkbox] div.button.radio {
 		background: rgba(var(--color-invert),1);
 		color: rgba(var(--color-dark),1);
 
-		icon {
+		icon:first-child {
+			opacity: 0;
+		}
+		icon:last-child {
 			opacity: 1;
 		}
 	}
