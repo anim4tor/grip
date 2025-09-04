@@ -95,6 +95,9 @@ class Form {
         // reload modal
         this.DOM.form.getAttribute('modal-reload') ? MODAL.force(this.DOM.form.getAttribute('modal-reload')) : null
 
+        // reload modal
+        this.DOM.form.getAttribute('modal-close-reload') ? MODAL.force(this.DOM.form.getAttribute('modal-close-reload'), false, true) : null
+
         // reload back
         this.DOM.form.getAttribute('modal-back') ? MODAL.fetch(this.DOM.form.getAttribute('modal-back'), 'prev') : null
 

@@ -12,6 +12,7 @@
 	$exercise['head'] = collection('Exercises')[array_search($exercise['id'], array_column(collection('Exercises'), 'id'))];
 	// var_dump($exercise);
 	// extract($exercise);
+	$workout['mods'][$exercise['id']] ??= [];
 	extract($exercise);
 ?>
 <exercise class="grid relative" modal-reveal style="--progress: <?= $progress ? $progress : 0 ?>">
@@ -28,7 +29,7 @@
 			</div>
 			<div class="grid gap__02 align__center wrap-t__08">
 				<h2 class="inner-r__8"><?= $head['name'] ?></h2>
-				<p class="font__size__md"><span class="op__5"><?= sizeof($sets) ?> sets</span></p>
+				<p class="font__size__md op__5 flex gap__02 align__center"><?= !empty($workout['mods'][$exercise['id']]) ? '<span>' . implode(', ', $workout['mods'][$exercise['id']]) . '</span>' : null ?><?= !empty($workout['mods'][$exercise['id']]) ? '<span class="dot"></span>' : null ?> <span class=""><?= sizeof($sets) ?> sets</span></p>
 			</div>
 		</header>
 	</a>

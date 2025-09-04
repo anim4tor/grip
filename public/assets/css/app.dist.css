@@ -30809,11 +30809,11 @@ html body hr {
 }
 
 .tag {
-  font-size: calc(var(--font-size-md) * 0.9);
+  font-size: calc(var(--font-size-md) * 0.85);
   text-transform: uppercase;
   font-weight: 500;
   height: auto;
-  padding: 0.25em 0.75em;
+  padding: 0.4em 0.75em 0.25em;
 }
 
 /*

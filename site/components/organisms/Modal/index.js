@@ -31,9 +31,11 @@ class Modal {
         this.initEvents()
     }
 
-    async force(url, dir = false) {
+    async force(url, dir = false, dialog = false) {
         this.url = url
-        this.back = dir
+        this.back = dir        
+        dialog ? DIALOG.close() : null
+
         console.log('Fetching modal url:', this.url, this.dir)
         this.response(true)
     }
@@ -75,14 +77,13 @@ class Modal {
 
     reload(html, dir) {
         console.log('Reloading modal')
-        DIALOG.close()
         this.back ? this.openPrev(html) :
             this.renderCard(html)
             this.DOM.load.appendChild(this.card)
             this.DOM.load.removeChild(this.DOM.load.firstElementChild)
             this.is_open = true
             setTimeout(() => {
-                this.after()
+                this.after(false)
             }, 300)
     }
 
@@ -177,11 +178,11 @@ class Modal {
         // })
     }
 
-    after() {
+    after(forms = false) {
         initTabs()
         initNestedTabs()
         initCarousels()
-        initForms()
+        forms ? initForms() : null
         initSelects(this.DOM.widget)
 
         setTimeout(() => {

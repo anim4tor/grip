@@ -5,7 +5,12 @@ return function ($kirby, $params) {
   $updateFunc = function($data, $params) {
 
     // update sets
-    $data['mods'][$params['exercise']] = $params['mods'][$params['exercise']];
+    $has_mods = !empty($params['mods'][$params['exercise']]) ? true : false;
+    if ($has_mods) {
+      $data['mods'][$params['exercise']] = $params['mods'][$params['exercise']];
+    } else {
+      unset($data['mods'][$params['exercise']]);
+    }
    
     // return updated data
     return $data;

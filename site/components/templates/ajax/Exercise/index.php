@@ -3,6 +3,7 @@
 	$workout = $kirby->controller('get_workout', [ 'id' => $workout ]);
 	$exercise ??= null;
 	$exercise = $kirby->controller('get_exercise', [ 'kirby' => $kirby, 'id' => $exercise, 'workout' => $workout['id'] ]);
+	$workout['mods'][$exercise['id']] ??= [];
 	extract($exercise);
 ?>
 <form id="update_exercise" action="form/update_exercise" method="post">
@@ -11,13 +12,12 @@
 	<toolbar class="sticky inset__top-stretch inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05 z__1 bg__inherit">
 		<a modal-reveal modal-open="prev" href="modal/workout/index/workout=<?= $workout['id'] ?>" class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-left.svg') ?></icon></a>
 		<nav class="button__group">
-			<a modal-reveal class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
+			<a modal-reveal open-dialog href="modal/dialog/toggle_mods/workout=<?= $workout['id'] ?>&exercise=<?= $exercise['id'] ?>" class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
 		</nav>
 	</toolbar>
 	<header class="">
 		<div class="inner-x__1 inner-b__2 flex align__center justify__space-between gap__05">
 			<div class="flex gap__1 align__center">
-
 				<div class="grid gap__05 align__center inner-t__04">
 					<h1><?= $head['name'] ?></h1>
 					<?php if (sizeof($sets) > 0) : ?>
@@ -27,16 +27,21 @@
 						        return count(array_intersect_assoc($test, $set)) == count($test);
 						    });
 						?>
-						<div class="flex align__center gap__1">
-							<p class="font__size__md"><?= count($completed) ?> of <?= count($sets) ?> sets completed</p>
+						<div class="flex align__center gap__05 wrap inner-b__1">
 							<?php if(in_array($exercise['id'], $workout['superset'])) : ?>
 								<div class="button tag bg__invert color__dark"><span>Superset</span></div>
 							<?php endif ?>
+							<?php foreach ($workout['mods'][$exercise['id']] as $mod) : ?>
+								<div class="button tag bg__invert/10 "><span><?= $mod ?></span></div>
+							<?php endforeach ?>
 						</div>
+						<p class="font__size__md"><?= count($completed) ?> of <?= count($sets) ?> sets completed</p>
 					<?php else: ?>
 						<p class="font__size__md op__6">Add or remove sets as you need. When you’re ready to start a workout, perform a set, then tick the checkbox to log it.</p>
 					<?php endif ?>
+
 				</div>
+					
 			</div>
 
 		</div>
@@ -60,3 +65,4 @@
 		<span class="font__size__lg">Add set</span>
 	</button>
 </form>	
+
