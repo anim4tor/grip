@@ -1,4 +1,4 @@
 <?php
 	// echo $id;
-	snippet('templates/ajax/Dialog/'.$id, [ 'data' => '' ]);
+	snippet('templates/ajax/Dialog/'.$id, [ 'data' => '', 'kirby' => $kirby ]);
 ?>

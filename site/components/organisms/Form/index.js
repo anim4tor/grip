@@ -64,7 +64,7 @@ class Form {
             _this.submit()
         });
         this.DOM.form.querySelectorAll('input[submit]').forEach(el => {
-            el.addEventListener("click", e => {
+            el.addEventListener("input", e => {
                 console.log('Input submit')
                 _this.submit()
             });
@@ -88,6 +88,9 @@ class Form {
         // dispatch form event
         var event = new CustomEvent('formSubmit', { detail: { context: this.DOM.id, valid: !this.returndata.error, data: this.returndata } });
         window.dispatchEvent(event);
+
+        // reload page
+        this.DOM.form.hasAttribute('page-reload') ? window.location.reload() : null
 
         // reload modal
         this.DOM.form.hasAttribute('modal-close') ? MODAL.close() : null

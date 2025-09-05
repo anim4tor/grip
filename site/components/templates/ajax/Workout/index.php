@@ -57,7 +57,7 @@
 	</section>
 </form>
 <?php if ($workout['start']) : ?>
-	<footer class="sticky inset__bottom-stretch z__1 bg__inherit relative">
+	<footer class="fixed inset__bottom-stretch z__1 bg__inherit relative">
 		<div class="grid inner-y__1 inner-x__1 bg__invert/5 border__top shadow">
 			<div class="flex inner-y__05 justify__space-between align__center">
 				<div class="flex align__center gap__1">

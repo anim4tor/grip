@@ -4,13 +4,17 @@
 
 	$test = ['status' => 1];
 	$sets_completed = [];
+	$bw ??= 87.5;
 	$weight_lifted = 0;
 	foreach ($sets as $exercise) {
 		$sets_completed = array_filter($exercise, function ($set) use ($test) {
 	        return count(array_intersect_assoc($test, $set)) == count($test);
 	    });
 	    foreach ($sets_completed as $set) {
-	    	$weight_lifted += (int) $set['weight'];
+	    	$set['assisted'] ??= 0;
+	    	$set['bw'] ??= 0;
+	    	$neg = $set['assisted'] ? -1 : 1;
+	    	$weight_lifted += ( (int) $neg * $set['weight'] + $set['bw'] * $bw ) * (int) $set['reps'];
 	    }
 	}
 	

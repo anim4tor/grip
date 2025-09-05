@@ -113,7 +113,7 @@ class Modal {
         setTimeout(() => {
             this.DOM.load.removeChild(this.DOM.load.firstElementChild)
             this.after()
-        }, 600)
+        }, 300)
 
     }
 
@@ -125,7 +125,7 @@ class Modal {
         setTimeout(() => {
             this.DOM.load.removeChild(this.DOM.load.firstElementChild)
             this.after()
-        }, 600)
+        }, 300)
 
     }
 

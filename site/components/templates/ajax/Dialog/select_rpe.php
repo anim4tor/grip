@@ -16,7 +16,7 @@
 		<div class="grid__2 gap__05">
 			<?php if ($status) : ?>
 				<div></div>
-				<form action="form/update_set" method="post" class="grid" modal-close-reload="modal/exercise/index/workout=<?= $workout ?>&exercise=<?= $exercise ?>">
+				<form action="form/update_status" method="post" class="grid" modal-close-reload="modal/exercise/index/workout=<?= $workout ?>&exercise=<?= $exercise ?>">
 					<input type="hidden" name="workout" value="<?= $workout ?>">
 					<input type="hidden" name="exercise" value="<?= $exercise ?>">
 					<input type="hidden" name="index" value="<?= $index ?>">
@@ -25,7 +25,7 @@
 				</form>
 			<?php else: ?>
 				<div></div>
-				<form action="form/update_set" method="post" class="grid" modal-close-reload="modal/exercise/index/workout=<?= $workout ?>&exercise=<?= $exercise ?>">
+				<form action="form/update_status" method="post" class="grid" modal-close-reload="modal/exercise/index/workout=<?= $workout ?>&exercise=<?= $exercise ?>">
 					<input type="hidden" name="workout" value="<?= $workout ?>">
 					<input type="hidden" name="exercise" value="<?= $exercise ?>">
 					<input type="hidden" name="index" value="<?= $index ?>">

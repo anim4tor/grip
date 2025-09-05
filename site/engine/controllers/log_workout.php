@@ -13,6 +13,7 @@ return function ($kirby, $page, $params) {
   $dt->setTimestamp($log['id']);
   $log['date'] = $dt->format('Y-m-d');
   $log['workout'] = $params['id'];
+  $log['bw'] = $kirby->controller('get_bodyweight')['current'];
   $log['duration'] = gmdate("i:s", $log['end'] - $log['start']);
   $params['log'] = $log['id'];
   unset($log['logs']);

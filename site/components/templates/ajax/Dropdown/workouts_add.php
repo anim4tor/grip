@@ -4,7 +4,7 @@
 			<icon><?= svg('public/assets/images/ui/ui_workout.svg') ?></icon>
 			<span class="font__size__5 inner-y__02">Add a workout</span>
 		</a>
-		<a class="flex justify__start align__center gap__1 inner-y__1 inner-r__3">
+		<a modal-open href="modal/metric/add" class="flex justify__start align__center gap__1 inner-y__1 inner-r__3">
 			<icon><?= svg('public/assets/images/ui/ui_metric.svg') ?></icon>
 			<span class="font__size__5 inner-y__02">Add a metric</span>
 		</a>

@@ -29690,8 +29690,12 @@ h6,
   font-size: calc(var(--output-size) * 4);
 }
 
-.xl {
+.xll {
   font-size: calc(var(--output-size) * 3);
+}
+
+.xl {
+  font-size: calc(var(--output-size) * 2.5);
 }
 
 .l {
@@ -31599,6 +31603,10 @@ select option {
 }
 .select__widget.--line {
   --height: 2em;
+}
+.select__widget.--metric {
+  --height: 1.75em;
+  --select-bg: var(--color-dark);
 }
 .select__widget.--line.--workout {
   --height: 1.5em;

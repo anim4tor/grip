@@ -1,4 +1,4 @@
-<div class="select__widget --line font__size__1 xl grid relative grow" data-select=reps data-form="update_exercise">
+<div class="select__widget --line font__size__1 xll grid relative grow" data-select=reps data-form="update_exercise">
 	<div class="select grid gap__1 grow" data-select-scroller>
 		<div class="">&nbsp;</div>
 		<?php

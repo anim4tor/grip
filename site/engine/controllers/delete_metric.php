@@ -25,11 +25,7 @@ return function ($kirby, $params) {
   }
 
   // Example usage:
-  $folderToDelete = 'public/content/log/'.$params['id'];
-
-  // remove from workout logs
-
-  
+  $folderToDelete = 'public/content/metrics/'.$params['id'];
 
   if (deleteDirectory($folderToDelete)) {
       $success = true;

@@ -1,16 +1,16 @@
-<div class="select__widget --line font__size__2 xxl flex align__center grow" data-select=weight data-form="update_exercise">
+<div class="select__widget --line font__size__1 xll flex align__center grow" data-select=weight data-form="update_exercise">
 	<div class="select grid gap__1 grow" data-select-scroller>
 		<div class="">&nbsp;</div>
-		<?php for ($i=-30; $i <= 0 ; $i+=5) { ?>
-			<div class="option flex justify__end" data-select-option data-value=<?= number_format($i,1) ?> data-label=<?= number_format($i,1) ?>>
+		<!-- <?php for ($i=-30; $i <= 0 ; $i+=5) { ?>
+			<div class="option flex justify__center" data-select-option data-value=<?= number_format($i,1) ?> data-label=<?= number_format($i,1) ?>>
 				<div class=""><?= number_format($i,1) ?></div>
 			</div>
-		<?php } ?>
-		<div class="option flex justify__end" data-select-option data-value=85.0 data-label=BW>
+		<?php } ?> -->
+		<!-- <div class="option flex justify__end" data-select-option data-value=85.0 data-label=BW>
 			<div class="">BW</div>
-		</div>
-		<?php for ($i=2.0; $i <= 100 ; $i+=0.5) { ?>
-			<div class="option flex justify__end" data-select-option data-value=<?= number_format($i,1) ?> data-label=<?= number_format($i,1) ?>>
+		</div> -->
+		<?php for ($i=0.0; $i <= 100 ; $i+=0.5) { ?>
+			<div class="option flex justify__center" data-select-option data-value=<?= number_format($i,1) ?> data-label=<?= number_format($i,1) ?>>
 				<div class=""><?= number_format($i,1) ?></div>
 			</div>
 		<?php } ?>

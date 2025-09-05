@@ -30,6 +30,11 @@ select {
     --height: 2em;
   }
 
+  &.--metric {
+    --height: 1.75em;
+    --select-bg: var(--color-dark);
+  }
+
   &.--line.--workout {
     --height: 1.5em;
     --select-bg: var(--color-dark);

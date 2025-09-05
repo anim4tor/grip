@@ -177,11 +177,15 @@
 				</figure>
 				<div class="grid gap__02">
 					<h2><?= $title ?></h2>
-					<p class="op__5"><?= implode(', ',$weekdays) ?></p>
+					<?php if ($ago) : ?>
+						<p class="op__5"><?= $ago ?></p>
+					<?php else: ?>
+						<p class="op__5">Every <?= $frequency != 7 && empty($weekdays) ? $frequency . ' days' : implode(', ',$weekdays) ?></p>
+					<?php endif ?>
 				</div>
 			</a>
 			<div class="op__4">
-				<a class="button circle"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
+				<a open-dropdown href="modal/dropdown/workout_options/workout=<?= $id ?>&key=<?= $key ?>&layout=<?= $layout ?>&dashboard=workout" class="button circle"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
 			</div>
 		</div>
 	</div>

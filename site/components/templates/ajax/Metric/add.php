@@ -1,4 +1,4 @@
-<form action="form/add_workout" method="post" modal-close page-reload>
+<form action="form/add_metric" method="post" modal-close page-reload>
 	<input type="hidden" name="id" value="<?= time() ?>">
 	<tabs data-tabs class="grid modal__content rows__auto-1 ">
 		<toolbar class="inset__top-stretch h__6 inner-t__2 inner-b__1 flex align__center justify__space-between gap__2 z__2 bg__inherit">
@@ -14,8 +14,8 @@
 		</toolbar>
 		<div data-pane-container class="relative inset__stretch">
 			<pane data-pane theme class="absolute inset__stretch grid rows__1-auto">
-				<input type="hidden" name="bodyparts[]" data-select-bind=bodypart data-update="title" value="Full body">
-				<div class="select__widget --full relative" data-select=bodypart>
+				<input type="hidden" name="metric" data-select-bind=metric data-update="title" value="Weight">
+				<div class="select__widget --full relative" data-select=metric>
 					<div class="selector absolute inset__stretch z__1">
 						<div class="bg__dark/80" data-click-disabled></div>
 						<div class="flex justify__end align__center inner__1 h__6 border__bottom border__top ">
@@ -26,9 +26,9 @@
 					<div class="select absolute inset__stretch grid" data-select-scroller>
 						<?php
 							//var_dump($POST['selected'])
-							foreach (collection('Bodyparts') as $bodypart) { ?>
-								<a href="" data-tab-next class="option flex align__center inner__1 inner-y__2 h__6" data-select-option data-value='<?php echo $bodypart['name'] ?>'>
-									<h1 class=""><?php echo $bodypart['name'] ?></h1>
+							foreach (collection('Figures') as $metric) { ?>
+								<a href="" data-tab-next class="option flex align__center inner__1 inner-y__2 h__6" data-select-option data-value='<?php echo $metric['name'] ?>'>
+									<h1 class=""><?php echo $metric['name'] ?></h1>
 								</a>
 							<?php }
 						?>
@@ -37,8 +37,8 @@
 				<footer class="inset__bottom-stretch z__1 h__8 bg__inherit relative">
 					<div class="grid inner-y__2 inner-x__1 border__top shadow">
 						<div class="grid gap__05 inner-t__02">
-							<p class="font__size__5 "><span class="op__6">Add</span> <span>Full body </span><span class="op__6">to your workouts</span></p>
-							<p class="op__5">Exercises for all major muscles</p>
+							<p class="font__size__5 ">A metric measured in centimeters</p>
+							<p class="op__5">For example arm or waist circumference</p>
 						</div>
 					</div>
 				</footer>
@@ -49,7 +49,7 @@
 						<div class="inner-x__1 inner-b__2 flex align__center justify__space-between gap__05">
 							<div class="flex gap__1 align__center">
 								<div class="grid gap__05 align__center inner-t__04">
-									<h1><span data-bind="title">Full body</span></h1>
+									<h1><span data-bind="title">Weight</span></h1>
 									<p class="font__size__md op__6">Customize the name if you like</p>
 								</div>
 							</div>
@@ -57,7 +57,7 @@
 					</header>
 					<div class="grid">
 						<div class="inner__1">
-							<?= snippet('atoms/Input/text', [ 'placeholder' => 'My workout', 'value' => 'Full body', 'name' => 'title', 'bind' => 'title', 'update' => 'title' ]) ?>
+							<?= snippet('atoms/Input/text', [ 'placeholder' => 'My workout', 'value' => 'Weight', 'name' => 'title', 'bind' => 'title', 'update' => 'title' ]) ?>
 						</div>
 					</div>
 				</div>
@@ -73,70 +73,10 @@
 			<pane data-pane theme class="absolute inset__stretch grid rows__1-auto">
 				<div class="grid rows__auto-1">
 					<header class="">
-						<div class="inner-x__1 inner-b__2 flex align__center justify__space-between gap__05">
-							<div class="flex gap__1 align__center">
-								<div class="grid gap__05 align__center inner-t__04">
-									<h1>Schedule</h1>
-									<p class="font__size__md "><span class="op__6">How often do you plan to do </span><span data-bind="title">upper body</span> <span class="op__6"> workout?</span></p>
-								</div>
-							</div>
-						</div>
-					</header>
-					<tabs data-nested-tabs class="grid rows__auto-1 relative ">
-						<nav class="flex flex__start gap__1 inner__1">
-							<a data-tab nested class="font__size__lg inner-y__05" data-label="Weekdays"><span>Weekdays</span></a>
-							<a data-tab nested class="font__size__lg inner-y__05" data-label="Frequency"><span>Frequency</span></a>
-						</nav>
-						<div data-pane-container nested class="relative">
-							<div data-pane nested class="absolute inset__stretch grid align__space-between">
-								<p class="font__size__md inner__1"><span class="op__6">On witch </span> days of the week <span class="op__6">do you plan to do upper body workouts?</span></p>
-								<button-list class="flex align__start gap__1 inner__1 inner-b__5 wrap">
-									<?= snippet('atoms/Input/toggle', [ 'label' => 'Sunday', 'value' => 'Sunday', 'id' => 'Sunday', 'name' => 'weekdays[]', 'checked' => false ]) ?>
-									<?= snippet('atoms/Input/toggle', [ 'label' => 'Monday', 'value' => 'Monday', 'id' => 'Monday', 'name' => 'weekdays[]', 'checked' => false ]) ?>
-									<?= snippet('atoms/Input/toggle', [ 'label' => 'Tuesday', 'value' => 'Tuesday', 'id' => 'Tuesday', 'name' => 'weekdays[]', 'checked' => false ]) ?>
-									<?= snippet('atoms/Input/toggle', [ 'label' => 'Wednesday', 'value' => 'Wednesday', 'id' => 'Wednesday', 'name' => 'weekdays[]', 'checked' => false ]) ?>
-									<?= snippet('atoms/Input/toggle', [ 'label' => 'Thursday', 'value' => 'Thursday', 'id' => 'Thursday', 'name' => 'weekdays[]', 'checked' => false ]) ?>
-									<?= snippet('atoms/Input/toggle', [ 'label' => 'Friday', 'value' => 'Friday', 'id' => 'Friday', 'name' => 'weekdays[]', 'checked' => false ]) ?>
-									<?= snippet('atoms/Input/toggle', [ 'label' => 'Saturday', 'value' => 'Saturday', 'id' => 'Saturday', 'name' => 'weekdays[]', 'checked' => false ]) ?>
-								</button-list>
-							</div>
-							<div data-pane nested class="absolute inset__stretch grid align__space-between ">
-								<input type="hidden" name="frequency" data-select-bind=frequency value="7">
-								<input type="hidden" name="rest" data-select-bind=rest value="120">
-								<p class="font__size__md inner__1"><span class="op__6">How many </span> days between workouts <span class="op__6">do you need to recover?</span></p>
-								<!-- <button-list class="flex align__start gap__1 inner__1 wrap">
-									<a modal-reveal class="button bg__invert/10">Daily</a>
-									<a modal-reveal class="button bg__invert color__dark">2-day</a>
-									<a modal-reveal class="button bg__invert/10">3-day</a>
-									<a modal-reveal class="button bg__invert/10">4-day</a>
-									<a modal-reveal class="button bg__invert color__dark">5-day</a>
-									<a modal-reveal class="button bg__invert/10">6-day</a>
-									<a modal-reveal class="button bg__invert/10">Weekly</a>
-								</button-list> -->
-								<div class="grid">
-									<?= snippet('molecules/Select/frequency'); ?>
-								</div>
-							<!--  -->
-							</div>
-						</div>
-					</tabs>
-				</div>
-				<footer class="inset__bottom-stretch z__1 bg__inherit relative">
-					<div class="grid inner-y__2 inner-x__1 border__top shadow">
-						<div class="flex justify__space-between align__center gap__1">
-							<p class="font__size__5 "><span class="op__6">Work on this on </span> Mon <span class="op__6">and</span> Thu</p>
-							<a modal-reveal data-tab-next class="button circle bg__invert color__dark"><icon><?= svg('public/assets/images/ui/ui_arrow-right.svg') ?></icon></a>
-						</div>
-					</div>
-				</footer>
-			</pane>
-			<pane data-pane theme class="absolute inset__stretch grid rows__1-auto">
-				<div class="grid rows__auto-1">
-					<header class="">
 						<div class="inner-x__1 inner-b__2 flex align__center justify__space-between gap__05 op__0">
 							<div class="flex gap__1 align__center">
 								<div class="grid gap__05 align__center inner-t__04">
-									<h1>Frequency</h1>
+									<h1>Layout</h1>
 									<p class="font__size__md op__6"><span class="">How often do you plan to do upper body workouts?</span></p>
 								</div>
 							</div>

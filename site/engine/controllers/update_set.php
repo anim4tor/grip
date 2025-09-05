@@ -2,14 +2,18 @@
 return function ($kirby, $params) {
   $params['id'] = $params['workout'];
   unset($params['workout']);
+  $params['assisted'] ??= 0;
+  $params['bw'] ??= 0;
+  
   $updateFunc = function($data, $params) {
     // update status
     $data['sets'] ??= [];
-    // $criteria = ["exercise" => $params['exercise'], "index" => $params['index']];
-    // $results = array_filter($data['sets'], function ($set) use ($criteria) {
-    //     return count(array_intersect_assoc($criteria, $set)) == count($criteria);
-    // });
-    $data['sets'][$params['exercise']][$params['index']]['status'] = $params['status'];
+
+
+    $data['sets'][$params['exercise']][$params['index']]['assisted'] = $params['assisted'];
+    $data['sets'][$params['exercise']][$params['index']]['bw'] = $params['bw'];
+    
+    // $data['sets'][$params['exercise']][$params['index']] = array_merge($data['sets'][$params['exercise']][$params['index']], $params['sets'][$params['exercise']][$params['index']]);
     
     // return updated data
     return $data;

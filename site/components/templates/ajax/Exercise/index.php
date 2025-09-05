@@ -50,7 +50,7 @@
 		<list class="grid gap-x__07 gap-y__2 inner__1">
 			<?php if (isset($sets)) : ?>
 				<?php foreach ($sets as $key => $set) : ?>
-					<?= snippet('molecules/Set', compact('workout','set','key')) ?>
+					<?= snippet('molecules/Set', compact('kirby','workout','set','key')) ?>
 				<?php endforeach ?>
 			<?php endif ?>
 		</list>
