@@ -22,7 +22,7 @@ select {
 }
 .select__widget {
   &.--half {
-    --height: 1.5em;
+    --height: 1.75em;
     --select-bg: 23, 23, 25;
   }
 
@@ -36,7 +36,7 @@ select {
   }
 
   &.--line.--workout {
-    --height: 1.5em;
+    --height: 1.75em;
     --select-bg: var(--color-dark);
   }
 

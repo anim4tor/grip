@@ -56,7 +56,7 @@
 		</list>
 	</section>
 </form>
-<form action="form/add_set" method="post" modal-reload="modal/exercise/index/workout=<?= $workout['id'] ?>&exercise=<?= $id ?>">
+<form action="form/add_set" class="inner-b__8" method="post" modal-reload="modal/exercise/index/workout=<?= $workout['id'] ?>&exercise=<?= $id ?>">
 	<input type="hidden" name="workout" value="<?= $workout['id'] ?>">
 	<input type="hidden" name="exercise" value="<?= $id ?>">
 	<input type="hidden" name="index" value="<?= isset($key) ? $key + 1 : 0 ?>">

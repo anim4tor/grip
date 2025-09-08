@@ -7,7 +7,7 @@
 <form action="form/log_metric" method="post" class="grid" modal-close page-reload>
 	<input type="hidden" name="id" value="<?= $id ?>">
 	<input type="hidden" name="number" data-select-bind=number value="<?= floor($current) ?>">
-	<input type="hidden" name="decimal" data-select-bind=decimal value="<?= ($current - floor($current))*10 ?>">
+	<input type="hidden" name="decimal" data-select-bind=decimal value="<?= ceil(($current - floor($current))*10) ?>">
 	<toolbar class="sticky inset__top-stretch inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05 z__1 bg__inherit">
 		<a modal-reveal close-modal class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
 		<nav class="button__group">

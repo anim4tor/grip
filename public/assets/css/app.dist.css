@@ -31598,7 +31598,7 @@ select option {
 }
 
 .select__widget.--half {
-  --height: 1.5em;
+  --height: 1.75em;
   --select-bg: 23, 23, 25;
 }
 .select__widget.--line {
@@ -31609,7 +31609,7 @@ select option {
   --select-bg: var(--color-dark);
 }
 .select__widget.--line.--workout {
-  --height: 1.5em;
+  --height: 1.75em;
   --select-bg: var(--color-dark);
 }
 .select__widget.--auto {

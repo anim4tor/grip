@@ -11,7 +11,7 @@
 	$duration = gmdate("i:s", time() - $workout['start']);
 	
 ?>
-<toolbar class="sticky inset__top-stretch inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05 z__1 bg__inherit">
+<toolbar class="sticky inset__top-stretch inner-r__1 inner-t__2 inner-b__1 flex align__center justify__space-between gap__05 z__10 bg__inherit">
 	<a modal-reveal close-modal class="button circle"><icon><?= svg('public/assets/images/ui/ui_arrow-down.svg') ?></icon></a>
 	<nav class="button__group">
 		<a modal-reveal modal-open="next" href="modal/workout/settings/workout=<?= $workout['id'] ?>" class="button circle bg__invert/20"><icon><?= svg('public/assets/images/ui/ui_settings.svg') ?></icon></a>
@@ -39,7 +39,7 @@
 
 	</div>
 </header>
-<form id="update_workout" action="form/update_workout" method="post" >
+<form id="update_workout" class="inner-b__8" action="form/update_workout" method="post" >
 	<input type="hidden" name="id" value="<?= $workout['id'] ?>">
 	<section data-section>
 		<list class="grid inner-y__1">
